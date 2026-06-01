@@ -53,7 +53,7 @@ export default function RootLayout({
       lang="en"
       className={`${syne.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col justify-between bg-[#0A0F1E] text-[#F1F5F9] relative selection:bg-[#F5C542] selection:text-[#0A0F1E]">
+      <body className="min-h-full flex flex-col justify-between relative selection:bg-[#F5C542] selection:text-[#0A0F1E]">
         {/* Subtle noise grain texture overlay */}
         <div className="noise-overlay" />
         

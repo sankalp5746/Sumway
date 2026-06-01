@@ -35,7 +35,7 @@ const timelineEvents = [
 
 export default function AboutUs() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="About Our Firm" 
         subtitle="Bridging raw capability with premium corporate execution since 2024."
@@ -53,7 +53,7 @@ export default function AboutUs() {
               <span className="text-[#F5C542]">Globally Structured</span>
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
-              Established on <strong className="text-slate-200">30 September 2024</strong> in the Jaipur Stock Exchange Building on JLN Marg, Malviya Nagar, <strong className="text-slate-200">Sumway Global Management Private Limited</strong> was born to disrupt the conventional recruitment and BPO landscape.
+              Established on <strong className="text-slate-200 light:text-slate-800">30 September 2024</strong> in the Jaipur Stock Exchange Building on JLN Marg, Malviya Nagar, <strong className="text-slate-200 light:text-slate-800">Sumway Global Management Private Limited</strong> was born to disrupt the conventional recruitment and BPO landscape.
             </p>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
               We recognized that modern enterprises face extreme scaling friction—ranging from soaring onboarding budgets to timezone helpdesk support shortages and legacy IT constraints. By compiling premium recruitment pipelines, BPO channels, and digital developers in a single corporate agency, we deliver robust end-to-end operational stability.
@@ -70,28 +70,28 @@ export default function AboutUs() {
                 className="object-cover brightness-95"
                 fallbackLabel="Corporate Team"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] dark:from-[#0A0F1E] light:from-slate-50 via-transparent to-transparent" />
             </div>
 
-            <div className="glass-card p-6 bg-gradient-to-br from-[#111827] to-[#0A0F1E] flex flex-col gap-4 border-[#F5C542]/10 relative overflow-hidden">
+            <div className="glass-card p-6 bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 flex flex-col gap-4 border-[#F5C542]/10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-24 h-24 bg-[#00C2B2]/5 rounded-bl-full pointer-events-none" />
               <h3 className="font-display font-extrabold text-sm text-[#F5C542] uppercase tracking-wide">
                 Corporate Overview
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-semibold text-slate-300">
-              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 border border-slate-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 dark:bg-white/5 light:bg-slate-50 border border-slate-800 dark:border-slate-800 light:border-slate-200">
                 <span className="text-slate-500 text-[10px] uppercase font-bold">Incorporation Date</span>
                 <span>30 September 2024</span>
               </div>
-              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 border border-slate-800">
+              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 dark:bg-white/5 light:bg-slate-50 border border-slate-800 dark:border-slate-800 light:border-slate-200">
                 <span className="text-slate-500 text-[10px] uppercase font-bold">Corporate HQ Location</span>
                 <span>Malviya Nagar, Jaipur, RJ</span>
               </div>
-              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 border border-slate-800">
+              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 dark:bg-white/5 light:bg-slate-50 border border-slate-800 dark:border-slate-800 light:border-slate-200">
                 <span className="text-slate-500 text-[10px] uppercase font-bold">Primary Focus Area</span>
                 <span>Staffing, BPO & Software IT</span>
               </div>
-              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 border border-slate-800">
+              <div className="flex flex-col gap-1 p-3 rounded-lg bg-white/5 dark:bg-white/5 light:bg-slate-50 border border-slate-800 dark:border-slate-800 light:border-slate-200">
                 <span className="text-slate-500 text-[10px] uppercase font-bold">SLA Performance</span>
                 <span>99.8% Core Retention</span>
               </div>
@@ -113,7 +113,7 @@ export default function AboutUs() {
             </h2>
           </div>
 
-          <div className="relative border-l border-slate-800/80 ml-4 md:ml-32 pl-6 md:pl-10 flex flex-col gap-12">
+          <div className="relative border-l-2 border-slate-700/60 ml-6 md:ml-40 pl-8 md:pl-12 flex flex-col gap-12">
             {timelineEvents.map((event, index) => {
               const Icon = event.icon;
               return (
@@ -126,17 +126,17 @@ export default function AboutUs() {
                   className="relative flex flex-col gap-2"
                 >
                   {/* Timeline Badge/Dot */}
-                  <div className="absolute -left-12.5 md:-left-16.5 w-12 h-12 rounded-full bg-[#111827] border-2 border-[#F5C542]/30 flex items-center justify-center text-[#F5C542] shadow-xl">
+                  <div className="absolute w-12 h-12 rounded-full bg-[#111827] dark:bg-[#111827] light:bg-slate-100 border-2 border-[#F5C542]/30 flex items-center justify-center text-[#F5C542] shadow-xl" style={{ left: '-3.25rem', top: '0.5rem' }}>
                     <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Left Floating Year Label (desktop only) */}
-                  <div className="absolute left-[-160px] top-3 text-xs font-bold uppercase tracking-wider text-[#00C2B2] hidden md:block w-32 text-right">
+                  <div className="absolute top-3 text-xs font-bold uppercase tracking-wider text-[#00C2B2] hidden md:block w-32 text-right" style={{ left: '-12rem' }}>
                     {event.year}
                   </div>
 
                   {/* Text Details */}
-                  <div className="glass-card p-6 border-slate-800 hover:border-[#00C2B2]/20">
+                  <div className="glass-card p-6 hover:border-[#00C2B2]/20">
                     <span className="text-[10px] font-bold text-[#00C2B2] md:hidden">
                       {event.year}
                     </span>

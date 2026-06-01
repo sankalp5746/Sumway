@@ -81,7 +81,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Contact Us" 
         subtitle="Get in touch with our recruiting board, BPO desk heads and software directors."
@@ -94,7 +94,7 @@ export default function ContactPage() {
           <div className="lg:col-span-7 flex flex-col gap-8">
             
             {/* Contact Form panel */}
-            <div className="glass-card p-6 md:p-8 bg-[#111827] border-slate-800">
+            <div className="glass-card p-6 md:p-8">
               {isSuccess ? (
                 /* Success Card */
                 <div className="flex flex-col items-center justify-center py-16 text-center">
@@ -112,79 +112,77 @@ export default function ContactPage() {
                 /* Form Inputs */
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold">
                   <div className="mb-6">
-                    <span className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
-                      Drop a Message
-                    </span>
-                    <h3 className="font-display font-extrabold text-xl text-slate-100 uppercase mt-1">
-                      DIRECT BOARD INQUIRY
+                    <span className="badge-teal">Drop a Message</span>
+                    <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-3">
+                      Direct Board Inquiry
                     </h3>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300">Your Full Name *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Full Name <span className="text-[#F5C542]">*</span></label>
                       <input
                         {...register("name")}
                         placeholder="e.g. Amit Kumar"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                       {errors.name && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.name.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.name.message}</span>
                       )}
                     </div>
 
                     {/* Phone */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300">Phone Coordinate *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Number <span className="text-[#F5C542]">*</span></label>
                       <input
                         {...register("phone")}
                         placeholder="e.g. +91 9414940434"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                       {errors.phone && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.phone.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.phone.message}</span>
                       )}
                     </div>
                   </div>
 
                   {/* Email */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Email Address *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#F5C542]">*</span></label>
                     <input
                       {...register("email")}
                       placeholder="e.g. support@sumwayglobal.com"
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="form-input"
                     />
                     {errors.email && (
-                      <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.email.message}</span>
+                      <span className="text-xs text-red-400 font-medium">{errors.email.message}</span>
                     )}
                   </div>
 
                   {/* Subject */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Subject *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Subject <span className="text-[#F5C542]">*</span></label>
                     <input
                       {...register("subject")}
                       placeholder="e.g. Virtual Assistant staffing requirements..."
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="form-input"
                     />
                     {errors.subject && (
-                      <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.subject.message}</span>
+                      <span className="text-xs text-red-400 font-medium">{errors.subject.message}</span>
                     )}
                   </div>
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Detailed Message *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Detailed Message <span className="text-[#F5C542]">*</span></label>
                     <textarea
                       {...register("message")}
                       rows={5}
                       placeholder="Type your message or custom operational guidelines in detail..."
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors resize-none"
+                      className="form-input resize-none"
                     />
                     {errors.message && (
-                      <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.message.message}</span>
+                      <span className="text-xs text-red-400 font-medium">{errors.message.message}</span>
                     )}
                   </div>
 
@@ -192,7 +190,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 mt-4 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
+                    className="btn-primary w-full justify-center disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
@@ -211,12 +209,10 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Callback Request */}
-            <div className="glass-card p-6 md:p-8 bg-[#111827] border-slate-800">
-              <span className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
-                Quick Scheduler
-              </span>
-              <h3 className="font-display font-extrabold text-base text-slate-100 uppercase mt-1">
-                REQUEST A CALLBACK
+            <div className="glass-card p-6 md:p-8">
+              <span className="badge-teal">Quick Scheduler</span>
+              <h3 className="font-display font-extrabold text-lg text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-2">
+                Request a Callback
               </h3>
               
               {callbackSuccess ? (
@@ -225,30 +221,30 @@ export default function ContactPage() {
                   <span>Callback scheduled! Our advisors will call you at your preferred time.</span>
                 </div>
               ) : (
-                <form onSubmit={handleCallbackRequest} className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end mt-4 text-xs font-semibold">
+                <form onSubmit={handleCallbackRequest} className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end mt-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Phone Number *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Number *</label>
                     <input
                       type="text"
                       placeholder="e.g. +91 9414940434"
                       value={callbackPhone}
                       onChange={(e) => setCallbackPhone(e.target.value)}
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="form-input"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Preferred Time *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Preferred Time *</label>
                     <input
                       type="text"
                       placeholder="e.g. 4:00 PM Today"
                       value={callbackTime}
                       onChange={(e) => setCallbackTime(e.target.value)}
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="form-input"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-lg bg-[#00C2B2] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#00C2B2]/90 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full py-3 rounded-xl bg-[#00C2B2] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#00C2B2]/90 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Schedule Call</span>
@@ -262,12 +258,12 @@ export default function ContactPage() {
           <div className="lg:col-span-5 flex flex-col gap-6">
             
             {/* Quick Contacts details */}
-            <div className="glass-card p-6 md:p-8 bg-[#111827] border-slate-800 flex flex-col gap-5 text-xs font-semibold">
+            <div className="glass-card p-6 md:p-8 flex flex-col gap-5 text-xs font-semibold">
               <h4 className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
                 Office HQ Coordinates
               </h4>
 
-              <div className="flex gap-3.5 items-start text-slate-300">
+              <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
                 <MapPin className="w-5 h-5 text-[#F5C542] shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Headquarters</span>
@@ -275,7 +271,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-3.5 items-start text-slate-300">
+              <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
                 <Phone className="w-5 h-5 text-[#F5C542] shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Direct Call Lines</span>
@@ -285,7 +281,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-3.5 items-start text-slate-300">
+              <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
                 <Mail className="w-5 h-5 text-[#F5C542] shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Email Coordinates</span>
@@ -295,7 +291,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="flex gap-3.5 items-start text-slate-300">
+              <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
                 <Clock className="w-5 h-5 text-[#F5C542] shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Office Hours</span>
@@ -305,7 +301,7 @@ export default function ContactPage() {
             </div>
 
             {/* Google Maps Iframe Embed */}
-            <div className="glass-card overflow-hidden border-slate-800 bg-[#111827] p-1.5 h-80 rounded-2xl relative shadow-2xl">
+            <div className="glass-card overflow-hidden p-1.5 h-80 rounded-2xl relative shadow-2xl">
               <iframe
                 title="Sumway Global Management Jaipur Stock Exchange Office Location Map"
                 src={COMPANY_DETAILS.mapsEmbedUrl}

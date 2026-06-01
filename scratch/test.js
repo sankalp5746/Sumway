@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Target directory for screenshots
-const artifactDir = 'C:\\Users\\Sankalp.Bendale\\.gemini\\antigravity-ide\\brain\\0f5f0975-1ea3-425a-b448-730c2490b0ba';
+const artifactDir = 'C:\\Users\\Sankalp.Bendale\\.gemini\\antigravity-ide\\brain\\3463a9ad-9e3c-47cc-9118-ae5c8a22b916';
 
 async function runTest() {
   console.log("🚀 Starting Automated Browser Test Suite for Sumway Global...");

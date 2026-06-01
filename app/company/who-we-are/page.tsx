@@ -7,7 +7,7 @@ import PageHero from "@/components/shared/PageHero";
 
 export default function WhoWeAre() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Who We Are" 
         subtitle="A corporate workforce, BPO operations, IT software and compliance team aligned in Jaipur, RJ."
@@ -24,7 +24,7 @@ export default function WhoWeAre() {
               STRATEGIC OPERATIONAL ARCHITECTS
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
-              We are <strong className="text-slate-200">Sumway Global Management Private Limited</strong>, an integrated outsourcing and consulting firm incorporated on <strong className="text-slate-200">30 September 2024</strong>. Headquartered inside the Jaipur Stock Exchange Building in Rajasthan, India, we cater to a scaling international clientele.
+              We are <strong className="text-slate-200 light:text-slate-800">Sumway Global Management Private Limited</strong>, an integrated outsourcing and consulting firm incorporated on <strong className="text-slate-200 light:text-slate-800">30 September 2024</strong>. Headquartered inside the Jaipur Stock Exchange Building in Rajasthan, India, we cater to a scaling international clientele.
             </p>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
               Our core capability is bridging geographical talent gaps. By operating dedicated voice/chat support nodes, technical software divisions, and cross-continental recruitment boards in a single corporate agency, we help international scaling firms secure extreme operational efficiencies. We operate as an extension of our clients&apos; boardroom.
@@ -41,11 +41,11 @@ export default function WhoWeAre() {
                 className="object-cover brightness-90"
                 fallbackLabel="Operations Desk"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] dark:from-[#0A0F1E] light:from-slate-50 via-transparent to-transparent" />
             </div>
 
             <div className="grid grid-cols-1 gap-4">
-            <div className="glass-card p-5 border-slate-800 flex gap-4 items-start">
+            <div className="glass-card p-5 flex gap-4 items-start">
               <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
                 <Landmark className="w-5 h-5" />
               </div>
@@ -55,7 +55,7 @@ export default function WhoWeAre() {
               </div>
             </div>
 
-            <div className="glass-card p-5 border-slate-800 flex gap-4 items-start">
+            <div className="glass-card p-5 flex gap-4 items-start">
               <div className="w-10 h-10 rounded-lg bg-[#F5C542]/10 flex items-center justify-center text-[#F5C542] shrink-0">
                 <Building className="w-5 h-5" />
               </div>
@@ -78,21 +78,21 @@ export default function WhoWeAre() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div className="glass-card p-6 border-slate-800">
+            <div className="glass-card p-6">
               <span className="text-2xl font-extrabold text-[#F5C542] font-display">01</span>
-              <h3 className="text-sm font-bold text-slate-100 mt-2 uppercase">Agile Flexibility</h3>
+              <h3 className="text-sm font-bold text-slate-100 dark:text-slate-100 light:text-[#0F172A] mt-2 uppercase">Agile Flexibility</h3>
               <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">We support complete scheduling ease, rotating shifts across international zones, and prompt deliverable frameworks.</p>
             </div>
             
-            <div className="glass-card p-6 border-slate-800">
+            <div className="glass-card p-6">
               <span className="text-2xl font-extrabold text-[#F5C542] font-display">02</span>
-              <h3 className="text-sm font-bold text-slate-100 mt-2 uppercase">Mentored Growth</h3>
+              <h3 className="text-sm font-bold text-slate-100 dark:text-slate-100 light:text-[#0F172A] mt-2 uppercase">Mentored Growth</h3>
               <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">Every professional joining our Jaipur divisions receives direct board mentoring and active structural training modules.</p>
             </div>
 
-            <div className="glass-card p-6 border-slate-800">
+            <div className="glass-card p-6">
               <span className="text-2xl font-extrabold text-[#F5C542] font-display">03</span>
-              <h3 className="text-sm font-bold text-slate-100 mt-2 uppercase">Tagline Resolution</h3>
+              <h3 className="text-sm font-bold text-slate-100 dark:text-slate-100 light:text-[#0F172A] mt-2 uppercase">Tagline Resolution</h3>
               <p className="text-[11px] text-slate-400 mt-2 leading-relaxed">Our workspace runs on empathy. &ldquo;Your Happiness Our Resolution&rdquo; is a mandate for client operations as well as employee care.</p>
             </div>
           </div>

@@ -169,7 +169,7 @@ export default function ServiceDetail({ params }: PageProps) {
   const IconComp = iconMap[data.icon] || Users;
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title={data.title} 
         subtitle={data.subtitle} 
@@ -243,7 +243,7 @@ export default function ServiceDetail({ params }: PageProps) {
             {data.features.map((f: any, idx: number) => (
               <div 
                 key={f.title}
-                className="glass-card p-6 flex flex-col gap-4 border-slate-800"
+                className="glass-card p-6 flex flex-col gap-4"
               >
                 <span className="font-display font-extrabold text-sm text-[#F5C542]">
                   FEATURE 0{idx + 1}

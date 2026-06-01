@@ -21,7 +21,7 @@ const caseStudies = [
 
 export default function ClientPortfolio() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Client Portfolio" 
         subtitle="Exploring the corporate scaling partners, BPO deployments and custom case studies."
@@ -45,7 +45,7 @@ export default function ClientPortfolio() {
           {caseStudies.map((cs) => (
             <div 
               key={cs.title}
-              className="glass-card p-8 bg-[#111827] border-slate-800 hover:border-[#F5C542]/20 flex flex-col gap-5 relative overflow-hidden group"
+              className="glass-card p-8 hover:border-[#F5C542]/20 flex flex-col gap-5 relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00C2B2]/5 to-transparent rounded-bl-full group-hover:scale-125 transition-transform" />
               

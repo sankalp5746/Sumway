@@ -3,7 +3,7 @@
 import React from "react";
 import FallbackImage from "@/components/shared/FallbackImage";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight, ArrowDown, Sparkles } from "lucide-react";
 import { useAppStore } from "@/lib/store";
 import { COMPANY_DETAILS } from "@/lib/constants";
 
@@ -12,113 +12,149 @@ export default function HeroBanner() {
 
   const handleScrollToServices = () => {
     const el = document.getElementById("services-section");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-[#0A0F1E]">
-      {/* Hero Background Image */}
+    <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-[#080d1a] light:bg-slate-50">
+      {/* Background image */}
       <div className="absolute inset-0 z-0">
         <FallbackImage
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop"
           alt="Modern corporate office workspace"
           fill
-          className="object-cover opacity-25"
+          className="object-cover opacity-20 light:opacity-10"
           priority
           fallbackLabel="Corporate Office"
         />
       </div>
-      {/* Background Animated Gradient Mesh Overlay */}
-      <div className="absolute inset-0 animated-mesh opacity-60" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,194,178,0.08),transparent_60%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1E]/50 via-[#0A0F1E]/70 to-[#0A0F1E]" />
 
-      {/* Floating Abstract Shapes */}
-      <motion.div 
-        animate={{ y: [0, -30, 0], rotate: [0, 10, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-12 w-32 h-32 rounded-full border border-slate-700/20 dark:border-slate-700/20 light:border-slate-300 blur-sm pointer-events-none hidden md:block"
+      {/* Animated gradient mesh */}
+      <div className="absolute inset-0 animated-mesh opacity-40 light:opacity-20" />
+
+      {/* Radial glow overlays */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(0,194,178,0.1),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_80%,rgba(245,197,66,0.06),transparent)]" />
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0F1E] light:from-slate-50 to-transparent" />
+
+      {/* Floating shapes — desktop only */}
+      <motion.div
+        animate={{ y: [0, -20, 0], rotate: [0, 6, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-10 w-20 h-20 rounded-full border border-slate-700/20 blur-sm pointer-events-none hidden lg:block"
       />
-      <motion.div 
-        animate={{ y: [0, 40, 0], rotate: [0, -15, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/4 right-16 w-48 h-48 rounded-full border border-[#00C2B2]/10 blur-sm pointer-events-none hidden md:block"
+      <motion.div
+        animate={{ y: [0, 28, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/3 right-14 w-32 h-32 rounded-full border border-[#00C2B2]/10 blur-sm pointer-events-none hidden lg:block"
       />
-      
-      {/* Dynamic Content Hero Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-        {/* Core Tagline Badge */}
+
+      {/* Main content — pt accounts for fixed navbar */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center pt-24 pb-20">
+
+        {/* Tagline badge */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="mb-6"
         >
-          <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-[#00C2B2] bg-[#00C2B2]/10 px-4.5 py-2 rounded-full border border-[#00C2B2]/20">
-            {COMPANY_DETAILS.tagline}
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#00C2B2] bg-[#00C2B2]/10 px-4 py-2 rounded-full border border-[#00C2B2]/20">
+            <Sparkles className="w-3 h-3 shrink-0" />
+            <span>{COMPANY_DETAILS.tagline}</span>
           </span>
         </motion.div>
 
-        {/* Display Headline */}
+        {/* Main headline — capped at text-5xl to prevent overflow */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-display font-extrabold text-3xl md:text-6xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight leading-tight uppercase max-w-4xl"
+          transition={{ duration: 0.7, delay: 0.12 }}
+          className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-100 light:text-[#0F172A] tracking-tight leading-[1.08] uppercase"
         >
-          Empowering Businesses with <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5C542] via-[#00C2B2] to-[#F5C542] animate-mesh" style={{ backgroundSize: "300% 300%" }}>
-            Global Workforce Solutions
+          Empowering Businesses
+          <br />
+          <span
+            className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5C542] via-[#00C2B2] to-[#F5C542] animate-mesh"
+            style={{ backgroundSize: "300% 300%" }}
+          >
+            with Global Workforce
           </span>
         </motion.h1>
 
-        {/* Secondary Subtext */}
+        {/* Subtext */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xs md:text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 mt-6 max-w-2xl leading-relaxed font-medium"
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="text-sm sm:text-base md:text-lg text-slate-400 light:text-slate-600 mt-5 max-w-xl leading-relaxed"
         >
-          Sumway Global Management is your enterprise gateway for strategic recruitment, 
-          BPO operations, premium digital transformations, and high-performance talent curation. 
-          Jaipur-crafted, globally aligned.
+          Sumway Global Management is your enterprise gateway for strategic recruitment,
+          BPO operations, premium digital transformations, and high-performance talent curation.{" "}
+          <span className="text-slate-300 light:text-slate-700 font-medium">Jaipur-crafted, globally aligned.</span>
         </motion.p>
 
-        {/* Call-to-Action Buttons */}
+        {/* Stats strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center gap-4 mt-10"
+          transition={{ duration: 0.6, delay: 0.38 }}
+          className="flex items-center gap-6 sm:gap-10 mt-7"
+        >
+          {[
+            { value: "150+", label: "Clients" },
+            { value: "2500+", label: "Placed" },
+            { value: "99.8%", label: "SLA Rate" },
+          ].map((stat, i) => (
+            <React.Fragment key={stat.label}>
+              {i > 0 && <div className="w-px h-8 bg-white/10 light:bg-slate-300" />}
+              <div className="flex flex-col items-center">
+                <span className="font-display font-extrabold text-xl sm:text-2xl text-[#F5C542]">
+                  {stat.value}
+                </span>
+                <span className="text-xs text-slate-500 light:text-slate-500 font-semibold uppercase tracking-wider mt-0.5">
+                  {stat.label}
+                </span>
+              </div>
+            </React.Fragment>
+          ))}
+        </motion.div>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.48 }}
+          className="flex flex-col sm:flex-row items-center gap-3 mt-8"
         >
           <button
             onClick={() => openEnquiry("Enterprise Recruitment")}
-            className="flex items-center gap-2 px-6 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] text-xs font-bold uppercase tracking-wider hover:bg-[#F5C542]/90 shadow-[0_4px_20px_rgba(245,197,66,0.3)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            className="btn-primary w-full sm:w-auto justify-center"
           >
             <span>Get Started Now</span>
             <ArrowRight className="w-4 h-4" />
           </button>
-          
+
           <button
             onClick={handleScrollToServices}
-            className="px-6 py-3.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-200 text-slate-300 dark:text-slate-300 light:text-slate-700 text-xs font-bold uppercase tracking-wider hover:border-[#F5C542]/30 hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-slate-300 transition-all cursor-pointer"
+            className="btn-outline w-full sm:w-auto justify-center"
           >
             Explore Our Services
           </button>
         </motion.div>
       </div>
 
-      {/* Bouncing Chevron down indicator */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0.3, 1, 0.3], y: [0, 8, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer text-slate-500 hover:text-[#F5C542] transition-colors"
+        animate={{ opacity: [0.4, 1, 0.4], y: [0, 6, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer text-slate-500 hover:text-[#F5C542] transition-colors"
         onClick={handleScrollToServices}
       >
-        <span className="text-[9px] font-bold tracking-widest uppercase">Scroll Down</span>
+        <span className="text-[9px] font-bold tracking-widest uppercase">Scroll</span>
         <ArrowDown className="w-4 h-4 text-[#F5C542]" />
       </motion.div>
     </section>

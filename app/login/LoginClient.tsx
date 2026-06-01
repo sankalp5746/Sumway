@@ -73,7 +73,7 @@ export default function LoginClient() {
   };
 
   return (
-    <div className="bg-[#0A0F1E] min-h-screen pb-16">
+    <div className="bg-transparent min-h-screen pb-16 transition-colors duration-400">
       <PageHero 
         title="Gateway Access" 
         subtitle="Access your dedicated BPO dashboard, Candidate portfolio, or Vendor files."
@@ -82,7 +82,7 @@ export default function LoginClient() {
       <div className="max-w-6xl mx-auto px-6 mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Premium Branding & Stats Showcase (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-[#111827] to-[#0A0F1E] border border-slate-800 relative overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-200 transition-colors duration-400 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(245,197,66,0.05),transparent_70%)] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(0,194,178,0.05),transparent_70%)] pointer-events-none" />
 
@@ -90,7 +90,7 @@ export default function LoginClient() {
               <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase bg-[#00C2B2]/10 px-3.5 py-1.5 rounded-md border border-[#00C2B2]/10 self-start">
                 Corporate Gateway
               </span>
-              <h3 className="font-display font-extrabold text-2xl text-slate-100 uppercase tracking-wide leading-snug">
+              <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide leading-snug">
                 Architecting <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5C542] via-[#00C2B2] to-[#F5C542] bg-300% animate-mesh" style={{ backgroundSize: "300% 300%" }}>
                   Secure Ecosystems
@@ -115,7 +115,7 @@ export default function LoginClient() {
 
           {/* Right Column: Authentication Card Panel */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="glass-card p-6 md:p-8 bg-[#111827] border-slate-800 relative overflow-hidden shadow-2xl">
+            <div className="glass-card p-6 md:p-8 relative overflow-hidden shadow-2xl">
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#F5C542]/5 to-transparent rounded-bl-full pointer-events-none" />
               
               {isSuccess ? (
@@ -123,7 +123,7 @@ export default function LoginClient() {
                   <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
                     <UserCheck className="w-10 h-10 animate-bounce" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-slate-100 uppercase tracking-wide mb-2">
+                  <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
                     Access Granted!
                   </h3>
                   <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
@@ -133,12 +133,12 @@ export default function LoginClient() {
               ) : (
                 <div>
                   <div className="text-center mb-6">
-                    <span className="text-[9px] font-bold text-[#00C2B2] uppercase tracking-widest">Secure Entry</span>
-                    <h3 className="font-display font-extrabold text-xl text-slate-100 uppercase mt-1">LOG INTO PORTAL</h3>
+                    <span className="badge-teal">Secure Entry</span>
+                    <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-3">Log Into Portal</h3>
                   </div>
 
                   {/* Multi-role tab controls */}
-                  <div className="flex flex-wrap justify-between gap-1 p-1 bg-[#0A0F1E] rounded-lg border border-slate-800 mb-6 text-[9px] font-bold uppercase tracking-wider">
+                  <div className="flex flex-wrap justify-between gap-1 p-1.5 bg-[#080d1a] rounded-xl border border-white/6 mb-6 text-xs font-bold uppercase tracking-wider">
                     {(["client", "candidate", "vendor", "admin"] as const).map((r) => {
                       const isSelected = activeRole === r;
                       return (
@@ -146,9 +146,9 @@ export default function LoginClient() {
                           key={r}
                           type="button"
                           onClick={() => handleRoleChange(r)}
-                          className={`flex-1 text-center py-2.5 rounded transition-all cursor-pointer ${
-                            isSelected 
-                              ? "bg-[#F5C542] text-[#0A0F1E]" 
+                          className={`flex-1 text-center py-2.5 rounded-lg transition-all cursor-pointer ${
+                            isSelected
+                              ? "bg-[#F5C542] text-[#0A0F1E] shadow-md"
                               : "text-slate-500 hover:text-slate-300"
                           }`}
                         >
@@ -158,33 +158,33 @@ export default function LoginClient() {
                     })}
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                     <input type="hidden" {...register("role")} />
 
                     {/* Email */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300">Email Coordinates *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#F5C542]">*</span></label>
                       <div className="relative">
                         <input
                           {...register("email")}
                           placeholder="e.g. administrator@sumway.com"
-                          className="w-full pl-10 pr-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                          className="form-input pl-10"
                         />
-                        <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                        <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
                       {errors.email && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.email.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.email.message}</span>
                       )}
                     </div>
 
                     {/* Password */}
                     <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between">
-                        <label className="text-slate-300">Password Code *</label>
-                        <a 
-                          href="#" 
+                        <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Password <span className="text-[#F5C542]">*</span></label>
+                        <a
+                          href="#"
                           onClick={(e) => { e.preventDefault(); alert("OTP code sent to email."); }}
-                          className="text-[10px] text-slate-500 hover:text-[#F5C542]"
+                          className="text-xs text-slate-500 hover:text-[#F5C542] transition-colors"
                         >
                           Forgot?
                         </a>
@@ -194,12 +194,12 @@ export default function LoginClient() {
                           type="password"
                           {...register("password")}
                           placeholder="Type password..."
-                          className="w-full pl-10 pr-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                          className="form-input pl-10"
                         />
-                        <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-3" />
+                        <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
                       {errors.password && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.password.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.password.message}</span>
                       )}
                     </div>
 
@@ -207,7 +207,7 @@ export default function LoginClient() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 mt-6 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
+                      className="btn-primary w-full justify-center mt-2 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>
@@ -224,9 +224,9 @@ export default function LoginClient() {
                   </form>
 
                   {/* Redirect to register */}
-                  <div className="text-center mt-6 text-[10px] text-slate-500">
+                  <div className="text-center mt-6 text-sm text-slate-500">
                     <span>Don&apos;t have an account? </span>
-                    <Link href="/register" className="text-[#00C2B2] hover:text-[#F5C542] font-bold underline">
+                    <Link href="/register" className="text-[#00C2B2] hover:text-[#F5C542] font-bold transition-colors">
                       Register Gateway
                     </Link>
                   </div>

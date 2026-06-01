@@ -29,7 +29,7 @@ const domains = [
 
 export default function WhatWeDo() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="What We Do" 
         subtitle="Exploring our integrated consulting streams, BPO networks and custom tech architectures."
@@ -53,7 +53,7 @@ export default function WhatWeDo() {
             return (
               <div 
                 key={dom.title}
-                className="glass-card p-8 flex gap-6 items-start border-slate-800 hover:border-[#F5C542]/20"
+                className="glass-card p-8 flex gap-6 items-start hover:border-[#F5C542]/20"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
                   <Icon className="w-6 h-6" />

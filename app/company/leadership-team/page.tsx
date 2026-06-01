@@ -9,7 +9,7 @@ import PageHero from "@/components/shared/PageHero";
 
 export default function LeadershipTeam() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Leadership Team" 
         subtitle="Meet the executive board steering global staffing and technology growth."
@@ -34,7 +34,7 @@ export default function LeadershipTeam() {
             return (
               <div 
                 key={leader.name}
-                className="glass-card overflow-hidden group hover:border-[#F5C542]/20 flex flex-col justify-between h-full bg-[#111827]"
+                className="glass-card overflow-hidden group hover:border-[#F5C542]/20 flex flex-col justify-between h-full"
               >
                 {/* Photo and Header */}
                 <div className="relative w-full h-80 bg-slate-800 overflow-hidden">

@@ -26,7 +26,7 @@ export default function CareersPage() {
     : JOBS.filter(job => job.dept === activeDept);
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Careers & Culture" 
         subtitle="We are growing! Partner with our Jaipur teams and unlock your professional limits."
@@ -49,7 +49,7 @@ export default function CareersPage() {
             return (
               <div 
                 key={b.title}
-                className="glass-card p-6 flex flex-col gap-4 border-slate-800 hover:border-[#00C2B2]/20"
+                className="glass-card p-6 flex flex-col gap-4 hover:border-[#00C2B2]/20"
               >
                 <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2]">
                   <Icon className="w-5 h-5" />
@@ -88,11 +88,11 @@ export default function CareersPage() {
                 <button
                   key={dept}
                   onClick={() => setActiveDept(dept)}
-                  className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                    isSelected 
-                      ? "bg-[#F5C542] text-[#0A0F1E] shadow-md" 
-                      : "bg-[#111827] text-slate-400 border border-slate-800 hover:text-slate-200"
-                  }`}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                      isSelected 
+                        ? "bg-[#F5C542] text-[#0A0F1E] shadow-md" 
+                        : "bg-[#111827] dark:bg-[#111827] light:bg-slate-100 text-slate-400 dark:text-slate-400 light:text-slate-600 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:text-slate-200"
+                    }`}
                 >
                   {dept}
                 </button>
@@ -111,7 +111,7 @@ export default function CareersPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="glass-card p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-slate-800 bg-[#111827] hover:border-[#00C2B2]/20"
+                  className="glass-card p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover:border-[#00C2B2]/20"
                 >
                   <div className="flex flex-col gap-2">
                     <span className="text-[9px] font-bold uppercase tracking-widest text-[#00C2B2]">
@@ -150,7 +150,7 @@ export default function CareersPage() {
             </AnimatePresence>
 
             {filteredJobs.length === 0 && (
-              <div className="text-center py-12 glass-card p-6 border-slate-800">
+              <div className="text-center py-12 glass-card p-6">
                 <ShieldAlert className="w-8 h-8 text-slate-650 mx-auto mb-2" />
                 <p className="text-xs text-slate-500 font-medium">No open positions found in this department. Please select another filter or check back later.</p>
               </div>

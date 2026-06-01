@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle2, Loader2, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { EnquirySchema } from "@/lib/validations";
 import { COMPANY_DETAILS, SERVICES } from "@/lib/constants";
+import SectionHeading from "../shared/SectionHeading";
 
 type EnquiryFormInput = {
   name: string;
@@ -27,14 +28,7 @@ export default function InquiryForm() {
     formState: { errors }
   } = useForm<EnquiryFormInput>({
     resolver: zodResolver(EnquirySchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      email: "",
-      company: "",
-      serviceInterest: "",
-      message: ""
-    }
+    defaultValues: { name: "", phone: "", email: "", company: "", serviceInterest: "", message: "" }
   });
 
   const onSubmit = async (data: EnquiryFormInput) => {
@@ -45,7 +39,6 @@ export default function InquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
-      
       if (response.ok) {
         setIsSuccess(true);
         reset();
@@ -61,160 +54,159 @@ export default function InquiryForm() {
     }
   };
 
+  const contactItems = [
+    { icon: MapPin, label: "Headquarters", value: COMPANY_DETAILS.address, href: undefined, color: "#F5C542" },
+    { icon: Phone, label: "Phone", value: COMPANY_DETAILS.phoneDisplay, href: `tel:${COMPANY_DETAILS.phone}`, color: "#00C2B2" },
+    { icon: Mail, label: "Email", value: COMPANY_DETAILS.email, href: `mailto:${COMPANY_DETAILS.email}`, color: "#00C2B2" },
+    { icon: Clock, label: "Office Hours", value: COMPANY_DETAILS.hours, href: undefined, color: "#64748b" },
+  ];
+
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden bg-[#0A0F1E] border-t border-[#F5C542]/5">
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00C2B2]/5 blur-3xl pointer-events-none" />
-      
+    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Context details */}
+        <SectionHeading
+          badge="Let's Build Solutions"
+          title="Request a Strategic Briefing"
+          desc="Do you require contract staffing pipelines, custom software transformations or virtual BPO desk support? Fill out the form and our Jaipur executives will compile a custom deliverable matrix."
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-14">
+
+          {/* Left: Contact info */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div>
-              <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
-                Let&apos;s Build Solutions
-              </span>
-              <h2 className="font-display font-extrabold text-2xl md:text-4xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight mt-3 leading-tight uppercase">
-                REQUEST A STRATEGIC <br />
-                <span className="text-[#F5C542]">CORPORATE BRIEFING</span>
-              </h2>
-              <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-4 leading-relaxed font-medium">
-                Do you require contract staffing pipelines, custom software transformations or virtual BPO desk support? Fill out the brief context form, and our Jaipur executives will compile a custom deliverable matrix for your boardroom.
-              </p>
+            <div className="flex flex-col gap-4">
+              {contactItems.map(({ icon: Icon, label, value, href, color }) => (
+                <div key={label} className="flex gap-4 items-start">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5"
+                    style={{ background: `${color}15`, border: `1px solid ${color}25`, color }}
+                  >
+                    <Icon className="w-4.5 h-4.5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">{label}</div>
+                    {href ? (
+                      <a
+                        href={href}
+                        className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors mt-0.5 block leading-relaxed"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 mt-0.5 leading-relaxed">
+                        {value}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Quick Contacts lists */}
-            <div className="flex flex-col gap-4 text-xs font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 mt-4">
-              <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-lg bg-[#F5C542]/10 border border-[#F5C542]/20 flex items-center justify-center text-[#F5C542] shrink-0 mt-0.5">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase">Headquarters</span>
-                  <span className="mt-0.5 leading-relaxed">{COMPANY_DETAILS.address}</span>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-lg bg-[#00C2B2]/10 border border-[#00C2B2]/20 flex items-center justify-center text-[#00C2B2] shrink-0 mt-0.5">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase">Board Phone Line</span>
-                  <a href={`tel:${COMPANY_DETAILS.phone}`} className="mt-0.5 hover:text-[#F5C542] transition-colors">
-                    {COMPANY_DETAILS.phoneDisplay}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-lg bg-[#00C2B2]/10 border border-[#00C2B2]/20 flex items-center justify-center text-[#00C2B2] shrink-0 mt-0.5">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase">Email Coordinates</span>
-                  <a href={`mailto:${COMPANY_DETAILS.email}`} className="mt-0.5 hover:text-[#F5C542] transition-colors lowercase">
-                    {COMPANY_DETAILS.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-start">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-slate-700 flex items-center justify-center text-slate-400 shrink-0 mt-0.5">
-                  <Clock className="w-4 h-4" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase">Office Hours</span>
-                  <span className="mt-0.5 leading-relaxed">{COMPANY_DETAILS.hours}</span>
-                </div>
-              </div>
+            {/* Trust indicators */}
+            <div className="mt-4 p-5 rounded-2xl bg-white/3 border border-white/6">
+              <div className="text-xs font-bold text-[#00C2B2] uppercase tracking-widest mb-3">Why Contact Us?</div>
+              <ul className="flex flex-col gap-2.5">
+                {[
+                  "Response within 24 business hours",
+                  "Custom proposal tailored to your needs",
+                  "No obligation consultation",
+                  "Direct access to senior directors",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-slate-400 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5C542] shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Right Column: Form Container */}
+          {/* Right: Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-6 md:p-8 relative overflow-hidden">
+            <div className="glass-card p-7 md:p-9 relative overflow-hidden">
               {isSuccess ? (
-                /* Success Card Inside Panel */
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
-                    <CheckCircle2 className="w-10 h-10 animate-bounce" />
+                <div className="flex flex-col items-center justify-center py-14 text-center">
+                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-5">
+                    <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
+                  <h3 className="font-display font-bold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
                     Enquiry Delivered!
                   </h3>
-                  <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
+                  <p className="text-body-sm max-w-sm">
                     Thank you. We have received your detailed business requirements. Our directors will compile a proposal and contact you via email shortly.
                   </p>
                 </div>
               ) : (
-                /* Main Form */
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Name */}
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Your Full Name *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                        Full Name <span className="text-[#F5C542]">*</span>
+                      </label>
                       <input
                         {...register("name")}
                         placeholder="e.g. Amit Kumar Sharma"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-800 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                       {errors.name && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.name.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.name.message}</span>
                       )}
                     </div>
-
-                    {/* Phone */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Coordinate *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                        Phone Number <span className="text-[#F5C542]">*</span>
+                      </label>
                       <input
                         {...register("phone")}
                         placeholder="e.g. +91 9414940434"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-800 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                       {errors.phone && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.phone.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.phone.message}</span>
                       )}
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address *</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                        Email Address <span className="text-[#F5C542]">*</span>
+                      </label>
                       <input
                         {...register("email")}
                         placeholder="e.g. clients@sumwayglobal.com"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-800 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                       {errors.email && (
-                        <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.email.message}</span>
+                        <span className="text-xs text-red-400 font-medium">{errors.email.message}</span>
                       )}
                     </div>
-
-                    {/* Company */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Company / Firm Name</label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                        Company / Firm Name
+                      </label>
                       <input
                         {...register("company")}
                         placeholder="e.g. Global Tech Inc."
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-800 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="form-input"
                       />
                     </div>
                   </div>
 
-                  {/* Service interest Dropdown */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Corporate Target Stream *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                      Service of Interest <span className="text-[#F5C542]">*</span>
+                    </label>
                     <select
                       {...register("serviceInterest")}
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-[#111827] dark:bg-[#111827] light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-850 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="form-input"
+                      style={{ background: "var(--input-bg)" }}
                     >
                       <option value="">Select a Department Target...</option>
                       {SERVICES.map((s) => (
-                        <option key={s.id} value={s.title}>
-                          {s.title}
-                        </option>
+                        <option key={s.id} value={s.title}>{s.title}</option>
                       ))}
                       <option value="BPO Operations">BPO Operations & Virtual Desks</option>
                       <option value="IT Software Development">IT & Custom Software Development</option>
@@ -223,29 +215,29 @@ export default function InquiryForm() {
                       <option value="Strategic Board Advisory">Strategic Board Advisory</option>
                     </select>
                     {errors.serviceInterest && (
-                      <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.serviceInterest.message}</span>
+                      <span className="text-xs text-red-400 font-medium">{errors.serviceInterest.message}</span>
                     )}
                   </div>
 
-                  {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Detailed Context / Requirements *</label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
+                      Detailed Requirements <span className="text-[#F5C542]">*</span>
+                    </label>
                     <textarea
                       {...register("message")}
                       rows={5}
                       placeholder="Outline your requirements in detail. Mention expected headcount, technical stack, target timelines or support timezones..."
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 dark:bg-white/5 light:bg-slate-50 text-slate-100 dark:text-slate-100 light:text-slate-800 focus:border-[#F5C542] focus:outline-none transition-colors resize-none"
+                      className="form-input resize-none"
                     />
                     {errors.message && (
-                      <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.message.message}</span>
+                      <span className="text-xs text-red-400 font-medium">{errors.message.message}</span>
                     )}
                   </div>
 
-                  {/* Submit Button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 mt-4 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
+                    className="btn-primary w-full justify-center mt-2 disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
@@ -263,7 +255,6 @@ export default function InquiryForm() {
               )}
             </div>
           </div>
-
         </div>
       </div>
     </section>

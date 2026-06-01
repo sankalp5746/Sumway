@@ -24,7 +24,7 @@ const projects = [
 
 export default function CSR() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="CSR Initiatives" 
         subtitle="Social responsibility, clean computing and skill-development sponsorships in Rajasthan."
@@ -54,7 +54,7 @@ export default function CSR() {
               return (
                 <div 
                   key={proj.title}
-                  className="glass-card p-5 border-slate-800 flex gap-4 items-start"
+                  className="glass-card p-5 flex gap-4 items-start"
                 >
                   <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
                     <Icon className="w-5 h-5" />

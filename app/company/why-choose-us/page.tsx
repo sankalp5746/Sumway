@@ -39,7 +39,7 @@ const comparisonData = [
 
 export default function WhyChooseUsPage() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Why Choose Us" 
         subtitle="Comparing our secure BPO nodes, RPO operations and Jaipur HQ advantages."

@@ -77,7 +77,7 @@ export default function ApplyJobPage({ params }: PageProps) {
   };
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title={`Apply: ${job.title}`} 
         subtitle={`Join the ${job.dept} team inside our Malviya Nagar Jaipur headquarters.`}
@@ -96,11 +96,11 @@ export default function ApplyJobPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Job Description Details */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="glass-card p-6 md:p-8 bg-[#111827] border-slate-800">
+            <div className="glass-card p-6 md:p-8">
               <span className="text-[9px] font-bold uppercase tracking-widest text-[#00C2B2]">
                 {job.dept}
               </span>
-              <h2 className="font-display font-extrabold text-lg md:text-xl text-slate-100 uppercase mt-2">
+              <h2 className="font-display font-extrabold text-lg md:text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-2">
                 {job.title}
               </h2>
               
@@ -116,14 +116,14 @@ export default function ApplyJobPage({ params }: PageProps) {
               </div>
 
               <div className="mt-5">
-                <h4 className="text-xs font-bold text-slate-200 uppercase">Role Description</h4>
+                <h4 className="text-xs font-bold text-slate-200 dark:text-slate-200 light:text-slate-800 uppercase">Role Description</h4>
                 <p className="text-[11px] text-slate-400 mt-2 leading-relaxed font-medium">
                   {job.desc}
                 </p>
               </div>
 
               <div className="mt-6">
-                <h4 className="text-xs font-bold text-slate-200 uppercase">Role Prerequisites</h4>
+                <h4 className="text-xs font-bold text-slate-200 dark:text-slate-200 light:text-slate-800 uppercase">Role Prerequisites</h4>
                 <ul className="flex flex-col gap-2.5 mt-3 text-[10px] font-semibold text-slate-300">
                   {job.reqs.map((req: string, idx: number) => (
                     <li key={idx} className="flex gap-2 items-start">
@@ -138,14 +138,14 @@ export default function ApplyJobPage({ params }: PageProps) {
 
           {/* Right Column: Application Form Grid */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-6 md:p-8 relative overflow-hidden bg-[#111827]">
+            <div className="glass-card p-6 md:p-8 relative overflow-hidden">
               {isSuccess ? (
                 /* Success Card Display */
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
                     <CheckCircle className="w-10 h-10 animate-bounce" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-slate-100 uppercase tracking-wide mb-2">
+                  <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
                     Application Delivered!
                   </h3>
                   <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
@@ -159,7 +159,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                     <span className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
                       Apply Today
                     </span>
-                    <h3 className="font-display font-extrabold text-xl text-slate-100 uppercase mt-1">
+                    <h3 className="font-display font-extrabold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-1">
                       SUBMIT YOUR DOSSIER
                     </h3>
                   </div>
@@ -167,11 +167,11 @@ export default function ApplyJobPage({ params }: PageProps) {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300">Your Full Name *</label>
+                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Your Full Name *</label>
                       <input
                         {...register("name")}
                         placeholder="e.g. Amit Kumar Sharma"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
                       />
                       {errors.name && (
                         <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.name.message}</span>
@@ -180,11 +180,11 @@ export default function ApplyJobPage({ params }: PageProps) {
 
                     {/* Phone */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-slate-300">Phone Coordinate *</label>
+                      <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Coordinate *</label>
                       <input
                         {...register("phone")}
                         placeholder="e.g. +91 9414940434"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
                       />
                       {errors.phone && (
                         <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.phone.message}</span>
@@ -194,11 +194,11 @@ export default function ApplyJobPage({ params }: PageProps) {
 
                   {/* Email */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Email Address *</label>
+                    <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address *</label>
                     <input
                       {...register("email")}
                       placeholder="e.g. candidates@gmail.com"
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
                     />
                     {errors.email && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.email.message}</span>
@@ -207,11 +207,11 @@ export default function ApplyJobPage({ params }: PageProps) {
 
                   {/* LinkedIn */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">LinkedIn URL Profile</label>
+                    <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">LinkedIn URL Profile</label>
                     <input
                       {...register("linkedinUrl")}
                       placeholder="e.g. https://linkedin.com/in/username"
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
                     />
                     {errors.linkedinUrl && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.linkedinUrl.message}</span>
@@ -220,12 +220,12 @@ export default function ApplyJobPage({ params }: PageProps) {
 
                   {/* Cover Letter */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-slate-300">Cover Pitch / Introduction *</label>
+                    <label className="text-slate-300 dark:text-slate-300 light:text-slate-700">Cover Pitch / Introduction *</label>
                     <textarea
                       {...register("coverLetter")}
                       rows={5}
                       placeholder="Introduce yourself. Highlight key projects, CRM tools, React experience, BPO support roles or scheduling availabilities..."
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 focus:border-[#F5C542] focus:outline-none transition-colors resize-none"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors resize-none"
                     />
                     {errors.coverLetter && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.coverLetter.message}</span>

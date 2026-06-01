@@ -9,21 +9,26 @@ interface StatItemProps {
   suffix: string;
   label: string;
   trigger: boolean;
+  desc?: string;
 }
 
-function StatItem({ target, suffix, label, trigger }: StatItemProps) {
+function StatItem({ target, suffix, label, trigger, desc }: StatItemProps) {
   const count = useCounter(target, 2000, trigger);
 
   return (
-    <div className="flex flex-col items-center justify-center text-center p-4">
-      <span className="font-display font-extrabold text-3xl md:text-5xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight">
+    <div className="flex flex-col items-center justify-center text-center px-4 py-6">
+      <div className="stat-number text-4xl md:text-6xl text-slate-100 light:text-[#111827]">
         {count.toLocaleString()}
         <span className="text-[#F5C542]">{suffix}</span>
-      </span>
-      
-      <span className="text-[10px] uppercase font-bold tracking-widest text-[#00C2B2] mt-2.5">
+      </div>
+      <div className="text-sm font-bold uppercase tracking-widest text-[#00C2B2] mt-3">
         {label}
-      </span>
+      </div>
+      {desc && (
+        <p className="text-xs text-slate-500 light:text-slate-500 mt-1.5 max-w-[140px] leading-relaxed">
+          {desc}
+        </p>
+      )}
     </div>
   );
 }
@@ -32,37 +37,39 @@ export default function StatsCounter() {
   const [isInView, setIsInView] = useState(false);
 
   return (
-    <section className="relative w-full py-12 md:py-16 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-y border-[#F5C542]/10 overflow-hidden transition-colors duration-400">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(0,194,178,0.06),transparent)]" />
-      
+    <section className="relative w-full py-16 md:py-20 bg-[#0c1220] dark:bg-[#0c1220] light:bg-slate-200 border-y border-white/5 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,rgba(0,194,178,0.07),transparent)]" />
+
+      {/* Decorative lines */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C542]/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00C2B2]/15 to-transparent" />
+
       <motion.div
         onViewportEnter={() => setIsInView(true)}
-        className="relative max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-6 items-center lg:divide-x divide-slate-800/80"
+        className="relative max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-0 items-center"
       >
-        <StatItem 
-          target={150} 
-          suffix="+" 
-          label="Clients Served" 
-          trigger={isInView} 
-        />
-        <StatItem 
-          target={2500} 
-          suffix="+" 
-          label="Professionals Placed" 
-          trigger={isInView} 
-        />
-        <StatItem 
-          target={8} 
-          suffix="" 
-          label="Sectors Covered" 
-          trigger={isInView} 
-        />
-        <StatItem 
-          target={98} 
-          suffix="%" 
-          label="SLA Satisfaction" 
-          trigger={isInView} 
-        />
+        {[
+          { target: 150, suffix: "+", label: "Clients Served", desc: "Across multiple industries" },
+          { target: 2500, suffix: "+", label: "Professionals Placed", desc: "Vetted & deployed" },
+          { target: 8, suffix: "", label: "Sectors Covered", desc: "BPO, IT, Marketing & more" },
+          { target: 98, suffix: "%", label: "SLA Satisfaction", desc: "Consistent performance" },
+        ].map((stat, i) => (
+          <React.Fragment key={stat.label}>
+            <StatItem
+              target={stat.target}
+              suffix={stat.suffix}
+              label={stat.label}
+              trigger={isInView}
+              desc={stat.desc}
+            />
+            {i < 3 && (
+              <div className="hidden lg:block absolute h-16 w-px bg-gradient-to-b from-transparent via-white/8 to-transparent"
+                style={{ left: `${(i + 1) * 25}%` }}
+              />
+            )}
+          </React.Fragment>
+        ))}
       </motion.div>
     </section>
   );

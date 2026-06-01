@@ -22,7 +22,7 @@ export default function BlogListingPage() {
   });
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Insights & Boardroom Blogs" 
         subtitle="Exploring the latest statutory compliance insights, hiring algorithms, and tech trends."
@@ -117,7 +117,7 @@ export default function BlogListingPage() {
               </AnimatePresence>
 
               {filteredBlogs.length === 0 && (
-                <div className="col-span-2 text-center py-12 glass-card border-slate-800">
+                <div className="col-span-2 text-center py-12 glass-card">
                   <ShieldCheck className="w-8 h-8 text-slate-650 mx-auto mb-2" />
                   <p className="text-xs text-slate-500 font-medium">No insights match your query. Try selecting another category filter.</p>
                 </div>
@@ -129,7 +129,7 @@ export default function BlogListingPage() {
           <aside className="lg:col-span-4 flex flex-col gap-6">
             
             {/* Sidebar Search */}
-            <div className="glass-card p-6 border-slate-800 bg-[#111827] flex flex-col gap-3">
+            <div className="glass-card p-6 flex flex-col gap-3">
               <h4 className="text-xs font-bold text-[#00C2B2] uppercase tracking-wider">Search Insights</h4>
               <div className="relative">
                 <input
@@ -144,7 +144,7 @@ export default function BlogListingPage() {
             </div>
 
             {/* Sidebar Resources Section (Case studies / Whitepapers downloads) */}
-            <div className="glass-card p-6 border-slate-800 bg-[#111827] flex flex-col gap-4">
+            <div className="glass-card p-6 flex flex-col gap-4">
               <h4 className="text-xs font-bold text-[#00C2B2] uppercase tracking-wider">Free Whitepapers</h4>
               
               <div className="flex flex-col gap-3 text-xs leading-normal">

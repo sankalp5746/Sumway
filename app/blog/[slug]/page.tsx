@@ -32,7 +32,7 @@ export default function BlogDetailPage({ params }: PageProps) {
   };
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title={blog.title} 
         subtitle={`Written by Board Director ${blog.author} — Category: ${blog.category}`}
@@ -52,7 +52,7 @@ export default function BlogDetailPage({ params }: PageProps) {
           
           {/* Left Column: TOC (Desktop only) */}
           <div className="hidden lg:col-span-3 lg:block sticky top-28">
-            <div className="glass-card p-5 border-slate-800 bg-[#111827] flex flex-col gap-4">
+            <div className="glass-card p-5 flex flex-col gap-4">
               <h4 className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest flex items-center gap-1.5">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Table of Contents</span>
@@ -84,7 +84,7 @@ export default function BlogDetailPage({ params }: PageProps) {
                 className="object-cover brightness-90"
                 fallbackLabel={blog.title}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] dark:from-[#0A0F1E] light:from-slate-50 to-transparent" />
             </div>
 
             {/* Article Metadata */}
@@ -149,7 +149,7 @@ export default function BlogDetailPage({ params }: PageProps) {
             </div>
 
             {/* Author Bio Panel */}
-            <div className="glass-card p-6 border-slate-800 bg-[#111827] flex flex-col sm:flex-row gap-4 items-center sm:items-start mt-8">
+            <div className="glass-card p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start mt-8">
               <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#F5C542] to-[#00C2B2] flex items-center justify-center font-display font-extrabold text-[#0A0F1E] text-base shrink-0">
                 {blog.author.split(" ").map(n => n[0]).join("")}
               </div>
@@ -167,7 +167,7 @@ export default function BlogDetailPage({ params }: PageProps) {
           <aside className="lg:col-span-3 flex flex-col gap-6">
             
             {/* Social Share Buttons */}
-            <div className="glass-card p-6 border-slate-800 bg-[#111827] flex flex-col gap-4">
+            <div className="glass-card p-6 flex flex-col gap-4">
               <h4 className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest flex items-center gap-1.5">
                 <Share2 className="w-3.5 h-3.5" />
                 <span>Share Article</span>
@@ -195,7 +195,7 @@ export default function BlogDetailPage({ params }: PageProps) {
             </div>
 
             {/* Related Posts Sidebar */}
-            <div className="glass-card p-6 border-slate-800 bg-[#111827] flex flex-col gap-4">
+            <div className="glass-card p-6 flex flex-col gap-4">
               <h4 className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
                 Related Insights
               </h4>

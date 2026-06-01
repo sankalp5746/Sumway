@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Target directory for screenshots & reports
-const artifactDir = 'C:\\Users\\Sankalp.Bendale\\.gemini\\antigravity-ide\\brain\\0f5f0975-1ea3-425a-b448-730c2490b0ba';
+const artifactDir = 'C:\\Users\\Sankalp.Bendale\\.gemini\\antigravity-ide\\brain\\4e3e4878-42c5-41c8-a905-99ae5f86ef85';
 const baseUrl = 'http://localhost:3000';
 
 async function runQASuite() {

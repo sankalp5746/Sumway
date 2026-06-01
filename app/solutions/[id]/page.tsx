@@ -117,7 +117,7 @@ export default function SolutionDetail({ params }: PageProps) {
   const IconComp = iconMap[data.icon] || ShieldCheck;
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title={data.title} 
         subtitle={data.subtitle} 
@@ -181,7 +181,7 @@ export default function SolutionDetail({ params }: PageProps) {
               {data.kpis.map((kpi: any) => (
                 <div 
                   key={kpi.label} 
-                  className="glass-card p-6 flex items-center justify-between border-slate-800 bg-[#111827] hover:border-[#F5C542]/20"
+                  className="glass-card p-6 flex items-center justify-between hover:border-[#F5C542]/20"
                 >
                   <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
                     {kpi.label}

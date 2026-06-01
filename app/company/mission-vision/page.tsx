@@ -34,7 +34,7 @@ const coreValues = [
 
 export default function MissionVision() {
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Mission & Vision" 
         subtitle="Empowering cross-continental enterprise growth with absolute structural integrity."
@@ -44,7 +44,7 @@ export default function MissionVision() {
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Mission Card */}
-        <div className="glass-card p-8 md:p-12 border-[#00C2B2]/20 hover:border-[#00C2B2]/40 bg-gradient-to-br from-[#111827] to-[#0A0F1E] flex flex-col gap-5 relative overflow-hidden group">
+        <div className="glass-card p-8 md:p-12 border-[#00C2B2]/20 hover:border-[#00C2B2]/40 bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 flex flex-col gap-5 relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-[#00C2B2]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
           <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2]">
             <Target className="w-6 h-6 animate-pulse" />
@@ -58,7 +58,7 @@ export default function MissionVision() {
         </div>
 
         {/* Vision Card */}
-        <div className="glass-card p-8 md:p-12 border-[#F5C542]/20 hover:border-[#F5C542]/40 bg-gradient-to-br from-[#111827] to-[#0A0F1E] flex flex-col gap-5 relative overflow-hidden group">
+        <div className="glass-card p-8 md:p-12 border-[#F5C542]/20 hover:border-[#F5C542]/40 bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 flex flex-col gap-5 relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-24 h-24 bg-[#F5C542]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
           <div className="w-12 h-12 rounded-xl bg-[#F5C542]/10 flex items-center justify-center text-[#F5C542]">
             <Eye className="w-6 h-6 animate-pulse" />
@@ -90,7 +90,7 @@ export default function MissionVision() {
               return (
                 <div 
                   key={val.title}
-                  className="glass-card p-6 flex flex-col gap-4 border-slate-800 hover:border-[#00C2B2]/20"
+                  className="glass-card p-6 flex flex-col gap-4 hover:border-[#00C2B2]/20"
                 >
                   <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2]">
                     <Icon className="w-5 h-5" />

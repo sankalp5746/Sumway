@@ -14,7 +14,7 @@ import LatestBlogs from "@/components/home/LatestBlogs";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full bg-[#0A0F1E]">
+    <div className="flex flex-col w-full bg-transparent">
       <HeroBanner />
       <CompanyIntro />
       <ServicesGrid />

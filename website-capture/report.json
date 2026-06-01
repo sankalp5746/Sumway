@@ -1,0 +1,127 @@
+[
+  {
+    "page": "home",
+    "url": "http://localhost:3000",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"flex flex-col w-full bg-transparent\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "BTN_PRIMARY[1]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=flex",
+      "BTN_PRIMARY[2]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=inline-flex",
+      "BTN_PRIMARY[3]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=inline-flex",
+      "BTN_PRIMARY[4]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=flex",
+      "BTN_PRIMARY[5]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=inline-flex",
+      "FORM_INPUT[0]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[1]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[2]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[3]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[4]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[5]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "BADGE_TEAL[0]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[1]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[2]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[3]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[4]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[5]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[6]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[7]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[8]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "SECTION_DIVIDER[0]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[1]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[2]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[3]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[4]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[5]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[6]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[7]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[8]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "SECTION_DIVIDER[9]: width=48, height=3, bg=rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(245, 197, 66), rgb(0, 194, 178)) repeat scroll 0% 0% / auto padding-box border-box",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px",
+      "ICON_BOX_TEAL[0]: width=48px, height=48px, display=flex"
+    ]
+  },
+  {
+    "page": "contact",
+    "url": "http://localhost:3000/contact",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "BTN_PRIMARY[1]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=inline-flex",
+      "FORM_INPUT[0]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[1]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[2]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[3]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[4]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[5]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[6]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "BADGE_TEAL[0]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "BADGE_TEAL[1]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "login",
+    "url": "http://localhost:3000/login",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent min-h-screen pb-16 transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "BTN_PRIMARY[1]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=14px 28px, display=inline-flex",
+      "FORM_INPUT[0]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "FORM_INPUT[1]: border=1px solid rgba(100, 116, 139, 0.5), bg=rgba(255, 255, 255, 0.04), fontSize=14px",
+      "BADGE_TEAL[0]: display=inline-flex, color=rgb(0, 194, 178), bg=rgba(0, 194, 178, 0.1)",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "register",
+    "url": "http://localhost:3000/register",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent min-h-screen pb-16 transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "careers",
+    "url": "http://localhost:3000/careers",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "blog",
+    "url": "http://localhost:3000/blog",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "about",
+    "url": "http://localhost:3000/company/about-us",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  },
+  {
+    "page": "service",
+    "url": "http://localhost:3000/services/staffing-solutions",
+    "diagnostics": [
+      "NAVBAR: height=40px, top=0px",
+      "MAIN_FIRST_CHILD: top=0px, tag=DIV, class=\"bg-transparent transition-colors duration-400\"",
+      "BTN_PRIMARY[0]: bg=rgb(245, 197, 66), color=rgb(10, 15, 30), padding=10px 20px, display=flex",
+      "GLASS_CARD[0]: bg=rgba(17, 24, 39, 0.75), border=1px solid rgba(245, 197, 66, 0.08), borderRadius=20px"
+    ]
+  }
+]

@@ -9,7 +9,7 @@ export default function DigitalMarketingIndustry() {
   const openEnquiry = useAppStore((state) => state.openEnquiry);
 
   return (
-    <div className="bg-[#0A0F1E]">
+    <div className="bg-transparent transition-colors duration-400">
       <PageHero 
         title="Digital Marketing" 
         subtitle="Data-driven search engine optimization, pay-per-click ad assets and brand transformations."
@@ -80,7 +80,7 @@ export default function DigitalMarketingIndustry() {
             </ul>
           </div>
 
-          <div className="lg:col-span-6 glass-card p-8 bg-[#111827] border-slate-800 flex flex-col gap-6">
+          <div className="lg:col-span-6 glass-card p-8 flex flex-col gap-6">
             <h3 className="font-display font-bold text-sm text-[#F5C542] uppercase tracking-wide">
               Organic Optimization Case Study
             </h3>

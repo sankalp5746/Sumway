@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant light (.light &);
+@variant light (.light &);
 
 @theme {
   --color-primary-dark: #0A0F1E;
@@ -21,6 +21,7 @@
   --animate-float-slow: float 10s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-mesh: mesh 15s ease infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
 
   @keyframes float {
     0%, 100% {
@@ -41,103 +42,305 @@
       background-position: 0% 50%;
     }
   }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+  }
 }
 
 /* Custom properties and theme-specific rules */
 :root {
   --background: #0A0F1E;
   --foreground: #F1F5F9;
-  --card-bg: rgba(17, 24, 39, 0.7);
-  --card-border: rgba(245, 197, 66, 0.1);
-  --card-hover-border: rgba(245, 197, 66, 0.4);
+  --card-bg: rgba(17, 24, 39, 0.75);
+  --card-border: rgba(245, 197, 66, 0.08);
+  --card-hover-border: rgba(245, 197, 66, 0.35);
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(100, 116, 139, 0.5);
+  --input-focus-border: #F5C542;
 }
 
 :root.light {
   --background: #F8FAFC;
   --foreground: #0F172A;
-  --card-bg: rgba(255, 255, 255, 0.75);
-  --card-border: rgba(15, 23, 42, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(15, 23, 42, 0.07);
   --card-hover-border: rgba(0, 194, 178, 0.4);
+  --input-bg: rgba(248, 250, 252, 1);
+  --input-border: rgba(203, 213, 225, 1);
+  --input-focus-border: #00C2B2;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    line-height: 1.6;
+  }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* Noise overlay */
+/* ─── Noise overlay ─────────────────────────────────────────── */
 .noise-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0.03;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 50;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Glassmorphism Styles */
+/* ─── Glassmorphism Cards ────────────────────────────────────── */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
-  border-radius: 1rem;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 1.25rem;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   border-color: var(--card-hover-border);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 
-              0 0 20px -5px rgba(245, 197, 66, 0.15);
-  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4),
+              0 0 24px -6px rgba(245, 197, 66, 0.12);
+  transform: translateY(-3px);
 }
 
-/* Animated mesh background */
+:root.light .glass-card:hover {
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.08),
+              0 0 24px -6px rgba(0, 194, 178, 0.08);
+}
+
+/* Cards that should NOT lift on hover (forms, modals, etc.) */
+.glass-card-static {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: 1.25rem;
+  transition: border-color 0.35s ease;
+}
+
+/* ─── Form Inputs ────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.12);
+}
+
+:root.light .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 194, 178, 0.12);
+}
+
+.form-input::placeholder {
+  color: #64748b;
+  font-size: 0.8125rem;
+}
+
+/* ─── Animated mesh background ──────────────────────────────── */
 .animated-mesh {
   background: linear-gradient(-45deg, #0A0F1E, #111827, #0B1C33, #021B2B);
   background-size: 400% 400%;
   animation: mesh 15s ease infinite;
 }
 
-/* Scrollbar styles */
+:root.light .animated-mesh {
+  background: linear-gradient(-45deg, #E2E8F0, #CBD5E1, #DBEAFE, #E0F2FE);
+  background-size: 400% 400%;
+  animation: mesh 15s ease infinite;
+}
+
+/* ─── Shimmer text effect ────────────────────────────────────── */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #F5C542 0%,
+    #00C2B2 30%,
+    #F5C542 60%,
+    #00C2B2 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Section divider line ───────────────────────────────────── */
+.section-divider {
+  width: 3rem;
+  height: 3px;
+  background: linear-gradient(90deg, #F5C542, #00C2B2);
+  border-radius: 999px;
+}
+
+/* ─── Badge pill ─────────────────────────────────────────────── */
+.badge-teal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #00C2B2;
+  background: rgba(0, 194, 178, 0.1);
+  border: 1px solid rgba(0, 194, 178, 0.2);
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+}
+
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5C542;
+  background: rgba(245, 197, 66, 0.1);
+  border: 1px solid rgba(245, 197, 66, 0.2);
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+}
+
+/* ─── Primary CTA button ─────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.625rem;
+  background: #F5C542;
+  color: #0A0F1E;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 20px rgba(245, 197, 66, 0.3);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #f0bc30;
+  box-shadow: 0 6px 28px rgba(245, 197, 66, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── Secondary outline button ───────────────────────────────── */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.625rem;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(100, 116, 139, 0.4);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+:root.light .btn-outline {
+  color: #374151;
+  border-color: rgba(107, 114, 128, 0.4);
+}
+
+.btn-outline:hover {
+  border-color: rgba(245, 197, 66, 0.5);
+  color: #F5C542;
+  background: rgba(245, 197, 66, 0.06);
+}
+
+:root.light .btn-outline:hover {
+  border-color: rgba(245, 197, 66, 0.6);
+  color: #92400e;
+  background: rgba(245, 197, 66, 0.08);
+}
+
+/* ─── Scrollbar styles ───────────────────────────────────────── */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: #0A0F1E;
 }
 
+:root.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
 ::-webkit-scrollbar-thumb {
-  background: #111827;
+  background: #1e293b;
   border-radius: 999px;
-  border: 2px solid #0A0F1E;
+}
+
+:root.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #F5C542;
 }
 
-/* Diagonal custom divider */
+/* ─── Diagonal custom divider ────────────────────────────────── */
 .diagonal-divider {
   position: relative;
   clip-path: polygon(0 0, 100% 4%, 100% 100%, 0 96%);
 }
 
-/* Active links custom indicators */
+/* ─── Active nav link indicator ──────────────────────────────── */
 .nav-link-active {
   position: relative;
 }
@@ -155,7 +358,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Custom cursor glow (desktop only) */
+/* ─── Custom cursor glow (desktop only) ──────────────────────── */
 .custom-cursor {
   width: 8px;
   height: 8px;
@@ -180,7 +383,6 @@ body {
   transition: transform 0.1s ease, width 0.2s, height 0.2s, border-color 0.2s;
 }
 
-/* Custom cursor hover state */
 .cursor-hover .custom-cursor {
   width: 24px;
   height: 24px;
@@ -191,4 +393,205 @@ body {
   width: 56px;
   height: 56px;
   border-color: #F5C542;
+}
+
+/* ─── Gradient text utility ──────────────────────────────────── */
+.gradient-text-gold {
+  background: linear-gradient(135deg, #F5C542 0%, #ffd700 50%, #F5C542 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-teal {
+  background: linear-gradient(135deg, #00C2B2 0%, #00e5d3 50%, #00C2B2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Glow effects ───────────────────────────────────────────── */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(245, 197, 66, 0.25), 0 0 40px rgba(245, 197, 66, 0.1);
+}
+
+.glow-teal {
+  box-shadow: 0 0 20px rgba(0, 194, 178, 0.25), 0 0 40px rgba(0, 194, 178, 0.1);
+}
+
+/* ─── Stat number highlight ──────────────────────────────────── */
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Timeline connector ─────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #F5C542 20%, #00C2B2 80%, transparent);
+}
+
+/* ─── Responsive typography helpers ─────────────────────────── */
+.text-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #94a3b8;
+}
+
+:root.light .text-body {
+  color: #374151;
+}
+
+.text-body-sm {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+:root.light .text-body-sm {
+  color: #4b5563;
+}
+
+/* ─── Section label ──────────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #00C2B2;
+}
+
+/* ─── Card icon container ────────────────────────────────────── */
+.icon-box-teal {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: rgba(0, 194, 178, 0.1);
+  border: 1px solid rgba(0, 194, 178, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00C2B2;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.icon-box-gold {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: rgba(245, 197, 66, 0.1);
+  border: 1px solid rgba(245, 197, 66, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F5C542;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.group:hover .icon-box-teal,
+.group:hover .icon-box-gold {
+  transform: scale(1.1);
+}
+
+/* ─── Horizontal rule with gradient ─────────────────────────── */
+hr.gradient-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 197, 66, 0.2), transparent);
+  margin: 0;
+}
+
+/* ─── Focus visible ring ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #F5C542;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Light mode comprehensive overrides ────────────────────── */
+
+/* Headings in light mode */
+:root.light .font-display {
+  color: #111827;
+}
+
+/* Glass card in light mode */
+:root.light .glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* Badge in light mode */
+:root.light .badge-teal {
+  background: rgba(0, 194, 178, 0.08);
+  border-color: rgba(0, 194, 178, 0.25);
+}
+
+:root.light .badge-gold {
+  background: rgba(245, 197, 66, 0.1);
+  border-color: rgba(245, 197, 66, 0.3);
+}
+
+/* Section divider in light mode — same gradient, fine */
+
+/* Stat number in light mode */
+:root.light .stat-number {
+  color: #111827;
+}
+
+/* Form input in light mode */
+:root.light .form-input {
+  background: #ffffff;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+:root.light .form-input::placeholder {
+  color: #9ca3af;
+}
+
+:root.light .form-input:focus {
+  border-color: #00C2B2;
+  box-shadow: 0 0 0 3px rgba(0, 194, 178, 0.12);
+}
+
+/* Icon boxes in light mode */
+:root.light .icon-box-teal {
+  background: rgba(0, 194, 178, 0.08);
+}
+
+:root.light .icon-box-gold {
+  background: rgba(245, 197, 66, 0.08);
+}
+
+/* ─── Responsive container max-widths ────────────────────────── */
+@media (max-width: 640px) {
+  .section-divider {
+    width: 2rem;
+  }
+}
+
+/* ─── Prevent text overflow on small screens ─────────────────── */
+h1, h2, h3 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ─── Mobile-safe padding for sections ──────────────────────── */
+@media (max-width: 768px) {
+  .text-body {
+    font-size: 0.875rem;
+  }
+  .text-body-sm {
+    font-size: 0.8125rem;
+  }
 }

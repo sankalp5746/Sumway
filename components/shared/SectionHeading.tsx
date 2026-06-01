@@ -21,24 +21,35 @@ export default function SectionHeading({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`max-w-3xl ${
         isCenter ? "mx-auto text-center" : isRight ? "ml-auto text-right" : "text-left"
       }`}
     >
-      <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase bg-[#00C2B2]/10 px-3 py-1.5 rounded-full">
+      {/* Badge */}
+      <span className="badge-teal">
         {badge}
       </span>
-      
-      <h2 className="font-display font-extrabold text-2xl md:text-4xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight mt-4 leading-tight">
+
+      {/* Divider line */}
+      <div className={`mt-4 mb-3 ${isCenter ? "flex justify-center" : isRight ? "flex justify-end" : ""}`}>
+        <div className="section-divider" />
+      </div>
+
+      {/* Heading */}
+      <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.12]">
         {title}
       </h2>
-      
+
+      {/* Description */}
       {desc && (
-        <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 mt-4 leading-relaxed">
+        <p
+          className="text-body mt-4"
+          style={{ marginLeft: isCenter ? "auto" : undefined, marginRight: isCenter ? "auto" : undefined, maxWidth: "42rem" }}
+        >
           {desc}
         </p>
       )}

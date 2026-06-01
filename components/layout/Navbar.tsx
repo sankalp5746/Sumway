@@ -5,12 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Menu, X, ChevronDown, Sun, Moon, ArrowRight, 
-  Building, Briefcase, Laptop, Headphones, Users, 
+import {
+  Menu, X, ChevronDown, Sun, Moon, ArrowRight,
+  Building, Briefcase, Laptop, Headphones, Users,
   GraduationCap, Clock, PhoneCall, ShieldCheck, TrendingUp
 } from "lucide-react";
-import { COMPANY_DETAILS, NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { useAppStore } from "@/lib/store";
 
 const iconMap: { [key: string]: any } = {
@@ -24,21 +24,17 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isLight, setIsLight] = useState(false);
-  
+
   const openEnquiry = useAppStore((state) => state.openEnquiry);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Sync theme
   useEffect(() => {
-    const isLightTheme = document.documentElement.classList.contains("light");
-    setIsLight(isLightTheme);
+    setIsLight(document.documentElement.classList.contains("light"));
   }, []);
 
   const toggleTheme = () => {
@@ -52,82 +48,106 @@ export default function Navbar() {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? "bg-[#0A0F1E]/85 dark:bg-[#0A0F1E]/85 light:bg-slate-50/85 backdrop-blur-md border-b border-[#F5C542]/10 shadow-lg py-3" 
-          : "bg-transparent py-5"
+        scrolled
+          ? "bg-[#0A0F1E]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_24px_rgba(0,0,0,0.25)] py-2"
+          : "bg-transparent py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 overflow-hidden bg-white rounded-full flex items-center justify-center p-1 border border-[#F5C542]/20">
-            <Image 
-              src="/images/logo.png" 
-              alt="Sumway Global Logo" 
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <div className="relative w-9 h-9 overflow-hidden bg-white rounded-full flex items-center justify-center p-1 border border-[#F5C542]/20 shadow-md shrink-0">
+            <Image
+              src="/images/logo.png"
+              alt="Sumway Global Logo"
               fill
-              sizes="40px"
+              sizes="36px"
               className="object-contain p-0.5"
             />
           </div>
-          <div className="flex flex-col">
-            <span className="font-display font-extrabold text-sm md:text-base tracking-wider text-slate-100 dark:text-slate-100 light:text-[#0F172A] group-hover:text-[#F5C542] transition-colors">
+          <div className="flex flex-col leading-none">
+            <span className="font-display font-extrabold text-sm tracking-wider text-slate-100 light:text-[#0F172A] group-hover:text-[#F5C542] transition-colors whitespace-nowrap">
               SUMWAY GLOBAL
             </span>
-            <span className="text-[9px] font-medium text-[#00C2B2] tracking-widest uppercase">
+            <span className="text-[9px] font-semibold text-[#00C2B2] tracking-[0.15em] uppercase mt-0.5 whitespace-nowrap">
               MANAGEMENT
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-6">
+        {/* Desktop Nav — only show on xl screens to avoid crowding */}
+        <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-center">
           {NAV_LINKS.map((link) => {
             const hasChildren = !!link.children;
-            const isActive = pathname === link.href || (hasChildren && link.children?.some(c => pathname === c.href));
+            const isActive =
+              pathname === link.href ||
+              (hasChildren && link.children?.some((c) => pathname === c.href));
 
             if (hasChildren) {
               return (
-                <div 
+                <div
                   key={link.label}
-                  className="relative px-3 py-2 group"
+                  className="relative"
                   onMouseEnter={() => setActiveDropdown(link.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button className="flex items-center gap-1 text-sm font-medium hover:text-[#F5C542] transition-colors text-slate-300 dark:text-slate-300 light:text-slate-600">
+                  <button
+                    className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                      isActive
+                        ? "text-[#F5C542]"
+                        : "text-slate-300 light:text-slate-700 hover:text-[#F5C542] hover:bg-white/5 light:hover:bg-slate-100"
+                    }`}
+                  >
                     {link.label}
-                    <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform" />
+                    <ChevronDown
+                      className={`w-3 h-3 opacity-60 transition-transform duration-200 shrink-0 ${
+                        activeDropdown === link.label ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   <AnimatePresence>
                     {activeDropdown === link.label && (
-                      <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-[#111827] dark:bg-[#111827] light:bg-white rounded-xl border border-[#F5C542]/10 shadow-2xl p-4 grid grid-cols-2 gap-2 backdrop-blur-lg"
+                      <motion.div
+                        initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                        transition={{ duration: 0.18 }}
+                        className="absolute left-1/2 -translate-x-1/2 mt-1 w-[480px] bg-[#0f1729]/98 light:bg-white backdrop-blur-xl rounded-2xl border border-white/8 light:border-slate-200 shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-3 grid grid-cols-2 gap-1.5"
                       >
                         {link.children?.map((child) => {
-                          const childWithIcon = child as { label: string; href: string; desc?: string; icon?: string };
+                          const childWithIcon = child as {
+                            label: string; href: string; desc?: string; icon?: string;
+                          };
                           const IconComp = childWithIcon.icon ? iconMap[childWithIcon.icon] : Building;
+                          const isChildActive = pathname === child.href;
                           return (
-                            <Link 
+                            <Link
                               key={child.label}
                               href={child.href}
-                              className="flex gap-3 p-2.5 rounded-lg hover:bg-white/5 dark:hover:bg-white/5 light:hover:bg-slate-50 transition-colors border border-transparent hover:border-[#F5C542]/10 group"
+                              className={`flex gap-3 p-2.5 rounded-xl transition-all group ${
+                                isChildActive
+                                  ? "bg-[#F5C542]/10 border border-[#F5C542]/20"
+                                  : "hover:bg-white/5 light:hover:bg-slate-50 border border-transparent hover:border-white/8 light:hover:border-slate-200"
+                              }`}
                             >
-                              <div className="w-8 h-8 rounded-md bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
+                              <div className="w-8 h-8 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0 mt-0.5">
                                 {IconComp ? <IconComp className="w-4 h-4" /> : <Building className="w-4 h-4" />}
                               </div>
-                              <div className="flex flex-col">
-                                <span className="text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 group-hover:text-[#F5C542]">
+                              <div className="flex flex-col min-w-0">
+                                <span className={`text-sm font-semibold transition-colors ${
+                                  isChildActive ? "text-[#F5C542]" : "text-slate-200 light:text-slate-800 group-hover:text-[#F5C542]"
+                                }`}>
                                   {child.label}
                                 </span>
-                                <span className="text-[10px] text-slate-400 dark:text-slate-400 light:text-slate-500 mt-0.5 line-clamp-2 leading-relaxed">
-                                  {child.desc}
-                                </span>
+                                {childWithIcon.desc && (
+                                  <span className="text-xs text-slate-500 mt-0.5 leading-relaxed line-clamp-1">
+                                    {childWithIcon.desc}
+                                  </span>
+                                )}
                               </div>
                             </Link>
                           );
@@ -140,16 +160,20 @@ export default function Navbar() {
             }
 
             return (
-              <Link 
+              <Link
                 key={link.label}
                 href={link.href}
-                className="relative px-3.5 py-2 text-sm font-medium hover:text-[#F5C542] transition-colors text-slate-300 dark:text-slate-300 light:text-slate-600"
+                className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
+                  isActive
+                    ? "text-[#F5C542]"
+                    : "text-slate-300 light:text-slate-700 hover:text-[#F5C542] hover:bg-white/5 light:hover:bg-slate-100"
+                }`}
               >
                 {link.label}
                 {isActive && (
-                  <motion.span 
-                    layoutId="activeUnderline" 
-                    className="absolute bottom-0 left-3.5 right-3.5 h-0.5 bg-[#F5C542]"
+                  <motion.span
+                    layoutId="activeUnderline"
+                    className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#F5C542] rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -158,47 +182,69 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA Actions */}
-        <div className="hidden lg:flex items-center gap-4">
-          {/* Light/Dark Toggle */}
-          <button 
+        {/* Right actions */}
+        <div className="hidden xl:flex items-center gap-2 shrink-0">
+          <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-slate-700/50 hover:border-[#F5C542]/40 bg-white/5 dark:bg-white/5 light:bg-slate-100 hover:text-[#F5C542] transition-colors text-slate-300 dark:text-slate-300 light:text-slate-600"
+            className="p-2 rounded-xl border border-white/8 light:border-slate-200 hover:border-[#F5C542]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#F5C542] transition-all text-slate-400 light:text-slate-600"
             aria-label="Toggle Theme"
           >
             {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           </button>
 
-          {/* Login Gate */}
-          <Link 
-            href="/login" 
-            className="text-sm font-semibold hover:text-[#F5C542] transition-colors text-slate-300 dark:text-slate-300 light:text-slate-700"
+          <Link
+            href="/login"
+            className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors px-2 whitespace-nowrap"
           >
             Login
           </Link>
 
-          {/* Get Started Button */}
-          <button 
+          <button
             onClick={() => openEnquiry("General Inquiry")}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider rounded-lg bg-[#F5C542] text-[#0A0F1E] hover:bg-[#F5C542]/90 border border-transparent active:scale-95 transition-all shadow-[0_4px_14px_rgba(245,197,66,0.25)] cursor-pointer"
+            className="btn-primary !py-2 !px-4 !text-xs whitespace-nowrap"
           >
             Get Started
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Mobile Header Controls */}
-        <div className="flex lg:hidden items-center gap-3">
-          <button 
-            onClick={toggleTheme}
-            className="p-2 rounded-full border border-slate-700/50 bg-white/5 dark:bg-white/5 light:bg-slate-100 text-slate-300 dark:text-slate-300 light:text-slate-600"
+        {/* Tablet nav (lg only — show fewer items) */}
+        <nav className="hidden lg:flex xl:hidden items-center gap-0.5">
+          {["Home", "Services", "Careers", "Contact"].map((label) => {
+            const link = NAV_LINKS.find(l => l.label === label);
+            if (!link) return null;
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={label}
+                href={link.href || "#"}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
+                  isActive ? "text-[#F5C542]" : "text-slate-300 light:text-slate-700 hover:text-[#F5C542]"
+                }`}
+              >
+                {label}
+              </Link>
+            );
+          })}
+          <button
+            onClick={() => openEnquiry("General Inquiry")}
+            className="btn-primary !py-2 !px-4 !text-xs ml-2 whitespace-nowrap"
           >
-            {isLight ? <Moon className="w-4.5 h-4.5" /> : <Sun className="w-4.5 h-4.5" />}
+            Enquire
           </button>
+        </nav>
 
-          <button 
+        {/* Mobile controls */}
+        <div className="flex lg:hidden items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-xl border border-white/8 light:border-slate-200 bg-white/4 light:bg-slate-100 text-slate-300 light:text-slate-600"
+          >
+            {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+          </button>
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-300 dark:text-slate-300 light:text-slate-700"
+            className="p-2 text-slate-300 light:text-slate-700"
             aria-label="Toggle Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -206,41 +252,41 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Slide-in Panel */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 top-[70px] z-40 bg-[#0A0F1E] dark:bg-[#0A0F1E] light:bg-slate-50 border-t border-slate-800/80 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
+            transition={{ type: "tween", duration: 0.28 }}
+            className="fixed inset-0 top-[60px] z-40 bg-[#080d1a]/98 light:bg-white/98 backdrop-blur-xl border-t border-white/5 light:border-slate-200 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
           >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => {
                 const hasChildren = !!link.children;
                 return (
                   <div key={link.label} className="flex flex-col">
                     {!hasChildren ? (
-                      <Link 
+                      <Link
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-lg font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:text-[#F5C542]"
+                        className="text-lg font-semibold text-slate-200 light:text-slate-800 hover:text-[#F5C542] transition-colors py-1.5 border-b border-white/5 light:border-slate-100"
                       >
                         {link.label}
                       </Link>
                     ) : (
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold uppercase tracking-wider text-[#00C2B2] mb-2">
+                      <div className="flex flex-col gap-2">
+                        <span className="text-xs font-bold uppercase tracking-widest text-[#00C2B2] py-1.5 border-b border-white/5 light:border-slate-100">
                           {link.label}
                         </span>
-                        <div className="grid grid-cols-2 gap-3 pl-2 border-l border-[#F5C542]/20">
+                        <div className="grid grid-cols-2 gap-2 pl-3 border-l-2 border-[#F5C542]/20">
                           {link.children?.map((child) => (
-                            <Link 
+                            <Link
                               key={child.label}
                               href={child.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 hover:text-[#F5C542] py-1"
+                              className="text-sm text-slate-400 light:text-slate-600 hover:text-[#F5C542] py-1 transition-colors"
                             >
                               {child.label}
                             </Link>
@@ -253,20 +299,17 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="flex flex-col gap-4 mt-12 border-t border-slate-800/50 pt-6">
-              <Link 
+            <div className="flex flex-col gap-3 mt-8 border-t border-white/5 light:border-slate-200 pt-6">
+              <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 rounded-lg border border-slate-700 text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-800 hover:bg-white/5"
+                className="w-full text-center py-3 rounded-xl border border-white/10 light:border-slate-300 text-sm font-semibold text-slate-300 light:text-slate-800 hover:bg-white/5 light:hover:bg-slate-50 transition-colors"
               >
-                Login Gateway
+                Login
               </Link>
-              <button 
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  openEnquiry("Mobile Enquiry");
-                }}
-                className="w-full text-center py-2.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] text-sm font-bold uppercase tracking-wider shadow-lg"
+              <button
+                onClick={() => { setMobileMenuOpen(false); openEnquiry("Mobile Enquiry"); }}
+                className="btn-primary w-full justify-center"
               >
                 Quick Enquiry
               </button>
