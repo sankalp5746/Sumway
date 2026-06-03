@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, MapPin, Clock, Tag, ArrowRight, CheckCircle, ShieldAlert, Award, Star } from "lucide-react";
-import { JOBS } from "@/lib/constants";
+import { useAppStore } from "@/lib/store";
 import PageHero from "@/components/shared/PageHero";
 
 const benefits = [
@@ -18,12 +18,13 @@ const benefits = [
 
 export default function CareersPage() {
   const [activeDept, setActiveDept] = useState("All");
+  const jobs = useAppStore((state) => state.jobs) || [];
 
   const departments = ["All", "BPO Operations", "IT & Software", "Digital Marketing"];
 
   const filteredJobs = activeDept === "All" 
-    ? JOBS 
-    : JOBS.filter(job => job.dept === activeDept);
+    ? jobs 
+    : jobs.filter(job => job.dept === activeDept);
 
   return (
     <div className="bg-transparent transition-colors duration-400">

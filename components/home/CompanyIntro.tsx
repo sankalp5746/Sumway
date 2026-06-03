@@ -16,7 +16,7 @@ const iconMap: { [key: string]: any } = {
 
 export default function CompanyIntro() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent">
       {/* Background glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 rounded-full bg-[#00C2B2]/5 blur-3xl pointer-events-none" />
 
@@ -32,7 +32,7 @@ export default function CompanyIntro() {
             className="relative w-full h-72 md:h-88 rounded-2xl overflow-hidden border border-white/8 shadow-2xl"
           >
             <FallbackImage
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"
+              src="/images/team.png"
               alt="Sumway Global corporate team collaboration"
               fill
               className="object-cover brightness-90"

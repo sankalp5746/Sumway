@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { JOBS } from "./constants";
 
 interface User {
   name: string;
@@ -20,6 +21,12 @@ interface AppState {
   user: User | null;
   login: (user: User) => void;
   logout: () => void;
+
+  // Jobs State
+  jobs: any[];
+  setJobs: (jobs: any[]) => void;
+  addJob: (job: any) => void;
+  removeJob: (id: string) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -34,4 +41,20 @@ export const useAppStore = create<AppState>((set) => ({
   user: null,
   login: (user) => set({ user }),
   logout: () => set({ user: null }),
+
+  // Jobs
+  jobs: JOBS,
+  setJobs: (jobs) => set({ jobs }),
+  addJob: (job) =>
+    set((state) => {
+      const updatedJobs = [job, ...state.jobs];
+      localStorage.setItem("sumway_jobs", JSON.stringify(updatedJobs));
+      return { jobs: updatedJobs };
+    }),
+  removeJob: (id) =>
+    set((state) => {
+      const updatedJobs = state.jobs.filter((j) => j.id !== id);
+      localStorage.setItem("sumway_jobs", JSON.stringify(updatedJobs));
+      return { jobs: updatedJobs };
+    }),
 }));

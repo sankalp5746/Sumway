@@ -25,7 +25,34 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isLight, setIsLight] = useState(false);
 
-  const openEnquiry = useAppStore((state) => state.openEnquiry);
+  const { user, login, logout, openEnquiry, setJobs } = useAppStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("sumway_user");
+    if (savedUser) {
+      try {
+        login(JSON.parse(savedUser));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    const savedJobs = localStorage.getItem("sumway_jobs");
+    if (savedJobs) {
+      try {
+        setJobs(JSON.parse(savedJobs));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    setMounted(true);
+  }, [login, setJobs]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("sumway_user");
+    logout();
+    setMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
@@ -47,11 +74,26 @@ export default function Navbar() {
     }
   };
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <header
+    <>
+      <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#0A0F1E]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/8 shadow-[0_4px_24px_rgba(0,0,0,0.25)] py-2"
+        scrolled || mobileMenuOpen
+          ? "bg-[#0A0F1E]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/8 light:border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.25)] py-2"
           : "bg-transparent py-4"
       }`}
     >
@@ -192,12 +234,35 @@ export default function Navbar() {
             {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           </button>
 
-          <Link
-            href="/login"
-            className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors px-2 whitespace-nowrap"
-          >
-            Login
-          </Link>
+          {mounted && user ? (
+            <div className="flex items-center gap-3">
+              {user.role === "admin" && (
+                <Link
+                  href="/admin"
+                  className="text-xs font-bold uppercase tracking-wider text-[#F5C542] hover:text-[#F5C542]/85 transition-colors px-1 whitespace-nowrap"
+                >
+                  Dashboard
+                </Link>
+              )}
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#00C2B2]/20 bg-[#00C2B2]/5 text-[#00C2B2] shrink-0 text-xs font-bold uppercase tracking-wider">
+                <span>{user.name}</span>
+                <span className="opacity-50 text-[9px] lowercase px-1 py-0.5 rounded bg-white/10">{user.role}</span>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-red-400 transition-colors px-2 whitespace-nowrap cursor-pointer"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors px-2 whitespace-nowrap"
+            >
+              Login
+            </Link>
+          )}
 
           <button
             onClick={() => openEnquiry("General Inquiry")}
@@ -251,17 +316,19 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "tween", duration: 0.28 }}
-            className="fixed inset-0 top-[60px] z-40 bg-[#080d1a]/98 light:bg-white/98 backdrop-blur-xl border-t border-white/5 light:border-slate-200 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
-          >
+    {/* Mobile drawer — rendered outside header to prevent backdrop-filter clipping */}
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, x: "100%" }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: "100%" }}
+          transition={{ type: "tween", duration: 0.28 }}
+          style={{ backgroundColor: isLight ? "#ffffff" : "#0A0F1E", zIndex: 49 }}
+          className="fixed top-[52px] left-0 right-0 bottom-0 bg-[#0A0F1E] light:bg-white border-t border-white/5 light:border-slate-200 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
+        >
             <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => {
                 const hasChildren = !!link.children;
@@ -300,13 +367,37 @@ export default function Navbar() {
             </div>
 
             <div className="flex flex-col gap-3 mt-8 border-t border-white/5 light:border-slate-200 pt-6">
-              <Link
-                href="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-3 rounded-xl border border-white/10 light:border-slate-300 text-sm font-semibold text-slate-300 light:text-slate-800 hover:bg-white/5 light:hover:bg-slate-50 transition-colors"
-              >
-                Login
-              </Link>
+              {mounted && user ? (
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between px-4 py-3 rounded-xl border border-[#00C2B2]/20 bg-[#00C2B2]/5 text-[#00C2B2] text-sm font-bold uppercase tracking-wider">
+                    <span>{user.name}</span>
+                    <span className="opacity-50 text-[10px] lowercase px-1.5 py-0.5 rounded bg-white/10">{user.role}</span>
+                  </div>
+                  {user.role === "admin" && (
+                    <Link
+                      href="/admin"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="w-full text-center py-3 rounded-xl border border-[#F5C542]/20 bg-[#F5C542]/5 text-sm font-semibold text-[#F5C542] hover:bg-[#F5C542]/10 transition-colors"
+                    >
+                      Admin Dashboard
+                    </Link>
+                  )}
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-center py-3 rounded-xl border border-red-500/20 text-sm font-semibold text-red-400 hover:bg-red-500/5 transition-colors cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full text-center py-3 rounded-xl border border-white/10 light:border-slate-300 text-sm font-semibold text-slate-300 light:text-slate-800 hover:bg-white/5 light:hover:bg-slate-50 transition-colors"
+                >
+                  Login
+                </Link>
+              )}
               <button
                 onClick={() => { setMobileMenuOpen(false); openEnquiry("Mobile Enquiry"); }}
                 className="btn-primary w-full justify-center"
@@ -317,6 +408,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

@@ -10,7 +10,6 @@ import WorkProcess from "@/components/home/WorkProcess";
 import Testimonials from "@/components/home/Testimonials";
 import CareersHighlight from "@/components/home/CareersHighlight";
 import InquiryForm from "@/components/home/InquiryForm";
-import LatestBlogs from "@/components/home/LatestBlogs";
 
 export default function Home() {
   return (
@@ -26,7 +25,6 @@ export default function Home() {
       <Testimonials />
       <CareersHighlight />
       <InquiryForm />
-      <LatestBlogs />
     </div>
   );
 }

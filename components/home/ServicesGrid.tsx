@@ -18,7 +18,7 @@ export default function ServicesGrid() {
   return (
     <section
       id="services-section"
-      className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5"
+      className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5"
     >
       <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
 
@@ -72,7 +72,7 @@ export default function ServicesGrid() {
                 </div>
 
                 {/* CTA */}
-                <div className="mt-8 pt-5 border-t border-white/6 flex justify-between items-center relative z-10">
+                <div className="mt-8 pt-5 border-t border-white/6 light:border-t-slate-200 flex justify-between items-center relative z-10">
                   <Link
                     href={serv.href}
                     className="flex items-center gap-1.5 text-sm font-bold text-[#F5C542] hover:gap-2.5 transition-all"

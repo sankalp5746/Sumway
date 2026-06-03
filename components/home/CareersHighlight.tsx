@@ -5,14 +5,15 @@ import Link from "next/link";
 import FallbackImage from "@/components/shared/FallbackImage";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Tag } from "lucide-react";
-import { JOBS } from "@/lib/constants";
+import { useAppStore } from "@/lib/store";
 import SectionHeading from "../shared/SectionHeading";
 
 export default function CareersHighlight() {
-  const teaserJobs = JOBS.slice(0, 2);
+  const jobs = useAppStore((state) => state.jobs) || [];
+  const teaserJobs = jobs.slice(0, 2);
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -22,13 +23,13 @@ export default function CareersHighlight() {
           desc="Tired of rigid hierarchies? At Sumway Global, we support high adaptability, continuous industrial skill building, and active work-life integration in Jaipur."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mt-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mt-14">
 
           {/* Left: Pitch */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="relative w-full h-52 md:h-60 rounded-2xl overflow-hidden border border-white/8 shadow-xl">
               <FallbackImage
-                src="https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=800&auto=format&fit=crop"
+                src="/images/careers.png"
                 alt="Modern Jaipur corporate workspace"
                 fill
                 className="object-cover brightness-90"
@@ -52,7 +53,7 @@ export default function CareersHighlight() {
                 "Comprehensive Health Coverage Plans",
                 "Performance-based Golden Incentives",
               ].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-slate-300">
+                <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-slate-300 light:text-slate-700">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00C2B2] shrink-0" />
                   {item}
                 </li>
@@ -100,7 +101,7 @@ export default function CareersHighlight() {
 
                 <Link
                   href={`/careers/apply/${job.id}`}
-                  className="shrink-0 px-5 py-2.5 rounded-xl border border-white/10 text-sm font-bold uppercase tracking-wider text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-[#00C2B2]/8 hover:text-[#00C2B2] hover:border-[#00C2B2]/30 transition-all"
+                  className="shrink-0 px-5 py-2.5 rounded-xl border border-white/10 light:border-slate-300 text-sm font-bold uppercase tracking-wider text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-[#00C2B2]/8 hover:text-[#00C2B2] hover:border-[#00C2B2]/30 transition-all"
                 >
                   Apply Now
                 </Link>

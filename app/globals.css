@@ -71,12 +71,70 @@
 :root.light {
   --background: #F8FAFC;
   --foreground: #0F172A;
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(15, 23, 42, 0.07);
-  --card-hover-border: rgba(0, 194, 178, 0.4);
-  --input-bg: rgba(248, 250, 252, 1);
-  --input-border: rgba(203, 213, 225, 1);
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --card-hover-border: #00C2B2;
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
   --input-focus-border: #00C2B2;
+}
+
+/* Light mode universal contrast and box visibility overrides */
+:root.light .glass-card,
+:root.light .glass-card-static {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+}
+
+:root.light h1,
+:root.light h2,
+:root.light h3,
+:root.light h4,
+:root.light h5,
+:root.light h6 {
+  color: #0F172A !important;
+}
+
+:root.light p,
+:root.light li {
+  color: #334155 !important;
+}
+
+:root.light .text-slate-100,
+:root.light .text-slate-200,
+:root.light .text-slate-300 {
+  color: #0F172A !important;
+}
+
+:root.light .text-slate-400,
+:root.light .text-slate-500,
+:root.light .text-body,
+:root.light .text-body-sm {
+  color: #334155 !important;
+}
+
+:root.light .text-slate-450,
+:root.light .text-slate-600,
+:root.light .text-slate-700 {
+  color: #475569 !important;
+}
+
+/* Muted / transparent background containers made light */
+:root.light .bg-white\/3,
+:root.light .bg-white\/4,
+:root.light .bg-white\/5,
+:root.light .bg-white\/8,
+:root.light .bg-slate-900,
+:root.light .bg-slate-950 {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Specific text and hover fixes for light mode */
+:root.light .text-slate-400.light\:text-slate-650 {
+  color: #334155 !important;
 }
 
 @layer base {
@@ -518,10 +576,7 @@ hr.gradient-hr {
 
 /* ─── Light mode comprehensive overrides ────────────────────── */
 
-/* Headings in light mode */
-:root.light .font-display {
-  color: #111827;
-}
+
 
 /* Glass card in light mode */
 :root.light .glass-card {
@@ -581,9 +636,9 @@ hr.gradient-hr {
 }
 
 /* ─── Prevent text overflow on small screens ─────────────────── */
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6, p, span, a, li {
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
 }
 
 /* ─── Mobile-safe padding for sections ──────────────────────── */

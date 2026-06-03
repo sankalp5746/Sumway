@@ -24,7 +24,7 @@ export default function Testimonials() {
   const active = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_-10%,rgba(0,194,178,0.06),transparent)]" />
       <div className="absolute top-1/2 right-10 -translate-y-1/2 w-80 h-80 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
 
@@ -82,7 +82,7 @@ export default function Testimonials() {
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full border border-white/10 bg-white/4 text-slate-400 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -105,7 +105,7 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full border border-white/10 bg-white/4 text-slate-400 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5" />

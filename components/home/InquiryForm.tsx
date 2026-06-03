@@ -62,7 +62,7 @@ export default function InquiryForm() {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -105,7 +105,7 @@ export default function InquiryForm() {
             </div>
 
             {/* Trust indicators */}
-            <div className="mt-4 p-5 rounded-2xl bg-white/3 border border-white/6">
+            <div className="mt-4 p-5 rounded-2xl bg-white/3 light:bg-slate-100 border border-white/6 light:border-slate-200">
               <div className="text-xs font-bold text-[#00C2B2] uppercase tracking-widest mb-3">Why Contact Us?</div>
               <ul className="flex flex-col gap-2.5">
                 {[
@@ -114,7 +114,7 @@ export default function InquiryForm() {
                   "No obligation consultation",
                   "Direct access to senior directors",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2.5 text-sm text-slate-400 font-medium">
+                  <li key={item} className="flex items-center gap-2.5 text-sm text-slate-400 light:text-slate-700 font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#F5C542] shrink-0" />
                     {item}
                   </li>
@@ -125,7 +125,7 @@ export default function InquiryForm() {
 
           {/* Right: Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-7 md:p-9 relative overflow-hidden">
+            <div className="glass-card p-5 sm:p-7 md:p-9 relative overflow-hidden">
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-14 text-center">
                   <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-5">
@@ -202,7 +202,6 @@ export default function InquiryForm() {
                     <select
                       {...register("serviceInterest")}
                       className="form-input"
-                      style={{ background: "var(--input-bg)" }}
                     >
                       <option value="">Select a Department Target...</option>
                       {SERVICES.map((s) => (

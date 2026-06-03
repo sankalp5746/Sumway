@@ -50,7 +50,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <FallbackImage
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop"
+          src="/images/skyline.png"
           alt="Corporate skyline"
           fill
           className="object-cover opacity-[0.06] light:opacity-[0.04]"

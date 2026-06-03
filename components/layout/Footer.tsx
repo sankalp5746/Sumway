@@ -62,7 +62,7 @@ export default function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl border border-white/8 bg-white/4 flex items-center justify-center text-slate-400 dark:text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 hover:bg-[#F5C542]/5 transition-all hover:-translate-y-0.5"
+                className="w-9 h-9 rounded-xl border border-white/8 light:border-slate-300 bg-white/4 light:bg-slate-200 flex items-center justify-center text-slate-400 dark:text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 hover:bg-[#F5C542]/5 transition-all hover:-translate-y-0.5"
                 aria-label={`${label} Profile`}
               >
                 <Icon className="w-4 h-4" />
@@ -82,7 +82,6 @@ export default function Footer() {
               { label: "About Our Firm", href: "/company/about-us" },
               { label: "Services", href: "/services/staffing-solutions" },
               { label: "Careers & Culture", href: "/careers" },
-              { label: "Insights & Blogs", href: "/blog" },
               { label: "Contact Us", href: "/contact" },
             ].map(({ label, href }) => (
               <Link

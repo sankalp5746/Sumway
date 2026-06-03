@@ -60,19 +60,19 @@ export default function WhyChooseUsPage() {
         </div>
 
         {/* Responsive Table grid */}
-        <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#111827] shadow-2xl">
+        <div className="overflow-x-auto rounded-xl border border-slate-800 light:border-slate-300 bg-[#111827] light:bg-white shadow-2xl">
           <table className="w-full border-collapse text-left text-xs font-semibold text-slate-300">
             <thead>
-              <tr className="border-b border-slate-800 bg-[#0A0F1E] font-display font-extrabold text-[#00C2B2] uppercase tracking-wider text-[10px]">
+              <tr className="border-b border-slate-800 light:border-slate-300 bg-[#0A0F1E] light:bg-slate-100 font-display font-extrabold text-[#00C2B2] uppercase tracking-wider text-[10px]">
                 <th className="p-4 md:p-6">Parameter</th>
                 <th className="p-4 md:p-6 text-center text-[#F5C542]">Sumway Global</th>
                 <th className="p-4 md:p-6 text-center">Standard Agencies</th>
                 <th className="p-4 md:p-6 hidden md:table-cell">Delivered Advantage</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/80 leading-relaxed">
+            <tbody className="divide-y divide-slate-800/80 light:divide-slate-200 leading-relaxed">
               {comparisonData.map((row) => (
-                <tr key={row.parameter} className="hover:bg-white/5 transition-colors">
+                <tr key={row.parameter} className="hover:bg-white/5 light:hover:bg-slate-50 transition-colors">
                   <td className="p-4 md:p-6 text-slate-200 dark:text-slate-200 light:text-slate-800 uppercase text-[10px] md:text-xs">
                     {row.parameter}
                   </td>
@@ -89,7 +89,7 @@ export default function WhyChooseUsPage() {
                   </td>
                   <td className="p-4 md:p-6 text-center">
                     {row.others ? (
-                      <div className="inline-flex w-7 h-7 rounded-full bg-white/5 border border-slate-800 items-center justify-center text-slate-500">
+                      <div className="inline-flex w-7 h-7 rounded-full bg-white/5 light:bg-slate-100 border border-slate-800 light:border-slate-300 items-center justify-center text-slate-500">
                         <Check className="w-4 h-4" />
                       </div>
                     ) : (

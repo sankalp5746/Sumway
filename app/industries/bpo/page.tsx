@@ -3,6 +3,7 @@
 import React from "react";
 import { AlertOctagon, CheckCircle2, Headphones, Activity, ShieldAlert, ArrowRight } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
+import FallbackImage from "@/components/shared/FallbackImage";
 import { useAppStore } from "@/lib/store";
 
 export default function BPOIndustry() {
@@ -10,8 +11,8 @@ export default function BPOIndustry() {
 
   return (
     <div className="bg-transparent transition-colors duration-400">
-      <PageHero 
-        title="BPO & Customer Care" 
+      <PageHero
+        title="BPO & Customer Care"
         subtitle="Operational voice and chat desk systems delivering 24/7 client happiness."
       />
 
@@ -79,33 +80,45 @@ export default function BPOIndustry() {
               </li>
             </ul>
           </div>
-          
-          <div className="lg:col-span-6 glass-card p-8 flex flex-col gap-6">
-            <h3 className="font-display font-bold text-sm text-[#F5C542] uppercase tracking-wide">
-              Voice & Chat Case Study
-            </h3>
-            <div className="flex flex-col gap-3 text-xs leading-relaxed">
-              <div className="p-3 bg-red-500/5 border border-red-500/10 rounded-lg">
-                <span className="text-[9px] font-bold text-red-400 uppercase">Client Challenge</span>
-                <p className="text-slate-400 mt-1 italic font-medium">&ldquo;High call drops during peak retail sales drove support scores down.&rdquo;</p>
-              </div>
-              <div className="p-3 bg-[#00C2B2]/5 border border-[#00C2B2]/10 rounded-lg">
-                <span className="text-[9px] font-bold text-[#00C2B2] uppercase">Sumway Strategy</span>
-                <p className="text-slate-400 mt-1 font-medium">Deployed an active team of 18 pre-screened helpdesk associates handling rotational shifts.</p>
-              </div>
-              <div className="p-3 bg-[#F5C542]/5 border border-[#F5C542]/10 rounded-lg">
-                <span className="text-[9px] font-bold text-[#F5C542] uppercase">Delivered Result</span>
-                <p className="text-slate-300 font-bold">Queue time reduced to &lt;45s; customer support scores rose to 4.8/5 stars.</p>
-              </div>
+
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            <div className="relative w-full h-52 rounded-2xl overflow-hidden border border-white/6 light:border-slate-300 shadow-xl">
+              <FallbackImage
+                src="/images/bpo.png"
+                alt="BPO Operations Hub"
+                fill
+                className="object-cover"
+                fallbackLabel="BPO Operations Desk"
+              />
             </div>
-            
-            <button
-              onClick={() => openEnquiry("BPO Operations Desk")}
-              className="w-full flex items-center justify-center gap-2 mt-2 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer"
-            >
-              <span>Setup BPO Desk</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+
+            <div className="glass-card p-8 flex flex-col gap-6">
+              <h3 className="font-display font-bold text-sm text-[#F5C542] uppercase tracking-wide">
+                Voice & Chat Case Study
+              </h3>
+              <div className="flex flex-col gap-3 text-xs leading-relaxed">
+                <div className="p-3 bg-red-500/5 border border-red-500/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-red-400 uppercase">Client Challenge</span>
+                  <p className="text-slate-400 mt-1 italic font-medium">&ldquo;High call drops during peak retail sales drove support scores down.&rdquo;</p>
+                </div>
+                <div className="p-3 bg-[#00C2B2]/5 border border-[#00C2B2]/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-[#00C2B2] uppercase">Sumway Strategy</span>
+                  <p className="text-slate-400 mt-1 font-medium">Deployed an active team of 18 pre-screened helpdesk associates handling rotational shifts.</p>
+                </div>
+                <div className="p-3 bg-[#F5C542]/5 border border-[#F5C542]/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-[#F5C542] uppercase">Delivered Result</span>
+                  <p className="text-slate-300 font-bold">Queue time reduced to &lt;45s; customer support scores rose to 4.8/5 stars.</p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => openEnquiry("BPO Operations Desk")}
+                className="w-full flex items-center justify-center gap-2 mt-2 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>Setup BPO Desk</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

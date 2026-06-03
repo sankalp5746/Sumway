@@ -44,7 +44,7 @@ const keyPoints = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -86,17 +86,17 @@ export default function WhyChooseUs() {
         </div>
 
         {/* CTA strip */}
-        <div className="mt-14 bg-gradient-to-r from-[#0c1220] via-[#111827] to-[#0c1220] border border-white/6 p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="mt-14 bg-gradient-to-r from-[#0c1220] via-[#111827] to-[#0c1220] light:from-slate-100 light:via-white light:to-slate-100 border border-white/6 light:border-slate-300 p-8 md:p-10 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(0,194,178,0.05),transparent_50%)]" />
 
           <div className="flex flex-col gap-2 relative z-10">
             <span className="text-xs font-bold uppercase tracking-widest text-[#00C2B2]">
               Corporate Policy Standards
             </span>
-            <h4 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 light:text-[#111827] uppercase">
+            <h4 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 uppercase">
               Looking for a custom strategic partnership?
             </h4>
-            <p className="text-body-sm mt-1">
+            <p className="text-xs text-slate-400 mt-1">
               We engineer personalized operations frameworks tailored specifically to your budgetary and compliance bounds.
             </p>
           </div>

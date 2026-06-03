@@ -7,7 +7,15 @@ import {
   AlertTriangle, CheckSquare, ArrowRight, ArrowUpRight 
 } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
+import FallbackImage from "@/components/shared/FallbackImage";
 import { useAppStore } from "@/lib/store";
+
+const solutionImages: { [key: string]: string } = {
+  "workforce-management": "/images/team.png",
+  "bpo-hiring": "/images/bpo.png",
+  "business-support": "/images/skyline.png",
+  "digital-transformation": "/images/it.png"
+};
 
 const iconMap: { [key: string]: any } = {
   Clock, PhoneCall, ShieldCheck, TrendingUp
@@ -174,6 +182,16 @@ export default function SolutionDetail({ params }: PageProps) {
 
           {/* Right Column: KPI Cards */}
           <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="relative w-full h-52 rounded-2xl overflow-hidden border border-white/6 light:border-slate-300 shadow-xl mb-2">
+              <FallbackImage
+                src={solutionImages[id] || "/images/skyline.png"}
+                alt={data.title}
+                fill
+                className="object-cover"
+                fallbackLabel={data.title}
+              />
+            </div>
+
             <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase text-center lg:text-left">
               Expected Performance Metrics
             </span>

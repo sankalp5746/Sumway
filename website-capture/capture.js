@@ -12,7 +12,6 @@ const fs = require('fs');
   const urls = [
     'http://localhost:3000',
     'http://localhost:3000/company/about-us',
-    'http://localhost:3000/company/leadership-team',
     'http://localhost:3000/company/mission-vision',
     'http://localhost:3000/company/why-choose-us',
     'http://localhost:3000/services/staffing-solutions',

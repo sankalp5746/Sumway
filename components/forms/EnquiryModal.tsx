@@ -83,13 +83,13 @@ export default function EnquiryModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 24 }}
             transition={{ type: "spring", duration: 0.45 }}
-            className="relative w-full max-w-lg overflow-hidden rounded-2xl bg-[#0f1729] dark:bg-[#0f1729] light:bg-white border border-white/10 p-7 md:p-8 shadow-[0_24px_80px_rgba(0,0,0,0.6)] z-10"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0f1729] dark:bg-[#0f1729] light:bg-white border border-white/10 light:border-slate-200 p-5 sm:p-7 md:p-8 shadow-[0_24px_80px_rgba(0,0,0,0.6)] light:shadow-[0_20px_60px_rgba(0,0,0,0.08)] z-10"
           >
             {/* Close */}
             <button
               disabled={isSubmitting}
               onClick={closeEnquiry}
-              className="absolute top-4 right-4 p-2 rounded-xl border border-white/8 bg-white/4 hover:text-[#F5C542] hover:border-[#F5C542]/25 text-slate-400 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-xl border border-white/8 bg-white/4 light:border-slate-300 light:bg-slate-100 hover:text-[#F5C542] hover:border-[#F5C542]/25 text-slate-400 light:text-slate-600 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -163,7 +163,6 @@ export default function EnquiryModal() {
                     <select
                       {...register("serviceInterest")}
                       className="form-input"
-                      style={{ background: "#0f1729" }}
                     >
                       <option value="">Select a Service...</option>
                       {SERVICES.map((s) => (

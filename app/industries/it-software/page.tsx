@@ -3,6 +3,7 @@
 import React from "react";
 import { AlertTriangle, CheckCircle2, Laptop, Code, Cpu, ShieldAlert, ArrowRight } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
+import FallbackImage from "@/components/shared/FallbackImage";
 import { useAppStore } from "@/lib/store";
 
 export default function ITSoftwareIndustry() {
@@ -10,8 +11,8 @@ export default function ITSoftwareIndustry() {
 
   return (
     <div className="bg-transparent transition-colors duration-400">
-      <PageHero 
-        title="IT & Software Development" 
+      <PageHero
+        title="IT & Software Development"
         subtitle="Modern cloud architectures, React/Next.js systems, and full-stack software development."
       />
 
@@ -80,32 +81,44 @@ export default function ITSoftwareIndustry() {
             </ul>
           </div>
 
-          <div className="lg:col-span-6 glass-card p-8 flex flex-col gap-6">
-            <h3 className="font-display font-bold text-sm text-[#F5C542] uppercase tracking-wide">
-              Software Transformation Case Study
-            </h3>
-            <div className="flex flex-col gap-3 text-xs leading-relaxed">
-              <div className="p-3 bg-red-500/5 border border-red-500/10 rounded-lg">
-                <span className="text-[9px] font-bold text-red-400 uppercase">Client Challenge</span>
-                <p className="text-slate-400 mt-1 italic font-medium">&ldquo;Inability to recruit React developers delayed core SaaS product roadmap.&rdquo;</p>
-              </div>
-              <div className="p-3 bg-[#00C2B2]/5 border border-[#00C2B2]/10 rounded-lg">
-                <span className="text-[9px] font-bold text-[#00C2B2] uppercase">Sumway Strategy</span>
-                <p className="text-slate-400 mt-1 font-medium">Assigned a vetted team of 4 full-stack TypeScript engineers using agile sprints.</p>
-              </div>
-              <div className="p-3 bg-[#F5C542]/5 border border-[#F5C542]/10 rounded-lg">
-                <span className="text-[9px] font-bold text-[#F5C542] uppercase">Delivered Result</span>
-                <p className="text-slate-300 font-bold">Successfully deployed 4 key SaaS modules; cut hiring and operational budgets by 45%.</p>
-              </div>
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            <div className="relative w-full h-52 rounded-2xl overflow-hidden border border-white/6 light:border-slate-300 shadow-xl">
+              <FallbackImage
+                src="/images/it.png"
+                alt="IT & Software Hub"
+                fill
+                className="object-cover"
+                fallbackLabel="IT & Software Development"
+              />
             </div>
 
-            <button
-              onClick={() => openEnquiry("IT & Software Outsourcing")}
-              className="w-full flex items-center justify-center gap-2 mt-2 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer"
-            >
-              <span>Partner for IT Dev</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="glass-card p-8 flex flex-col gap-6">
+              <h3 className="font-display font-bold text-sm text-[#F5C542] uppercase tracking-wide">
+                Software Transformation Case Study
+              </h3>
+              <div className="flex flex-col gap-3 text-xs leading-relaxed">
+                <div className="p-3 bg-red-500/5 border border-red-500/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-red-400 uppercase">Client Challenge</span>
+                  <p className="text-slate-400 mt-1 italic font-medium">&ldquo;Inability to recruit React developers delayed core SaaS product roadmap.&rdquo;</p>
+                </div>
+                <div className="p-3 bg-[#00C2B2]/5 border border-[#00C2B2]/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-[#00C2B2] uppercase">Sumway Strategy</span>
+                  <p className="text-slate-400 mt-1 font-medium">Assigned a vetted team of 4 full-stack TypeScript engineers using agile sprints.</p>
+                </div>
+                <div className="p-3 bg-[#F5C542]/5 border border-[#F5C542]/10 rounded-lg">
+                  <span className="text-[9px] font-bold text-[#F5C542] uppercase">Delivered Result</span>
+                  <p className="text-slate-300 font-bold">Successfully deployed 4 key SaaS modules; cut hiring and operational budgets by 45%.</p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => openEnquiry("IT & Software Outsourcing")}
+                className="w-full flex items-center justify-center gap-2 mt-2 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>Partner for IT Dev</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

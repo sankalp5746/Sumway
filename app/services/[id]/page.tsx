@@ -2,10 +2,19 @@
 
 import React, { use } from "react";
 import { notFound } from "next/navigation";
+import FallbackImage from "@/components/shared/FallbackImage";
 import { 
   Users, Briefcase, GraduationCap, Laptop, Headphones, 
   CheckCircle2, ArrowRight, HelpCircle, ChevronDown 
 } from "lucide-react";
+
+const serviceImages: { [key: string]: string } = {
+  "staffing-solutions": "/images/team.png",
+  "rpo": "/images/team.png",
+  "internship": "/images/skill.png",
+  "web-development-graphic": "/images/it.png",
+  "support-services": "/images/bpo.png"
+};
 import PageHero from "@/components/shared/PageHero";
 import { useAppStore } from "@/lib/store";
 
@@ -203,28 +212,40 @@ export default function ServiceDetail({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-[#111827] dark:bg-[#111827] light:bg-white border border-[#F5C542]/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-80 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#00C2B2]/10 to-transparent rounded-bl-full group-hover:scale-110 transition-transform" />
-            <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0 border border-[#00C2B2]/20">
-              <IconComp className="w-6 h-6 animate-pulse" />
-            </div>
-            
-            <div className="flex flex-col gap-2 mt-6">
-              <h3 className="font-display font-extrabold text-sm text-slate-100 uppercase tracking-wide">
-                SUMWAY SLA ASSURANCE
-              </h3>
-              <p className="text-[10px] text-slate-400 leading-relaxed">
-                Every BPO assistant, custom developer or RPO desk deployed runs under rigorous corporate supervision directly from our Jaipur Stock Exchange offices.
-              </p>
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-white/6 light:border-slate-300 shadow-xl">
+              <FallbackImage
+                src={serviceImages[id] || "/images/team.png"}
+                alt={data.title}
+                fill
+                className="object-cover"
+                fallbackLabel={data.title}
+              />
             </div>
 
-            <button 
-              onClick={() => openEnquiry(`${data.title} Request`)}
-              className="w-full flex items-center justify-center gap-1.5 mt-6 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer shadow-[0_4px_14px_rgba(245,197,66,0.2)]"
-            >
-              <span>Request Custom Proposal</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <div className="bg-[#111827] dark:bg-[#111827] light:bg-white border border-[#F5C542]/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#00C2B2]/10 to-transparent rounded-bl-full group-hover:scale-110 transition-transform" />
+              <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0 border border-[#00C2B2]/20">
+                <IconComp className="w-6 h-6 animate-pulse" />
+              </div>
+              
+              <div className="flex flex-col gap-2 mt-6">
+                <h3 className="font-display font-extrabold text-sm text-slate-100 uppercase tracking-wide">
+                  SUMWAY SLA ASSURANCE
+                </h3>
+                <p className="text-[10px] text-slate-400 leading-relaxed">
+                  Every BPO assistant, custom developer or RPO desk deployed runs under rigorous corporate supervision directly from our Jaipur Stock Exchange offices.
+                </p>
+              </div>
+
+              <button 
+                onClick={() => openEnquiry(`${data.title} Request`)}
+                className="w-full flex items-center justify-center gap-1.5 mt-6 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer shadow-[0_4px_14px_rgba(245,197,66,0.2)]"
+              >
+                <span>Request Custom Proposal</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

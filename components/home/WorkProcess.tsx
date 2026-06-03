@@ -45,7 +45,7 @@ const steps = [
 
 export default function WorkProcess() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-transparent border-t border-white/5">
+    <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
@@ -73,7 +73,7 @@ export default function WorkProcess() {
                 >
                   {/* Circle */}
                   <div
-                    className="w-20 h-20 rounded-full bg-[#0c1220] border-2 flex items-center justify-center shadow-xl relative transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(245,197,66,0.25)]"
+                    className="w-20 h-20 rounded-full bg-[#0c1220] light:bg-slate-100 border-2 flex items-center justify-center shadow-xl relative transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(245,197,66,0.25)]"
                     style={{ borderColor: `${step.color}30` }}
                   >
                     {/* Step number badge */}

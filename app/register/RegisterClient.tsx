@@ -69,14 +69,16 @@ export default function RegisterClient() {
 
       if (response.ok) {
         setIsSuccess(true);
-        login({
+        const userObj = {
           name: data.name,
           email: data.email,
           role: data.role,
           companyName: data.companyName,
           skills: data.skills,
           businessType: data.businessType
-        });
+        };
+        localStorage.setItem("sumway_user", JSON.stringify(userObj));
+        login(userObj);
         setTimeout(() => {
           router.push("/");
         }, 2000);
@@ -157,7 +159,7 @@ export default function RegisterClient() {
                   </div>
 
                   {/* Multi-role tab controls */}
-                  <div className="flex justify-between gap-1 p-1 bg-[#0A0F1E] rounded-lg border border-slate-800 mb-6 text-[9px] font-bold uppercase tracking-wider">
+                  <div className="flex justify-between gap-1 p-1 bg-[#0A0F1E] light:bg-slate-100 rounded-lg border border-slate-800 light:border-slate-300 mb-6 text-[9px] font-bold uppercase tracking-wider">
                     {(["client", "candidate", "vendor"] as const).map((r) => {
                       const isSelected = activeRole === r;
                       return (
@@ -168,7 +170,7 @@ export default function RegisterClient() {
                           className={`flex-1 text-center py-2.5 rounded transition-all cursor-pointer ${
                             isSelected 
                               ? "bg-[#00C2B2] text-[#0A0F1E]" 
-                              : "text-slate-500 hover:text-slate-300"
+                              : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#F5C542]"
                           }`}
                         >
                           {r}

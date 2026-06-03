@@ -20,7 +20,7 @@ export default function HeroBanner() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <FallbackImage
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920&auto=format&fit=crop"
+          src="/images/hero.png"
           alt="Modern corporate office workspace"
           fill
           className="object-cover opacity-20 light:opacity-10"

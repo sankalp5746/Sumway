@@ -28,13 +28,8 @@ export const NAV_LINKS = [
     href: "#",
     children: [
       { label: "About Us", href: "/company/about-us", desc: "Our journey, milestones and corporate profile" },
-      { label: "Mission & Vision", href: "/company/mission-vision", desc: "What drives our dedication to excellence" },
-      { label: "Who We Are", href: "/company/who-we-are", desc: "Our corporate culture and business foundation" },
       { label: "What We Do", href: "/company/what-we-do", desc: "Strategic staffing, tech and business operations" },
-      { label: "Leadership Team", href: "/company/leadership-team", desc: "Meet the executive board steering global growth" },
-      { label: "Why Choose Us", href: "/company/why-choose-us", desc: "Our unique enterprise advantages and comparison" },
-      { label: "Client Portfolio", href: "/company/client-portfolio", desc: "Brands that trust Sumway Global for recruitment" },
-      { label: "CSR Activities", href: "/company/csr", desc: "Giving back and sustainable corporate governance" }
+      { label: "Why Choose Us", href: "/company/why-choose-us", desc: "Our unique enterprise advantages and comparison" }
     ]
   },
   {
@@ -69,7 +64,6 @@ export const NAV_LINKS = [
     ]
   },
   { label: "Careers", href: "/careers" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" }
 ];
 
@@ -165,7 +159,7 @@ export const INDUSTRIES = [
     href: "/industries/bpo",
     stats: "24/7 Operations",
     desc: "Back-office operations, voice, chat and helpdesk support services delivering global excellence.",
-    image: "https://images.unsplash.com/photo-1521791136364-7286472b6458?q=80&w=600&auto=format&fit=crop"
+    image: "/images/bpo.png"
   },
   {
     id: "it",
@@ -173,7 +167,7 @@ export const INDUSTRIES = [
     href: "/industries/it-software",
     stats: "React, Next.js, Cloud",
     desc: "Outsourced product engineering, app development, database configuration and security.",
-    image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop"
+    image: "/images/it.png"
   },
   {
     id: "digital",
@@ -181,7 +175,7 @@ export const INDUSTRIES = [
     href: "/industries/digital-marketing",
     stats: "300%+ ROI Growth",
     desc: "Elevating brands through robust SEO practices, creative visual assets, and pay-per-click ad systems.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop"
+    image: "/images/marketing.png"
   },
   {
     id: "skill",
@@ -189,7 +183,7 @@ export const INDUSTRIES = [
     href: "/industries/skill-development",
     stats: "98% Placement Rate",
     desc: "Empowering university graduates and career shifters with industry-vetted job training modules.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=600&auto=format&fit=crop"
+    image: "/images/skill.png"
   }
 ];
 

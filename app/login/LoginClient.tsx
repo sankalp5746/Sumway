@@ -53,16 +53,23 @@ export default function LoginClient() {
 
       if (response.ok) {
         setIsSuccess(true);
-        login({
+        const userObj = {
           name: data.email.split("@")[0].toUpperCase(),
           email: data.email,
           role: data.role
-        });
+        };
+        localStorage.setItem("sumway_user", JSON.stringify(userObj));
+        login(userObj);
         setTimeout(() => {
-          router.push("/");
+          if (data.role === "admin") {
+            router.push("/admin");
+          } else {
+            router.push("/");
+          }
         }, 2000);
       } else {
-        alert("Authentication failed. Please verify credentials.");
+        const errData = await response.json().catch(() => ({}));
+        alert(errData.error || "Authentication failed. Please verify credentials.");
       }
     } catch (err) {
       console.error(err);
@@ -138,7 +145,7 @@ export default function LoginClient() {
                   </div>
 
                   {/* Multi-role tab controls */}
-                  <div className="flex flex-wrap justify-between gap-1 p-1.5 bg-[#080d1a] rounded-xl border border-white/6 mb-6 text-xs font-bold uppercase tracking-wider">
+                  <div className="flex flex-wrap justify-between gap-1 p-1.5 bg-[#080d1a] light:bg-slate-100 rounded-xl border border-white/6 light:border-slate-300 mb-6 text-xs font-bold uppercase tracking-wider">
                     {(["client", "candidate", "vendor", "admin"] as const).map((r) => {
                       const isSelected = activeRole === r;
                       return (
@@ -149,7 +156,7 @@ export default function LoginClient() {
                           className={`flex-1 text-center py-2.5 rounded-lg transition-all cursor-pointer ${
                             isSelected
                               ? "bg-[#F5C542] text-[#0A0F1E] shadow-md"
-                              : "text-slate-500 hover:text-slate-300"
+                              : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#00C2B2]"
                           }`}
                         >
                           {r}
