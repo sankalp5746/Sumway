@@ -93,7 +93,7 @@ export default function Navbar() {
       <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled || mobileMenuOpen
-          ? "bg-[#0A0F1E]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/8 light:border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.25)] py-2"
+          ? "bg-[#0A1128]/95 light:bg-white/95 backdrop-blur-xl border-b border-white/8 light:border-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.25)] py-2"
           : "bg-transparent py-4"
       }`}
     >
@@ -101,7 +101,7 @@ export default function Navbar() {
 
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="relative w-9 h-9 overflow-hidden bg-white rounded-full flex items-center justify-center p-1 border border-[#F5C542]/20 shadow-md shrink-0">
+          <div className="relative w-9 h-9 overflow-hidden bg-white rounded-full flex items-center justify-center p-1 border border-[#FF555F]/20 shadow-md shrink-0">
             <Image
               src="/images/logo.png"
               alt="Sumway Global Logo"
@@ -111,10 +111,10 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col leading-none">
-            <span className="font-display font-extrabold text-sm tracking-wider text-slate-100 light:text-[#0F172A] group-hover:text-[#F5C542] transition-colors whitespace-nowrap">
+            <span className="font-display font-extrabold text-sm tracking-wider text-slate-100 light:text-[#0F172A] group-hover:text-[#FF555F] transition-colors whitespace-nowrap">
               SUMWAY GLOBAL
             </span>
-            <span className="text-[9px] font-semibold text-[#00C2B2] tracking-[0.15em] uppercase mt-0.5 whitespace-nowrap">
+            <span className="text-[9px] font-semibold text-[#4AABCA] tracking-[0.15em] uppercase mt-0.5 whitespace-nowrap">
               MANAGEMENT
             </span>
           </div>
@@ -139,8 +139,8 @@ export default function Navbar() {
                   <button
                     className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer whitespace-nowrap ${
                       isActive
-                        ? "text-[#F5C542]"
-                        : "text-slate-300 light:text-slate-700 hover:text-[#F5C542] hover:bg-white/5 light:hover:bg-slate-100"
+                        ? "text-[#FF555F]"
+                        : "text-slate-300 light:text-slate-700 hover:text-[#FF555F] hover:bg-white/5 light:hover:bg-slate-100"
                     }`}
                   >
                     {link.label}
@@ -172,16 +172,16 @@ export default function Navbar() {
                               href={child.href}
                               className={`flex gap-3 p-2.5 rounded-xl transition-all group ${
                                 isChildActive
-                                  ? "bg-[#F5C542]/10 border border-[#F5C542]/20"
+                                  ? "bg-[#FF555F]/10 border border-[#FF555F]/20"
                                   : "hover:bg-white/5 light:hover:bg-slate-50 border border-transparent hover:border-white/8 light:hover:border-slate-200"
                               }`}
                             >
-                              <div className="w-8 h-8 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0 mt-0.5">
+                              <div className="w-8 h-8 rounded-lg bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0 mt-0.5">
                                 {IconComp ? <IconComp className="w-4 h-4" /> : <Building className="w-4 h-4" />}
                               </div>
                               <div className="flex flex-col min-w-0">
                                 <span className={`text-sm font-semibold transition-colors ${
-                                  isChildActive ? "text-[#F5C542]" : "text-slate-200 light:text-slate-800 group-hover:text-[#F5C542]"
+                                  isChildActive ? "text-[#FF555F]" : "text-slate-200 light:text-slate-800 group-hover:text-[#FF555F]"
                                 }`}>
                                   {child.label}
                                 </span>
@@ -207,15 +207,15 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                   isActive
-                    ? "text-[#F5C542]"
-                    : "text-slate-300 light:text-slate-700 hover:text-[#F5C542] hover:bg-white/5 light:hover:bg-slate-100"
+                    ? "text-[#FF555F]"
+                    : "text-slate-300 light:text-slate-700 hover:text-[#FF555F] hover:bg-white/5 light:hover:bg-slate-100"
                 }`}
               >
                 {link.label}
                 {isActive && (
                   <motion.span
                     layoutId="activeUnderline"
-                    className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#F5C542] rounded-full"
+                    className="absolute bottom-1 left-3 right-3 h-0.5 bg-[#FF555F] rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -228,7 +228,7 @@ export default function Navbar() {
         <div className="hidden xl:flex items-center gap-2 shrink-0">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-xl border border-white/8 light:border-slate-200 hover:border-[#F5C542]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#F5C542] transition-all text-slate-400 light:text-slate-600"
+            className="p-2 rounded-xl border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600"
             aria-label="Toggle Theme"
           >
             {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
@@ -239,12 +239,12 @@ export default function Navbar() {
               {user.role === "admin" && (
                 <Link
                   href="/admin"
-                  className="text-xs font-bold uppercase tracking-wider text-[#F5C542] hover:text-[#F5C542]/85 transition-colors px-1 whitespace-nowrap"
+                  className="text-xs font-bold uppercase tracking-wider text-[#FF555F] hover:text-[#FF555F]/85 transition-colors px-1 whitespace-nowrap"
                 >
                   Dashboard
                 </Link>
               )}
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#00C2B2]/20 bg-[#00C2B2]/5 text-[#00C2B2] shrink-0 text-xs font-bold uppercase tracking-wider">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#4AABCA]/20 bg-[#4AABCA]/5 text-[#4AABCA] shrink-0 text-xs font-bold uppercase tracking-wider">
                 <span>{user.name}</span>
                 <span className="opacity-50 text-[9px] lowercase px-1 py-0.5 rounded bg-white/10">{user.role}</span>
               </div>
@@ -258,7 +258,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors px-2 whitespace-nowrap"
+              className="text-sm font-semibold text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors px-2 whitespace-nowrap"
             >
               Login
             </Link>
@@ -284,7 +284,7 @@ export default function Navbar() {
                 key={label}
                 href={link.href || "#"}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
-                  isActive ? "text-[#F5C542]" : "text-slate-300 light:text-slate-700 hover:text-[#F5C542]"
+                  isActive ? "text-[#FF555F]" : "text-slate-300 light:text-slate-700 hover:text-[#FF555F]"
                 }`}
               >
                 {label}
@@ -326,8 +326,8 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: "100%" }}
           transition={{ type: "tween", duration: 0.28 }}
-          style={{ backgroundColor: isLight ? "#ffffff" : "#0A0F1E", zIndex: 49 }}
-          className="fixed top-[52px] left-0 right-0 bottom-0 bg-[#0A0F1E] light:bg-white border-t border-white/5 light:border-slate-200 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
+          style={{ backgroundColor: isLight ? "#ffffff" : "#0A1128", zIndex: 49 }}
+          className="fixed top-[52px] left-0 right-0 bottom-0 bg-[#0A1128] light:bg-white border-t border-white/5 light:border-slate-200 p-6 overflow-y-auto flex flex-col justify-between lg:hidden"
         >
             <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => {
@@ -338,22 +338,22 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-lg font-semibold text-slate-200 light:text-slate-800 hover:text-[#F5C542] transition-colors py-1.5 border-b border-white/5 light:border-slate-100"
+                        className="text-lg font-semibold text-slate-200 light:text-slate-800 hover:text-[#FF555F] transition-colors py-1.5 border-b border-white/5 light:border-slate-100"
                       >
                         {link.label}
                       </Link>
                     ) : (
                       <div className="flex flex-col gap-2">
-                        <span className="text-xs font-bold uppercase tracking-widest text-[#00C2B2] py-1.5 border-b border-white/5 light:border-slate-100">
+                        <span className="text-xs font-bold uppercase tracking-widest text-[#4AABCA] py-1.5 border-b border-white/5 light:border-slate-100">
                           {link.label}
                         </span>
-                        <div className="grid grid-cols-2 gap-2 pl-3 border-l-2 border-[#F5C542]/20">
+                        <div className="grid grid-cols-2 gap-2 pl-3 border-l-2 border-[#FF555F]/20">
                           {link.children?.map((child) => (
                             <Link
                               key={child.label}
                               href={child.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className="text-sm text-slate-400 light:text-slate-600 hover:text-[#F5C542] py-1 transition-colors"
+                              className="text-sm text-slate-400 light:text-slate-600 hover:text-[#FF555F] py-1 transition-colors"
                             >
                               {child.label}
                             </Link>
@@ -369,7 +369,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-3 mt-8 border-t border-white/5 light:border-slate-200 pt-6">
               {mounted && user ? (
                 <div className="flex flex-col gap-3">
-                  <div className="flex items-center justify-between px-4 py-3 rounded-xl border border-[#00C2B2]/20 bg-[#00C2B2]/5 text-[#00C2B2] text-sm font-bold uppercase tracking-wider">
+                  <div className="flex items-center justify-between px-4 py-3 rounded-xl border border-[#4AABCA]/20 bg-[#4AABCA]/5 text-[#4AABCA] text-sm font-bold uppercase tracking-wider">
                     <span>{user.name}</span>
                     <span className="opacity-50 text-[10px] lowercase px-1.5 py-0.5 rounded bg-white/10">{user.role}</span>
                   </div>
@@ -377,7 +377,7 @@ export default function Navbar() {
                     <Link
                       href="/admin"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full text-center py-3 rounded-xl border border-[#F5C542]/20 bg-[#F5C542]/5 text-sm font-semibold text-[#F5C542] hover:bg-[#F5C542]/10 transition-colors"
+                      className="w-full text-center py-3 rounded-xl border border-[#FF555F]/20 bg-[#FF555F]/5 text-sm font-semibold text-[#FF555F] hover:bg-[#FF555F]/10 transition-colors"
                     >
                       Admin Dashboard
                     </Link>

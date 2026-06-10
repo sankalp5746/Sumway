@@ -55,15 +55,15 @@ export default function InquiryForm() {
   };
 
   const contactItems = [
-    { icon: MapPin, label: "Headquarters", value: COMPANY_DETAILS.address, href: undefined, color: "#F5C542" },
-    { icon: Phone, label: "Phone", value: COMPANY_DETAILS.phoneDisplay, href: `tel:${COMPANY_DETAILS.phone}`, color: "#00C2B2" },
-    { icon: Mail, label: "Email", value: COMPANY_DETAILS.email, href: `mailto:${COMPANY_DETAILS.email}`, color: "#00C2B2" },
+    { icon: MapPin, label: "Headquarters", value: COMPANY_DETAILS.address, href: undefined, color: "#FF555F" },
+    { icon: Phone, label: "Phone", value: COMPANY_DETAILS.phoneDisplay, href: `tel:${COMPANY_DETAILS.phone}`, color: "#4AABCA" },
+    { icon: Mail, label: "Email", value: COMPANY_DETAILS.email, href: `mailto:${COMPANY_DETAILS.email}`, color: "#4AABCA" },
     { icon: Clock, label: "Office Hours", value: COMPANY_DETAILS.hours, href: undefined, color: "#64748b" },
   ];
 
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#4AABCA]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
@@ -90,7 +90,7 @@ export default function InquiryForm() {
                     {href ? (
                       <a
                         href={href}
-                        className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-[#F5C542] transition-colors mt-0.5 block leading-relaxed"
+                        className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors mt-0.5 block leading-relaxed"
                       >
                         {value}
                       </a>
@@ -106,7 +106,7 @@ export default function InquiryForm() {
 
             {/* Trust indicators */}
             <div className="mt-4 p-5 rounded-2xl bg-white/3 light:bg-slate-100 border border-white/6 light:border-slate-200">
-              <div className="text-xs font-bold text-[#00C2B2] uppercase tracking-widest mb-3">Why Contact Us?</div>
+              <div className="text-xs font-bold text-[#4AABCA] uppercase tracking-widest mb-3">Why Contact Us?</div>
               <ul className="flex flex-col gap-2.5">
                 {[
                   "Response within 24 business hours",
@@ -115,7 +115,7 @@ export default function InquiryForm() {
                   "Direct access to senior directors",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2.5 text-sm text-slate-400 light:text-slate-700 font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5C542] shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF555F] shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -128,7 +128,7 @@ export default function InquiryForm() {
             <div className="glass-card p-5 sm:p-7 md:p-9 relative overflow-hidden">
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-14 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-5">
+                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-5">
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
                   <h3 className="font-display font-bold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
@@ -143,7 +143,7 @@ export default function InquiryForm() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Full Name <span className="text-[#F5C542]">*</span>
+                        Full Name <span className="text-[#FF555F]">*</span>
                       </label>
                       <input
                         {...register("name")}
@@ -156,7 +156,7 @@ export default function InquiryForm() {
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Phone Number <span className="text-[#F5C542]">*</span>
+                        Phone Number <span className="text-[#FF555F]">*</span>
                       </label>
                       <input
                         {...register("phone")}
@@ -172,7 +172,7 @@ export default function InquiryForm() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Email Address <span className="text-[#F5C542]">*</span>
+                        Email Address <span className="text-[#FF555F]">*</span>
                       </label>
                       <input
                         {...register("email")}
@@ -197,7 +197,7 @@ export default function InquiryForm() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                      Service of Interest <span className="text-[#F5C542]">*</span>
+                      Service of Interest <span className="text-[#FF555F]">*</span>
                     </label>
                     <select
                       {...register("serviceInterest")}
@@ -220,7 +220,7 @@ export default function InquiryForm() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                      Detailed Requirements <span className="text-[#F5C542]">*</span>
+                      Detailed Requirements <span className="text-[#FF555F]">*</span>
                     </label>
                     <textarea
                       {...register("message")}

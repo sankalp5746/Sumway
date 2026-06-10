@@ -45,7 +45,7 @@ const keyPoints = [
 export default function WhyChooseUs() {
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-80 h-80 rounded-full bg-[#FF555F]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
@@ -66,14 +66,14 @@ export default function WhyChooseUs() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="glass-card p-7 flex flex-col gap-4 group relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#F5C542]/5 to-transparent rounded-bl-full group-hover:scale-125 transition-transform duration-500" />
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#FF555F]/5 to-transparent rounded-bl-full group-hover:scale-125 transition-transform duration-500" />
 
                 <div className="icon-box-gold">
                   <Icon className="w-5 h-5" />
                 </div>
 
                 <div>
-                  <h3 className="font-display font-bold text-lg text-slate-100 light:text-[#111827] group-hover:text-[#F5C542] transition-colors uppercase">
+                  <h3 className="font-display font-bold text-lg text-slate-100 light:text-[#111827] group-hover:text-[#FF555F] transition-colors uppercase">
                     {point.title}
                   </h3>
                   <p className="text-body-sm mt-2">
@@ -90,7 +90,7 @@ export default function WhyChooseUs() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(0,194,178,0.05),transparent_50%)]" />
 
           <div className="flex flex-col gap-2 relative z-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#00C2B2]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#4AABCA]">
               Corporate Policy Standards
             </span>
             <h4 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 uppercase">

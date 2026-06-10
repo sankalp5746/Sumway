@@ -22,7 +22,7 @@ export default function FallbackImage({
   if (hasError) {
     return (
       <div
-        className={`absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#0B1C33] via-[#111827] to-[#0A0F1E] light:from-[#E2E8F0] light:via-[#CBD5E1] light:to-[#E2E8F0] ${className || ""}`}
+        className={`absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#0B1C33] via-[#111827] to-[#0A1128] light:from-[#E2E8F0] light:via-[#CBD5E1] light:to-[#E2E8F0] ${className || ""}`}
       >
         {/* Decorative mesh pattern */}
         <div className="absolute inset-0 opacity-30 light:opacity-40" style={{

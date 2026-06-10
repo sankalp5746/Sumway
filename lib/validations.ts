@@ -21,7 +21,7 @@ export const EnquirySchema = z.object({
 });
 
 export const LoginSchema = z.object({
-  role: z.enum(["client", "candidate", "vendor", "admin"]),
+  role: z.enum(["vendor", "admin"]),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters")
 });

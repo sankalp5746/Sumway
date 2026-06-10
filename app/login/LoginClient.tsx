@@ -11,7 +11,7 @@ import { LoginSchema } from "@/lib/validations";
 import { useAppStore } from "@/lib/store";
 
 type LoginFormInput = {
-  role: "client" | "candidate" | "vendor" | "admin";
+  role: "vendor" | "admin";
   email: string;
   password: string;
 };
@@ -21,7 +21,7 @@ export default function LoginClient() {
   const login = useAppStore((state) => state.login);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [activeRole, setActiveRole] = useState<"client" | "candidate" | "vendor" | "admin">("candidate");
+  const [activeRole, setActiveRole] = useState<"vendor" | "admin">("vendor");
 
   const {
     register,
@@ -31,13 +31,13 @@ export default function LoginClient() {
   } = useForm<LoginFormInput>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      role: "candidate",
+      role: "vendor",
       email: "",
       password: ""
     }
   });
 
-  const handleRoleChange = (role: "client" | "candidate" | "vendor" | "admin") => {
+  const handleRoleChange = (role: "vendor" | "admin") => {
     setActiveRole(role);
     setValue("role", role);
   };
@@ -83,23 +83,23 @@ export default function LoginClient() {
     <div className="bg-transparent min-h-screen pb-16 transition-colors duration-400">
       <PageHero 
         title="Gateway Access" 
-        subtitle="Access your dedicated BPO dashboard, Candidate portfolio, or Vendor files."
+        subtitle="Access your secure BPO Admin dashboard or Vendor portal."
       />
 
       <div className="max-w-6xl mx-auto px-6 mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Premium Branding & Stats Showcase (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-200 transition-colors duration-400 relative overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-between p-8 rounded-2xl bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A1128] dark:to-[#0A1128] light:to-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-200 transition-colors duration-400 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(245,197,66,0.05),transparent_70%)] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(0,194,178,0.05),transparent_70%)] pointer-events-none" />
 
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase bg-[#00C2B2]/10 px-3.5 py-1.5 rounded-md border border-[#00C2B2]/10 self-start">
+              <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase bg-[#4AABCA]/10 px-3.5 py-1.5 rounded-md border border-[#4AABCA]/10 self-start">
                 Corporate Gateway
               </span>
               <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide leading-snug">
                 Architecting <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5C542] via-[#00C2B2] to-[#F5C542] bg-300% animate-mesh" style={{ backgroundSize: "300% 300%" }}>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF555F] via-[#4AABCA] to-[#FF555F] bg-300% animate-mesh" style={{ backgroundSize: "300% 300%" }}>
                   Secure Ecosystems
                 </span>
               </h3>
@@ -111,11 +111,11 @@ export default function LoginClient() {
             <div className="flex flex-col gap-4 border-t border-slate-800/80 pt-6 mt-8">
               <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500">Corporate SLA</span>
-                <span className="text-[#00C2B2]">99.8% Retained</span>
+                <span className="text-[#4AABCA]">99.8% Retained</span>
               </div>
               <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500">Global Operations</span>
-                <span className="text-[#F5C542]">Active 24/7/365</span>
+                <span className="text-[#FF555F]">Active 24/7/365</span>
               </div>
             </div>
           </div>
@@ -123,11 +123,11 @@ export default function LoginClient() {
           {/* Right Column: Authentication Card Panel */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="glass-card p-6 md:p-8 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#F5C542]/5 to-transparent rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#FF555F]/5 to-transparent rounded-bl-full pointer-events-none" />
               
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-4">
                     <UserCheck className="w-10 h-10 animate-bounce" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
@@ -146,7 +146,7 @@ export default function LoginClient() {
 
                   {/* Multi-role tab controls */}
                   <div className="flex flex-wrap justify-between gap-1 p-1.5 bg-[#080d1a] light:bg-slate-100 rounded-xl border border-white/6 light:border-slate-300 mb-6 text-xs font-bold uppercase tracking-wider">
-                    {(["client", "candidate", "vendor", "admin"] as const).map((r) => {
+                    {(["vendor", "admin"] as const).map((r) => {
                       const isSelected = activeRole === r;
                       return (
                         <button
@@ -155,8 +155,8 @@ export default function LoginClient() {
                           onClick={() => handleRoleChange(r)}
                           className={`flex-1 text-center py-2.5 rounded-lg transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-[#F5C542] text-[#0A0F1E] shadow-md"
-                              : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#00C2B2]"
+                              ? "bg-[#FF555F] text-[#0A1128] shadow-md"
+                              : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#4AABCA]"
                           }`}
                         >
                           {r}
@@ -170,7 +170,7 @@ export default function LoginClient() {
 
                     {/* Email */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#F5C542]">*</span></label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#FF555F]">*</span></label>
                       <div className="relative">
                         <input
                           {...register("email")}
@@ -187,11 +187,11 @@ export default function LoginClient() {
                     {/* Password */}
                     <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between">
-                        <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Password <span className="text-[#F5C542]">*</span></label>
+                        <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Password <span className="text-[#FF555F]">*</span></label>
                         <a
                           href="#"
                           onClick={(e) => { e.preventDefault(); alert("OTP code sent to email."); }}
-                          className="text-xs text-slate-500 hover:text-[#F5C542] transition-colors"
+                          className="text-xs text-slate-500 hover:text-[#FF555F] transition-colors"
                         >
                           Forgot?
                         </a>
@@ -230,11 +230,11 @@ export default function LoginClient() {
                     </button>
                   </form>
 
-                  {/* Redirect to register */}
-                  <div className="text-center mt-6 text-sm text-slate-500">
-                    <span>Don&apos;t have an account? </span>
-                    <Link href="/register" className="text-[#00C2B2] hover:text-[#F5C542] font-bold transition-colors">
-                      Register Gateway
+                  {/* Notice for registration */}
+                  <div className="text-center mt-6 text-sm text-slate-500 font-medium">
+                    <span>Need portal access? </span>
+                    <Link href="/contact" className="text-[#4AABCA] hover:text-[#FF555F] font-bold transition-colors">
+                      Contact Administrator
                     </Link>
                   </div>
                 </div>

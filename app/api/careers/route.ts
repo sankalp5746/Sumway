@@ -21,13 +21,13 @@ export async function POST(req: Request) {
     // Format HTML email profile dossier
     const htmlContent = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
-        <h2 style="color: #0A0F1E; border-bottom: 2px solid #F5C542; padding-bottom: 10px; text-transform: uppercase;">
+        <h2 style="color: #0A1128; border-bottom: 2px solid #FF555F; padding-bottom: 10px; text-transform: uppercase;">
           New Career Application
         </h2>
         <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
           <tr>
             <td style="padding: 8px 0; font-weight: bold; color: #475569; width: 150px;">Job Reference:</td>
-            <td style="padding: 8px 0; font-weight: bold; color: #00C2B2; text-transform: uppercase;">
+            <td style="padding: 8px 0; font-weight: bold; color: #4AABCA; text-transform: uppercase;">
               ${jobTitle} (${jobId})
             </td>
           </tr>
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
             </td>
           </tr>
         </table>
-        <div style="margin-top: 20px; padding: 15px; background-color: #f8fafc; border-left: 4px solid #F5C542; border-radius: 4px;">
+        <div style="margin-top: 20px; padding: 15px; background-color: #f8fafc; border-left: 4px solid #FF555F; border-radius: 4px;">
           <h4 style="margin: 0 0 5px 0; color: #475569;">Cover Letter Pitch:</h4>
           <p style="margin: 0; color: #334155; line-height: 1.5; font-style: italic; white-space: pre-wrap;">&ldquo;${coverLetter}&rdquo;</p>
         </div>

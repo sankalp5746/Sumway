@@ -188,11 +188,11 @@ export default function ServiceDetail({ params }: PageProps) {
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase bg-[#00C2B2]/10 px-3 py-1.5 rounded-full self-start">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase bg-[#4AABCA]/10 px-3 py-1.5 rounded-full self-start">
               Department Overview
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
-              INTEGRATED OPERATIONS AND <span className="text-[#F5C542]">CAPABILITY MATRIX</span>
+              INTEGRATED OPERATIONS AND <span className="text-[#FF555F]">CAPABILITY MATRIX</span>
             </h2>
             <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
               {data.overview}
@@ -200,11 +200,11 @@ export default function ServiceDetail({ params }: PageProps) {
             
             {/* Benefits Checklist with animated checkmarks */}
             <div className="flex flex-col gap-3 mt-4">
-              <span className="text-[9px] font-bold text-[#00C2B2] uppercase tracking-widest">Core Advantages</span>
+              <span className="text-[9px] font-bold text-[#4AABCA] uppercase tracking-widest">Core Advantages</span>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-semibold text-slate-300">
                 {data.benefits.map((b: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4.5 h-4.5 text-[#F5C542] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4.5 h-4.5 text-[#FF555F] shrink-0 mt-0.5" />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -223,9 +223,9 @@ export default function ServiceDetail({ params }: PageProps) {
               />
             </div>
 
-            <div className="bg-[#111827] dark:bg-[#111827] light:bg-white border border-[#F5C542]/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#00C2B2]/10 to-transparent rounded-bl-full group-hover:scale-110 transition-transform" />
-              <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0 border border-[#00C2B2]/20">
+            <div className="bg-[#111827] dark:bg-[#111827] light:bg-white border border-[#FF555F]/10 rounded-2xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#4AABCA]/10 to-transparent rounded-bl-full group-hover:scale-110 transition-transform" />
+              <div className="w-12 h-12 rounded-xl bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0 border border-[#4AABCA]/20">
                 <IconComp className="w-6 h-6 animate-pulse" />
               </div>
               
@@ -240,7 +240,7 @@ export default function ServiceDetail({ params }: PageProps) {
 
               <button 
                 onClick={() => openEnquiry(`${data.title} Request`)}
-                className="w-full flex items-center justify-center gap-1.5 mt-6 py-3 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer shadow-[0_4px_14px_rgba(245,197,66,0.2)]"
+                className="w-full flex items-center justify-center gap-1.5 mt-6 py-3 rounded-lg bg-[#FF555F] text-[#0A1128] font-bold text-xs uppercase tracking-wider hover:bg-[#FF555F]/90 active:scale-95 transition-all cursor-pointer shadow-[0_4px_14px_rgba(245,197,66,0.2)]"
               >
                 <span>Request Custom Proposal</span>
                 <ArrowRight className="w-4 h-4" />
@@ -251,10 +251,10 @@ export default function ServiceDetail({ params }: PageProps) {
       </section>
 
       {/* Section 2: Features Grid (3-column) */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 transition-colors duration-400">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">Capabilities list</span>
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Capabilities list</span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               PRIMARY SERVICE FEATURES
             </h2>
@@ -266,7 +266,7 @@ export default function ServiceDetail({ params }: PageProps) {
                 key={f.title}
                 className="glass-card p-6 flex flex-col gap-4"
               >
-                <span className="font-display font-extrabold text-sm text-[#F5C542]">
+                <span className="font-display font-extrabold text-sm text-[#FF555F]">
                   FEATURE 0{idx + 1}
                 </span>
                 <div className="flex flex-col gap-2">
@@ -284,20 +284,20 @@ export default function ServiceDetail({ params }: PageProps) {
       </section>
 
       {/* Section 3: Process Flow Timeline */}
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#F5C542]/5">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#FF555F]/5">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">Roadmap</span>
+          <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Roadmap</span>
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             DELIVERY PROCESS FLOW
           </h2>
         </div>
 
         <div className="relative flex flex-col md:flex-row justify-between items-center md:items-start gap-10 md:gap-4">
-          <div className="absolute top-12 left-16 right-16 h-0.5 border-t border-dashed border-[#F5C542]/10 hidden md:block" />
+          <div className="absolute top-12 left-16 right-16 h-0.5 border-t border-dashed border-[#FF555F]/10 hidden md:block" />
           
           {data.process.map((step: any, idx: number) => (
             <div key={step.num} className="flex flex-col items-center text-center relative z-10 max-w-[200px]">
-              <div className="w-12 h-12 rounded-full bg-[#111827] border border-[#F5C542]/30 flex items-center justify-center font-display font-extrabold text-[#F5C542] text-xs">
+              <div className="w-12 h-12 rounded-full bg-[#111827] border border-[#FF555F]/30 flex items-center justify-center font-display font-extrabold text-[#FF555F] text-xs">
                 {step.num}
               </div>
               <h3 className="font-display font-bold text-sm text-slate-100 mt-4 uppercase">
@@ -312,10 +312,10 @@ export default function ServiceDetail({ params }: PageProps) {
       </section>
 
       {/* Section 4: FAQ Accordion */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 transition-colors duration-400">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">Support</span>
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Support</span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               FREQUENTLY ASKED QUESTIONS
             </h2>
@@ -331,10 +331,10 @@ export default function ServiceDetail({ params }: PageProps) {
                 >
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full flex items-center justify-between p-5 text-left text-xs font-bold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:text-[#F5C542] transition-colors"
+                    className="w-full flex items-center justify-between p-5 text-left text-xs font-bold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:text-[#FF555F] transition-colors"
                   >
                     <span className="uppercase tracking-wider">{faq.q}</span>
-                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#F5C542]" : "text-slate-500"}`} />
+                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[#FF555F]" : "text-slate-500"}`} />
                   </button>
                   
                   {isOpen && (

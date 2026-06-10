@@ -133,7 +133,7 @@ export default function SolutionDetail({ params }: PageProps) {
 
       {/* Section 1: Client Problem (Red Accent) */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
-        <div className="glass-card p-8 md:p-12 border-red-500/20 bg-gradient-to-br from-red-500/5 via-[#111827] to-[#0A0F1E] flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
+        <div className="glass-card p-8 md:p-12 border-red-500/20 bg-gradient-to-br from-red-500/5 via-[#111827] to-[#0A1128] flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
           <div className="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-bl-full pointer-events-none" />
           
           <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 border border-red-500/20">
@@ -155,10 +155,10 @@ export default function SolutionDetail({ params }: PageProps) {
       </section>
 
       {/* Section 2: Strategy Roadmap (Numbered List) */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 transition-colors duration-400">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Our Deliverables
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
@@ -171,7 +171,7 @@ export default function SolutionDetail({ params }: PageProps) {
             <ul className="flex flex-col gap-4 text-xs font-semibold text-slate-300">
               {data.strategy.map((item: string, idx: number) => (
                 <li key={idx} className="flex gap-3 items-start p-3 rounded-lg bg-white/5 border border-slate-800/80">
-                  <div className="w-6 h-6 rounded-full bg-[#00C2B2]/10 border border-[#00C2B2]/20 flex items-center justify-center text-[#00C2B2] text-[10px] font-bold shrink-0 mt-0.5">
+                  <div className="w-6 h-6 rounded-full bg-[#4AABCA]/10 border border-[#4AABCA]/20 flex items-center justify-center text-[#4AABCA] text-[10px] font-bold shrink-0 mt-0.5">
                     {idx + 1}
                   </div>
                   <span className="leading-relaxed mt-0.5">{item}</span>
@@ -192,19 +192,19 @@ export default function SolutionDetail({ params }: PageProps) {
               />
             </div>
 
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase text-center lg:text-left">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase text-center lg:text-left">
               Expected Performance Metrics
             </span>
             <div className="grid grid-cols-1 gap-4">
               {data.kpis.map((kpi: any) => (
                 <div 
                   key={kpi.label} 
-                  className="glass-card p-6 flex items-center justify-between hover:border-[#F5C542]/20"
+                  className="glass-card p-6 flex items-center justify-between hover:border-[#FF555F]/20"
                 >
                   <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
                     {kpi.label}
                   </span>
-                  <span className="font-display font-extrabold text-2xl md:text-3xl text-[#F5C542]">
+                  <span className="font-display font-extrabold text-2xl md:text-3xl text-[#FF555F]">
                     {kpi.metric}
                   </span>
                 </div>
@@ -215,9 +215,9 @@ export default function SolutionDetail({ params }: PageProps) {
       </section>
 
       {/* Section 3: Before/After Comparison */}
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#F5C542]/5">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#FF555F]/5">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+          <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
             Operational Audit
           </span>
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
@@ -237,8 +237,8 @@ export default function SolutionDetail({ params }: PageProps) {
           </div>
 
           {/* After */}
-          <div className="glass-card p-6 md:p-8 border-[#00C2B2]/20 bg-[#00C2B2]/5 flex flex-col gap-3 relative overflow-hidden">
-            <span className="text-[9px] font-bold text-[#00C2B2] uppercase tracking-widest">
+          <div className="glass-card p-6 md:p-8 border-[#4AABCA]/20 bg-[#4AABCA]/5 flex flex-col gap-3 relative overflow-hidden">
+            <span className="text-[9px] font-bold text-[#4AABCA] uppercase tracking-widest">
               Sumway Integrated Operations (After)
             </span>
             <p className="text-xs text-slate-200 leading-relaxed font-bold mt-2">
@@ -248,9 +248,9 @@ export default function SolutionDetail({ params }: PageProps) {
         </div>
 
         {/* CTA Card */}
-        <div className="mt-16 text-center bg-[#111827] border border-[#F5C542]/10 p-8 md:p-12 rounded-2xl max-w-3xl mx-auto relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#00C2B2]/5 rounded-bl-full pointer-events-none" />
-          <span className="text-[9px] font-bold text-[#00C2B2] uppercase tracking-widest">SLA Deployments</span>
+        <div className="mt-16 text-center bg-[#111827] border border-[#FF555F]/10 p-8 md:p-12 rounded-2xl max-w-3xl mx-auto relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#4AABCA]/5 rounded-bl-full pointer-events-none" />
+          <span className="text-[9px] font-bold text-[#4AABCA] uppercase tracking-widest">SLA Deployments</span>
           <h3 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 uppercase tracking-wide mt-2">
             Ready to optimize your business operations?
           </h3>
@@ -260,7 +260,7 @@ export default function SolutionDetail({ params }: PageProps) {
           
           <button 
             onClick={() => openEnquiry(`${data.title} Blueprint`)}
-            className="inline-flex items-center gap-2 mt-8 px-6 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 active:scale-95 transition-all cursor-pointer shadow-lg"
+            className="inline-flex items-center gap-2 mt-8 px-6 py-3.5 rounded-lg bg-[#FF555F] text-[#0A1128] font-bold text-xs uppercase tracking-wider hover:bg-[#FF555F]/90 active:scale-95 transition-all cursor-pointer shadow-lg"
           >
             <span>Consult Strategy Board</span>
             <ArrowRight className="w-4 h-4" />

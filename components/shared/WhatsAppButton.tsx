@@ -16,7 +16,7 @@ export default function WhatsAppButton() {
       aria-label="Contact Sumway Global on WhatsApp"
     >
       {/* Tooltip */}
-      <span className="absolute right-16 bg-[#0A0F1E] dark:bg-[#0A0F1E] light:bg-white border border-slate-700/60 dark:border-slate-700/60 light:border-slate-300 text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap text-slate-100 dark:text-slate-100 light:text-slate-800 shadow-xl">
+      <span className="absolute right-16 bg-[#0A1128] dark:bg-[#0A1128] light:bg-white border border-slate-700/60 dark:border-slate-700/60 light:border-slate-300 text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap text-slate-100 dark:text-slate-100 light:text-slate-800 shadow-xl">
         Chat with Us
       </span>
 

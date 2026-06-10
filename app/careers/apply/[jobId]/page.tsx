@@ -87,7 +87,7 @@ export default function ApplyJobPage({ params }: PageProps) {
         {/* Back Link */}
         <Link 
           href="/careers" 
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-[#F5C542] mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-[#FF555F] mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Openings</span>
@@ -97,7 +97,7 @@ export default function ApplyJobPage({ params }: PageProps) {
           {/* Left Column: Job Description Details */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="glass-card p-6 md:p-8">
-              <span className="text-[9px] font-bold uppercase tracking-widest text-[#00C2B2]">
+              <span className="text-[9px] font-bold uppercase tracking-widest text-[#4AABCA]">
                 {job.dept}
               </span>
               <h2 className="font-display font-extrabold text-lg md:text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-2">
@@ -106,11 +106,11 @@ export default function ApplyJobPage({ params }: PageProps) {
               
               <div className="flex flex-wrap items-center gap-3 text-[10px] text-slate-400 font-semibold mt-3.5 pb-4 border-b border-slate-800/80">
                 <div className="flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5 text-[#F5C542]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#FF555F]" />
                   <span>{job.loc}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#F5C542]" />
+                  <Clock className="w-3.5 h-3.5 text-[#FF555F]" />
                   <span>{job.type}</span>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                 <ul className="flex flex-col gap-2.5 mt-3 text-[10px] font-semibold text-slate-300">
                   {job.reqs.map((req: string, idx: number) => (
                     <li key={idx} className="flex gap-2 items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00C2B2] shrink-0 mt-1.5" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4AABCA] shrink-0 mt-1.5" />
                       <span className="leading-relaxed">{req}</span>
                     </li>
                   ))}
@@ -142,7 +142,7 @@ export default function ApplyJobPage({ params }: PageProps) {
               {isSuccess ? (
                 /* Success Card Display */
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-4">
                     <CheckCircle className="w-10 h-10 animate-bounce" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
@@ -156,7 +156,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                 /* Application form inputs */
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold">
                   <div className="mb-6">
-                    <span className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
+                    <span className="text-[10px] font-bold text-[#4AABCA] uppercase tracking-widest">
                       Apply Today
                     </span>
                     <h3 className="font-display font-extrabold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-1">
@@ -171,7 +171,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                       <input
                         {...register("name")}
                         placeholder="e.g. Amit Kumar Sharma"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#FF555F] focus:outline-none transition-colors"
                       />
                       {errors.name && (
                         <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.name.message}</span>
@@ -184,7 +184,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                       <input
                         {...register("phone")}
                         placeholder="e.g. +91 9414940434"
-                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
+                        className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#FF555F] focus:outline-none transition-colors"
                       />
                       {errors.phone && (
                         <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.phone.message}</span>
@@ -198,7 +198,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                     <input
                       {...register("email")}
                       placeholder="e.g. candidates@gmail.com"
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#FF555F] focus:outline-none transition-colors"
                     />
                     {errors.email && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.email.message}</span>
@@ -211,7 +211,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                     <input
                       {...register("linkedinUrl")}
                       placeholder="e.g. https://linkedin.com/in/username"
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#FF555F] focus:outline-none transition-colors"
                     />
                     {errors.linkedinUrl && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.linkedinUrl.message}</span>
@@ -225,7 +225,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                       {...register("coverLetter")}
                       rows={5}
                       placeholder="Introduce yourself. Highlight key projects, CRM tools, React experience, BPO support roles or scheduling availabilities..."
-                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#F5C542] focus:outline-none transition-colors resize-none"
+                      className="px-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#FF555F] focus:outline-none transition-colors resize-none"
                     />
                     {errors.coverLetter && (
                       <span className="text-[10px] text-red-500 font-medium mt-0.5">{errors.coverLetter.message}</span>
@@ -236,7 +236,7 @@ export default function ApplyJobPage({ params }: PageProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 mt-4 py-3.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 mt-4 py-3.5 rounded-lg bg-[#FF555F] text-[#0A1128] font-bold text-xs uppercase tracking-wider hover:bg-[#FF555F]/90 hover:shadow-lg active:scale-95 disabled:opacity-50 transition-all cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>

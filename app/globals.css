@@ -3,19 +3,19 @@
 @variant light (.light &);
 
 @theme {
-  --color-primary-dark: #0A0F1E;
-  --color-primary-light: #F8FAFC;
-  --color-accent-gold: #F5C542;
-  --color-accent-teal: #00C2B2;
-  --color-surface-dark: #111827;
+  --color-primary-dark: #0A1128;
+  --color-primary-light: #FFFFFF;
+  --color-accent-gold: #FF555F; /* Genpact Coral/Red */
+  --color-accent-teal: #4AABCA; /* Genpact Light Blue */
+  --color-surface-dark: #1E345C; /* Genpact Cello Navy */
   --color-surface-light: #FFFFFF;
-  --color-text-dark: #F1F5F9;
+  --color-text-dark: #FFFFFF;
   --color-text-dark-muted: #94A3B8;
-  --color-text-light: #0F172A;
-  --color-text-light-muted: #475569;
+  --color-text-light: #1E345C; /* Navy for headers */
+  --color-text-light-muted: #58595B; /* Neutral Gray */
 
-  --font-display: var(--font-syne), 'Syne', sans-serif;
-  --font-body: var(--font-dm-sans), 'DM Sans', sans-serif;
+  --font-display: 'Funnel Sans', sans-serif;
+  --font-body: 'Funnel Sans', sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 10s ease-in-out infinite;
@@ -58,25 +58,25 @@
 
 /* Custom properties and theme-specific rules */
 :root {
-  --background: #0A0F1E;
-  --foreground: #F1F5F9;
-  --card-bg: rgba(17, 24, 39, 0.75);
-  --card-border: rgba(245, 197, 66, 0.08);
-  --card-hover-border: rgba(245, 197, 66, 0.35);
+  --background: #0A1128;
+  --foreground: #FFFFFF;
+  --card-bg: rgba(30, 52, 92, 0.75);
+  --card-border: rgba(255, 85, 95, 0.08);
+  --card-hover-border: rgba(255, 85, 95, 0.35);
   --input-bg: rgba(255, 255, 255, 0.04);
   --input-border: rgba(100, 116, 139, 0.5);
-  --input-focus-border: #F5C542;
+  --input-focus-border: #FF555F;
 }
 
 :root.light {
-  --background: #F8FAFC;
-  --foreground: #0F172A;
+  --background: #FFFFFF;
+  --foreground: #1E345C;
   --card-bg: #FFFFFF;
-  --card-border: #E2E8F0;
-  --card-hover-border: #00C2B2;
+  --card-border: #E5E7EB;
+  --card-hover-border: #4AABCA;
   --input-bg: #FFFFFF;
   --input-border: #CBD5E1;
-  --input-focus-border: #00C2B2;
+  --input-focus-border: #4AABCA;
 }
 
 /* Light mode universal contrast and box visibility overrides */
@@ -84,7 +84,7 @@
 :root.light .glass-card-static {
   background-color: #FFFFFF !important;
   border-color: #E2E8F0 !important;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  box-shadow: 0 10px 30px -10px rgba(30, 52, 92, 0.04), 0 1px 3px rgba(30, 52, 92, 0.02) !important;
 }
 
 :root.light h1,
@@ -93,31 +93,31 @@
 :root.light h4,
 :root.light h5,
 :root.light h6 {
-  color: #0F172A !important;
+  color: #1E345C !important;
 }
 
 :root.light p,
 :root.light li {
-  color: #334155 !important;
+  color: #58595B !important;
 }
 
 :root.light .text-slate-100,
 :root.light .text-slate-200,
 :root.light .text-slate-300 {
-  color: #0F172A !important;
+  color: #1E345C !important;
 }
 
 :root.light .text-slate-400,
 :root.light .text-slate-500,
 :root.light .text-body,
 :root.light .text-body-sm {
-  color: #334155 !important;
+  color: #58595B !important;
 }
 
 :root.light .text-slate-450,
 :root.light .text-slate-600,
 :root.light .text-slate-700 {
-  color: #475569 !important;
+  color: #58595B !important;
 }
 
 /* Muted / transparent background containers made light */
@@ -127,14 +127,14 @@
 :root.light .bg-white\/8,
 :root.light .bg-slate-900,
 :root.light .bg-slate-950 {
-  background-color: #F1F5F9 !important;
-  color: #0F172A !important;
+  background-color: #F8F9FA !important;
+  color: #1E345C !important;
   border-color: #E2E8F0 !important;
 }
 
 /* Specific text and hover fixes for light mode */
 :root.light .text-slate-400.light\:text-slate-650 {
-  color: #334155 !important;
+  color: #58595B !important;
 }
 
 @layer base {
@@ -159,7 +159,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0.025;
+  opacity: 0.015;
   pointer-events: none;
   z-index: 50;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -171,20 +171,20 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
   transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
   border-color: var(--card-hover-border);
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.4),
-              0 0 24px -6px rgba(245, 197, 66, 0.12);
+              0 0 24px -6px rgba(255, 85, 95, 0.12);
   transform: translateY(-3px);
 }
 
 :root.light .glass-card:hover {
   box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.08),
-              0 0 24px -6px rgba(0, 194, 178, 0.08);
+              0 0 24px -6px rgba(74, 171, 202, 0.08);
 }
 
 /* Cards that should NOT lift on hover (forms, modals, etc.) */
@@ -193,7 +193,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--card-border);
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
   transition: border-color 0.35s ease;
 }
 
@@ -201,7 +201,7 @@
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 0.625rem;
+  border-radius: 0.25rem;
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--foreground);
@@ -213,27 +213,27 @@
 
 .form-input:focus {
   border-color: var(--input-focus-border);
-  box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.12);
+  box-shadow: 0 0 0 3px rgba(255, 85, 95, 0.12);
 }
 
 :root.light .form-input:focus {
-  box-shadow: 0 0 0 3px rgba(0, 194, 178, 0.12);
+  box-shadow: 0 0 0 3px rgba(74, 171, 202, 0.12);
 }
 
 .form-input::placeholder {
-  color: #64748b;
+  color: #888888;
   font-size: 0.8125rem;
 }
 
 /* ─── Animated mesh background ──────────────────────────────── */
 .animated-mesh {
-  background: linear-gradient(-45deg, #0A0F1E, #111827, #0B1C33, #021B2B);
+  background: linear-gradient(-45deg, #0A1128, #1E345C, #0E172A, #12223F);
   background-size: 400% 400%;
   animation: mesh 15s ease infinite;
 }
 
 :root.light .animated-mesh {
-  background: linear-gradient(-45deg, #E2E8F0, #CBD5E1, #DBEAFE, #E0F2FE);
+  background: linear-gradient(-45deg, #FFFFFF, #F8F9FA, #E0F2FE, #FFE4E6);
   background-size: 400% 400%;
   animation: mesh 15s ease infinite;
 }
@@ -242,10 +242,10 @@
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    #F5C542 0%,
-    #00C2B2 30%,
-    #F5C542 60%,
-    #00C2B2 100%
+    #FF555F 0%,
+    #4AABCA 30%,
+    #FF555F 60%,
+    #4AABCA 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -258,7 +258,7 @@
 .section-divider {
   width: 3rem;
   height: 3px;
-  background: linear-gradient(90deg, #F5C542, #00C2B2);
+  background: linear-gradient(90deg, #FF555F, #4AABCA);
   border-radius: 999px;
 }
 
@@ -271,9 +271,9 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #00C2B2;
-  background: rgba(0, 194, 178, 0.1);
-  border: 1px solid rgba(0, 194, 178, 0.2);
+  color: #4AABCA;
+  background: rgba(74, 171, 202, 0.1);
+  border: 1px solid rgba(74, 171, 202, 0.2);
   padding: 0.375rem 0.875rem;
   border-radius: 999px;
 }
@@ -286,9 +286,9 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #F5C542;
-  background: rgba(245, 197, 66, 0.1);
-  border: 1px solid rgba(245, 197, 66, 0.2);
+  color: #FF555F;
+  background: rgba(255, 85, 95, 0.1);
+  border: 1px solid rgba(255, 85, 95, 0.2);
   padding: 0.375rem 0.875rem;
   border-radius: 999px;
 }
@@ -299,14 +299,14 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.625rem;
-  background: #F5C542;
-  color: #0A0F1E;
+  border-radius: 0.25rem;
+  background: #FF555F;
+  color: #FFFFFF;
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 4px 20px rgba(245, 197, 66, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 85, 95, 0.3);
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
   cursor: pointer;
   border: none;
@@ -314,8 +314,8 @@
 }
 
 .btn-primary:hover {
-  background: #f0bc30;
-  box-shadow: 0 6px 28px rgba(245, 197, 66, 0.45);
+  background: #e0444e;
+  box-shadow: 0 6px 28px rgba(255, 85, 95, 0.45);
   transform: translateY(-1px);
 }
 
@@ -335,7 +335,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.625rem;
+  border-radius: 0.25rem;
   background: transparent;
   color: #cbd5e1;
   font-size: 0.8125rem;
@@ -349,20 +349,20 @@
 }
 
 :root.light .btn-outline {
-  color: #374151;
-  border-color: rgba(107, 114, 128, 0.4);
+  color: #1E345C;
+  border-color: rgba(30, 52, 92, 0.4);
 }
 
 .btn-outline:hover {
-  border-color: rgba(245, 197, 66, 0.5);
-  color: #F5C542;
-  background: rgba(245, 197, 66, 0.06);
+  border-color: rgba(255, 85, 95, 0.5);
+  color: #FF555F;
+  background: rgba(255, 85, 95, 0.06);
 }
 
 :root.light .btn-outline:hover {
-  border-color: rgba(245, 197, 66, 0.6);
-  color: #92400e;
-  background: rgba(245, 197, 66, 0.08);
+  border-color: rgba(255, 85, 95, 0.6);
+  color: #FF555F;
+  background: rgba(255, 85, 95, 0.08);
 }
 
 /* ─── Scrollbar styles ───────────────────────────────────────── */
@@ -372,15 +372,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0F1E;
+  background: #0A1128;
 }
 
 :root.light ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #F8F9FA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1E345C;
   border-radius: 999px;
 }
 
@@ -389,7 +389,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F5C542;
+  background: #FF555F;
 }
 
 /* ─── Diagonal custom divider ────────────────────────────────── */
@@ -410,7 +410,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #F5C542;
+  background: #FF555F;
   transform: scaleX(1);
   transform-origin: bottom left;
   transition: transform 0.3s ease;
@@ -420,7 +420,7 @@
 .custom-cursor {
   width: 8px;
   height: 8px;
-  background: #F5C542;
+  background: #FF555F;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -432,7 +432,7 @@
 .custom-cursor-glow {
   width: 40px;
   height: 40px;
-  border: 1px solid #00C2B2;
+  border: 1px solid #4AABCA;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -444,25 +444,25 @@
 .cursor-hover .custom-cursor {
   width: 24px;
   height: 24px;
-  background: rgba(245, 197, 66, 0.3);
+  background: rgba(255, 85, 95, 0.3);
 }
 
 .cursor-hover .custom-cursor-glow {
   width: 56px;
   height: 56px;
-  border-color: #F5C542;
+  border-color: #FF555F;
 }
 
 /* ─── Gradient text utility ──────────────────────────────────── */
 .gradient-text-gold {
-  background: linear-gradient(135deg, #F5C542 0%, #ffd700 50%, #F5C542 100%);
+  background: linear-gradient(135deg, #FF555F 0%, #ff7f87 50%, #FF555F 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-teal {
-  background: linear-gradient(135deg, #00C2B2 0%, #00e5d3 50%, #00C2B2 100%);
+  background: linear-gradient(135deg, #4AABCA 0%, #66c3de 50%, #4AABCA 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -470,11 +470,11 @@
 
 /* ─── Glow effects ───────────────────────────────────────────── */
 .glow-gold {
-  box-shadow: 0 0 20px rgba(245, 197, 66, 0.25), 0 0 40px rgba(245, 197, 66, 0.1);
+  box-shadow: 0 0 20px rgba(255, 85, 95, 0.25), 0 0 40px rgba(255, 85, 95, 0.1);
 }
 
 .glow-teal {
-  box-shadow: 0 0 20px rgba(0, 194, 178, 0.25), 0 0 40px rgba(0, 194, 178, 0.1);
+  box-shadow: 0 0 20px rgba(74, 171, 202, 0.25), 0 0 40px rgba(74, 171, 202, 0.1);
 }
 
 /* ─── Stat number highlight ──────────────────────────────────── */
@@ -492,7 +492,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, transparent, #F5C542 20%, #00C2B2 80%, transparent);
+  background: linear-gradient(to bottom, transparent, #FF555F 20%, #4AABCA 80%, transparent);
 }
 
 /* ─── Responsive typography helpers ─────────────────────────── */
@@ -503,7 +503,7 @@
 }
 
 :root.light .text-body {
-  color: #374151;
+  color: #58595B;
 }
 
 .text-body-sm {
@@ -513,7 +513,7 @@
 }
 
 :root.light .text-body-sm {
-  color: #4b5563;
+  color: #58595B;
 }
 
 /* ─── Section label ──────────────────────────────────────────── */
@@ -522,7 +522,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #00C2B2;
+  color: #4AABCA;
 }
 
 /* ─── Card icon container ────────────────────────────────────── */
@@ -530,12 +530,12 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0.75rem;
-  background: rgba(0, 194, 178, 0.1);
-  border: 1px solid rgba(0, 194, 178, 0.2);
+  background: rgba(74, 171, 202, 0.1);
+  border: 1px solid rgba(74, 171, 202, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00C2B2;
+  color: #4AABCA;
   flex-shrink: 0;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -544,12 +544,12 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0.75rem;
-  background: rgba(245, 197, 66, 0.1);
-  border: 1px solid rgba(245, 197, 66, 0.2);
+  background: rgba(255, 85, 95, 0.1);
+  border: 1px solid rgba(255, 85, 95, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #F5C542;
+  color: #FF555F;
   flex-shrink: 0;
   transition: transform 0.3s ease, background 0.3s ease;
 }
@@ -563,69 +563,65 @@
 hr.gradient-hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(245, 197, 66, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 85, 95, 0.2), transparent);
   margin: 0;
 }
 
 /* ─── Focus visible ring ─────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid #F5C542;
+  outline: 2px solid #FF555F;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* ─── Light mode comprehensive overrides ────────────────────── */
 
-
-
 /* Glass card in light mode */
 :root.light .glass-card {
   background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(15, 23, 42, 0.08);
+  border-color: rgba(30, 52, 92, 0.08);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* Badge in light mode */
 :root.light .badge-teal {
-  background: rgba(0, 194, 178, 0.08);
-  border-color: rgba(0, 194, 178, 0.25);
+  background: rgba(74, 171, 202, 0.08);
+  border-color: rgba(74, 171, 202, 0.25);
 }
 
 :root.light .badge-gold {
-  background: rgba(245, 197, 66, 0.1);
-  border-color: rgba(245, 197, 66, 0.3);
+  background: rgba(255, 85, 95, 0.1);
+  border-color: rgba(255, 85, 95, 0.3);
 }
-
-/* Section divider in light mode — same gradient, fine */
 
 /* Stat number in light mode */
 :root.light .stat-number {
-  color: #111827;
+  color: #1E345C;
 }
 
 /* Form input in light mode */
 :root.light .form-input {
   background: #ffffff;
   border-color: #d1d5db;
-  color: #111827;
+  color: #1E345C;
 }
 
 :root.light .form-input::placeholder {
-  color: #9ca3af;
+  color: #888888;
 }
 
 :root.light .form-input:focus {
-  border-color: #00C2B2;
-  box-shadow: 0 0 0 3px rgba(0, 194, 178, 0.12);
+  border-color: #4AABCA;
+  box-shadow: 0 0 0 3px rgba(74, 171, 202, 0.12);
 }
 
 /* Icon boxes in light mode */
 :root.light .icon-box-teal {
-  background: rgba(0, 194, 178, 0.08);
+  background: rgba(74, 171, 202, 0.08);
 }
 
 :root.light .icon-box-gold {
-  background: rgba(245, 197, 66, 0.08);
+  background: rgba(255, 85, 95, 0.08);
 }
 
 /* ─── Responsive container max-widths ────────────────────────── */

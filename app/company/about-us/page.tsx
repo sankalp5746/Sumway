@@ -94,12 +94,12 @@ export default function AboutUs() {
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 flex flex-col gap-5">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Our Journey
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
               CRAFTED IN THE PINK CITY, <br />
-              <span className="text-[#F5C542]">Globally Structured</span>
+              <span className="text-[#FF555F]">Globally Structured</span>
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
               Established on <strong className="text-slate-200 light:text-slate-800">30 September 2024</strong> in the Jaipur Stock Exchange Building on JLN Marg, Malviya Nagar, <strong className="text-slate-200 light:text-slate-800">Sumway Global Management Private Limited</strong> was born to disrupt the conventional recruitment and BPO landscape.
@@ -119,12 +119,12 @@ export default function AboutUs() {
                 className="object-cover brightness-95"
                 fallbackLabel="Corporate Team"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] dark:from-[#0A0F1E] light:from-slate-50 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] dark:from-[#0A1128] light:from-slate-50 via-transparent to-transparent" />
             </div>
 
-            <div className="glass-card p-6 bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A0F1E] dark:to-[#0A0F1E] light:to-slate-100 flex flex-col gap-4 border-[#F5C542]/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#00C2B2]/5 rounded-bl-full pointer-events-none" />
-              <h3 className="font-display font-extrabold text-sm text-[#F5C542] uppercase tracking-wide">
+            <div className="glass-card p-6 bg-gradient-to-br from-[#111827] dark:from-[#111827] light:from-white to-[#0A1128] dark:to-[#0A1128] light:to-slate-100 flex flex-col gap-4 border-[#FF555F]/10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#4AABCA]/5 rounded-bl-full pointer-events-none" />
+              <h3 className="font-display font-extrabold text-sm text-[#FF555F] uppercase tracking-wide">
                 Corporate Overview
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
@@ -151,10 +151,10 @@ export default function AboutUs() {
       </section>
 
       {/* Animated Vertical Milestone Timeline */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 transition-colors duration-400">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Milestone Timeline
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
@@ -175,18 +175,18 @@ export default function AboutUs() {
                   className="relative flex flex-col gap-2"
                 >
                   {/* Timeline Badge/Dot */}
-                  <div className="absolute w-12 h-12 rounded-full bg-[#111827] dark:bg-[#111827] light:bg-slate-100 border-2 border-[#F5C542]/30 flex items-center justify-center text-[#F5C542] shadow-xl" style={{ left: '-3.25rem', top: '0.5rem' }}>
+                  <div className="absolute w-12 h-12 rounded-full bg-[#111827] dark:bg-[#111827] light:bg-slate-100 border-2 border-[#FF555F]/30 flex items-center justify-center text-[#FF555F] shadow-xl" style={{ left: '-3.25rem', top: '0.5rem' }}>
                     <Icon className="w-5 h-5" />
                   </div>
 
                   {/* Left Floating Year Label (desktop only) */}
-                  <div className="absolute top-3 text-xs font-bold uppercase tracking-wider text-[#00C2B2] hidden md:block w-32 text-right" style={{ left: '-12rem' }}>
+                  <div className="absolute top-3 text-xs font-bold uppercase tracking-wider text-[#4AABCA] hidden md:block w-32 text-right" style={{ left: '-12rem' }}>
                     {event.year}
                   </div>
 
                   {/* Text Details */}
-                  <div className="glass-card p-6 hover:border-[#00C2B2]/20">
-                    <span className="text-[10px] font-bold text-[#00C2B2] md:hidden">
+                  <div className="glass-card p-6 hover:border-[#4AABCA]/20">
+                    <span className="text-[10px] font-bold text-[#4AABCA] md:hidden">
                       {event.year}
                     </span>
                     <h3 className="font-display font-bold text-sm md:text-base text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase">
@@ -204,12 +204,12 @@ export default function AboutUs() {
       </section>
 
       {/* Consolidating Mission & Vision split cards */}
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-[#F5C542]/5">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-[#FF555F]/5">
         
         {/* Mission Card */}
-        <div className="glass-card p-8 md:p-12 border-[#00C2B2]/20 hover:border-[#00C2B2]/40 flex flex-col gap-5 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#00C2B2]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
-          <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2]">
+        <div className="glass-card p-8 md:p-12 border-[#4AABCA]/20 hover:border-[#4AABCA]/40 flex flex-col gap-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#4AABCA]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
+          <div className="w-12 h-12 rounded-xl bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA]">
             <Target className="w-6 h-6 animate-pulse" />
           </div>
           <h2 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
@@ -221,9 +221,9 @@ export default function AboutUs() {
         </div>
 
         {/* Vision Card */}
-        <div className="glass-card p-8 md:p-12 border-[#F5C542]/20 hover:border-[#F5C542]/40 flex flex-col gap-5 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#F5C542]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
-          <div className="w-12 h-12 rounded-xl bg-[#F5C542]/10 flex items-center justify-center text-[#F5C542]">
+        <div className="glass-card p-8 md:p-12 border-[#FF555F]/20 hover:border-[#FF555F]/40 flex flex-col gap-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#FF555F]/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform" />
+          <div className="w-12 h-12 rounded-xl bg-[#FF555F]/10 flex items-center justify-center text-[#FF555F]">
             <Eye className="w-6 h-6 animate-pulse" />
           </div>
           <h2 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
@@ -236,10 +236,10 @@ export default function AboutUs() {
       </section>
 
       {/* Core Corporate Values */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 transition-colors duration-400">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               How We Execute
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
@@ -253,9 +253,9 @@ export default function AboutUs() {
               return (
                 <div 
                   key={val.title}
-                  className="glass-card p-6 flex flex-col gap-4 hover:border-[#00C2B2]/20"
+                  className="glass-card p-6 flex flex-col gap-4 hover:border-[#4AABCA]/20"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2]">
+                  <div className="w-10 h-10 rounded-lg bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA]">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col gap-2">
@@ -274,10 +274,10 @@ export default function AboutUs() {
       </section>
 
       {/* Consolidating CSR initiatives */}
-      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#F5C542]/5">
+      <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#FF555F]/5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 flex flex-col gap-5">
-            <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+            <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Corporate Governance
             </span>
             <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
@@ -299,7 +299,7 @@ export default function AboutUs() {
                   key={proj.title}
                   className="glass-card p-5 flex gap-4 items-start"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="flex flex-col gap-1">

@@ -18,7 +18,7 @@ export default function CompanyIntro() {
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-transparent">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 rounded-full bg-[#00C2B2]/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 rounded-full bg-[#4AABCA]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -38,9 +38,9 @@ export default function CompanyIntro() {
               className="object-cover brightness-90"
               fallbackLabel="Team Collaboration"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1E] via-[#0A0F1E]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] via-[#0A1128]/20 to-transparent" />
             <div className="absolute bottom-4 left-4">
-              <span className="text-xs font-bold text-[#00C2B2] uppercase tracking-widest bg-[#0A0F1E]/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-[#00C2B2]/20">
+              <span className="text-xs font-bold text-[#4AABCA] uppercase tracking-widest bg-[#0A1128]/80 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-[#4AABCA]/20">
                 Our Jaipur HQ Team
               </span>
             </div>
@@ -59,14 +59,14 @@ export default function CompanyIntro() {
                   transition={{ duration: 0.5, delay: index * 0.08 }}
                   className="glass-card p-5 flex flex-col gap-3 relative group overflow-hidden"
                 >
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#00C2B2]/8 to-transparent rounded-bl-full" />
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#4AABCA]/8 to-transparent rounded-bl-full" />
                   <div className="icon-box-teal w-10 h-10 rounded-lg">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="stat-number text-3xl text-slate-100 light:text-[#111827]">
                       {stat.value}
-                      <span className="text-[#F5C542]">{stat.suffix}</span>
+                      <span className="text-[#FF555F]">{stat.suffix}</span>
                     </div>
                     <div className="text-xs uppercase font-bold tracking-widest text-slate-400 light:text-slate-500 mt-1">
                       {stat.label}
@@ -102,7 +102,7 @@ export default function CompanyIntro() {
             <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.1] uppercase">
               Global Management
               <br />
-              <span className="text-[#00C2B2]">From Rajasthan</span>
+              <span className="text-[#4AABCA]">From Rajasthan</span>
             </h2>
           </motion.div>
 
@@ -141,7 +141,7 @@ export default function CompanyIntro() {
             transition={{ delay: 0.35 }}
             className="flex items-start gap-3 p-4 rounded-xl bg-white/3 light:bg-slate-100 border border-white/6 light:border-slate-200"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#F5C542]/10 flex items-center justify-center text-[#F5C542] shrink-0 mt-0.5">
+            <div className="w-8 h-8 rounded-lg bg-[#FF555F]/10 flex items-center justify-center text-[#FF555F] shrink-0 mt-0.5">
               <Target className="w-4 h-4" />
             </div>
             <div>

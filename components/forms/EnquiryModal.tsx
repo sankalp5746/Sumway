@@ -89,7 +89,7 @@ export default function EnquiryModal() {
             <button
               disabled={isSubmitting}
               onClick={closeEnquiry}
-              className="absolute top-4 right-4 p-2 rounded-xl border border-white/8 bg-white/4 light:border-slate-300 light:bg-slate-100 hover:text-[#F5C542] hover:border-[#F5C542]/25 text-slate-400 light:text-slate-600 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-xl border border-white/8 bg-white/4 light:border-slate-300 light:bg-slate-100 hover:text-[#FF555F] hover:border-[#FF555F]/25 text-slate-400 light:text-slate-600 transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -100,7 +100,7 @@ export default function EnquiryModal() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center py-10 text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-5">
+                <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-5">
                   <CheckCircle className="w-9 h-9" />
                 </div>
                 <h3 className="font-display font-bold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
@@ -126,14 +126,14 @@ export default function EnquiryModal() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Full Name <span className="text-[#F5C542]">*</span>
+                        Full Name <span className="text-[#FF555F]">*</span>
                       </label>
                       <input {...register("name")} placeholder="e.g. Amit Kumar" className="form-input" />
                       {errors.name && <span className="text-xs text-red-400">{errors.name.message}</span>}
                     </div>
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Phone Number <span className="text-[#F5C542]">*</span>
+                        Phone Number <span className="text-[#FF555F]">*</span>
                       </label>
                       <input {...register("phone")} placeholder="e.g. +91 9414940434" className="form-input" />
                       {errors.phone && <span className="text-xs text-red-400">{errors.phone.message}</span>}
@@ -143,7 +143,7 @@ export default function EnquiryModal() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
                       <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                        Email Address <span className="text-[#F5C542]">*</span>
+                        Email Address <span className="text-[#FF555F]">*</span>
                       </label>
                       <input {...register("email")} placeholder="e.g. business@gmail.com" className="form-input" />
                       {errors.email && <span className="text-xs text-red-400">{errors.email.message}</span>}
@@ -158,7 +158,7 @@ export default function EnquiryModal() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                      Service of Interest <span className="text-[#F5C542]">*</span>
+                      Service of Interest <span className="text-[#FF555F]">*</span>
                     </label>
                     <select
                       {...register("serviceInterest")}
@@ -179,7 +179,7 @@ export default function EnquiryModal() {
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">
-                      Detailed Message <span className="text-[#F5C542]">*</span>
+                      Detailed Message <span className="text-[#FF555F]">*</span>
                     </label>
                     <textarea
                       {...register("message")}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
@@ -7,18 +6,6 @@ import EnquiryButton from "@/components/shared/EnquiryButton";
 import EnquiryModal from "@/components/forms/EnquiryModal";
 import CustomCursor from "@/components/shared/CustomCursor";
 import "./globals.css";
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  weight: ["700", "800"],
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["400", "500", "700"],
-});
 
 export const metadata: Metadata = {
   title: "Sumway Global Management | Premium Staffing, BPO & IT Software Solutions",
@@ -51,9 +38,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
-      <body className="min-h-full flex flex-col justify-between relative selection:bg-[#F5C542] selection:text-[#0A0F1E]">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+      </head>
+      <body className="min-h-full flex flex-col justify-between relative selection:bg-[#FF555F] selection:text-white">
         {/* Subtle noise grain texture overlay */}
         <div className="noise-overlay" />
         

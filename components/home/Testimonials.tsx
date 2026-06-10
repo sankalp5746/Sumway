@@ -26,7 +26,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_-10%,rgba(0,194,178,0.06),transparent)]" />
-      <div className="absolute top-1/2 right-10 -translate-y-1/2 w-80 h-80 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-10 -translate-y-1/2 w-80 h-80 rounded-full bg-[#FF555F]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
@@ -51,7 +51,7 @@ export default function Testimonials() {
               {/* Stars */}
               <div className="flex items-center gap-1">
                 {[...Array(active.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#F5C542] text-[#F5C542]" />
+                  <Star key={i} className="w-5 h-5 fill-[#FF555F] text-[#FF555F]" />
                 ))}
               </div>
 
@@ -62,7 +62,7 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 mt-2 pt-6 border-t border-white/8 light:border-slate-200">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#F5C542] to-[#00C2B2] flex items-center justify-center font-display font-extrabold text-[#0A0F1E] text-sm uppercase shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#FF555F] to-[#4AABCA] flex items-center justify-center font-display font-extrabold text-[#0A1128] text-sm uppercase shrink-0">
                   {active.name.split(" ").map((n) => n[0]).join("")}
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export default function Testimonials() {
                   </div>
                   <div className="text-xs text-slate-400 light:text-slate-500 mt-0.5 font-medium">
                     {active.role} &mdash;{" "}
-                    <span className="text-[#00C2B2] font-semibold">{active.company}</span>
+                    <span className="text-[#4AABCA] font-semibold">{active.company}</span>
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@ export default function Testimonials() {
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#FF555F] hover:border-[#FF555F]/30 active:scale-95 transition-all cursor-pointer"
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -95,7 +95,7 @@ export default function Testimonials() {
                   onClick={() => setActiveIndex(idx)}
                   className={`rounded-full transition-all duration-300 ${
                     activeIndex === idx
-                      ? "w-7 h-2.5 bg-[#F5C542]"
+                      ? "w-7 h-2.5 bg-[#FF555F]"
                       : "w-2.5 h-2.5 bg-slate-700 hover:bg-slate-500"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
@@ -105,7 +105,7 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#F5C542] hover:border-[#F5C542]/30 active:scale-95 transition-all cursor-pointer"
+              className="p-2.5 rounded-full border border-white/10 light:border-slate-300 bg-white/4 light:bg-slate-100 text-slate-400 light:text-slate-600 hover:text-[#FF555F] hover:border-[#FF555F]/30 active:scale-95 transition-all cursor-pointer"
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5" />

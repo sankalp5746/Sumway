@@ -38,7 +38,7 @@ export default function WhatWeDo() {
       {/* Overview */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">Our Capabilities</span>
+          <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Our Capabilities</span>
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             INTEGRATED CONSULTING VERTICALS
           </h2>
@@ -53,9 +53,9 @@ export default function WhatWeDo() {
             return (
               <div 
                 key={dom.title}
-                className="glass-card p-8 flex gap-6 items-start hover:border-[#F5C542]/20"
+                className="glass-card p-8 flex gap-6 items-start hover:border-[#FF555F]/20"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0">
                   <Icon className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -73,9 +73,9 @@ export default function WhatWeDo() {
       </section>
 
       {/* Strategic Callout */}
-      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#F5C542]/5 text-center transition-colors duration-400">
+      <section className="py-16 md:py-24 bg-[#0E1628] dark:bg-[#0E1628] light:bg-slate-200 border-t border-[#FF555F]/5 text-center transition-colors duration-400">
         <div className="max-w-3xl mx-auto px-6 flex flex-col items-center gap-5">
-          <span className="text-[9px] font-bold text-[#F5C542] uppercase tracking-widest">Jaipur HQ Resource Center</span>
+          <span className="text-[9px] font-bold text-[#FF555F] uppercase tracking-widest">Jaipur HQ Resource Center</span>
           <h3 className="font-display font-extrabold text-xl md:text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase">
             Securing Statutory SLA Deliverability
           </h3>

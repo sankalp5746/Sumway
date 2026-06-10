@@ -28,11 +28,11 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
         <li key={path} className="flex items-center gap-1.5">
           <ChevronRight className="w-3 h-3 text-slate-500 shrink-0" />
           {isLast ? (
-            <span className="text-[#F5C542] font-semibold">{label}</span>
+            <span className="text-[#FF555F] font-semibold">{label}</span>
           ) : (
             <Link
               href={href}
-              className="hover:text-[#F5C542] text-slate-400 light:text-slate-500 transition-colors"
+              className="hover:text-[#FF555F] text-slate-400 light:text-slate-500 transition-colors"
             >
               {label}
             </Link>
@@ -59,12 +59,12 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
       </div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#080d1a]/60 light:from-slate-100/60 via-transparent to-[#0A0F1E] light:to-slate-100" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080d1a]/60 light:from-slate-100/60 via-transparent to-[#0A1128] light:to-slate-100" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_110%,rgba(0,194,178,0.08),transparent)]" />
 
       {/* Decorative orbs */}
-      <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#F5C542]/4 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#FF555F]/4 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-[#4AABCA]/4 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Breadcrumb */}
@@ -73,7 +73,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
             <li>
               <Link
                 href="/"
-                className="flex items-center gap-1.5 hover:text-[#F5C542] transition-colors"
+                className="flex items-center gap-1.5 hover:text-[#FF555F] transition-colors"
               >
                 <Home className="w-3 h-3" />
                 <span>Home</span>
@@ -92,8 +92,8 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
         >
           {/* Accent line */}
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-7 h-0.5 bg-[#F5C542] rounded-full" />
-            <div className="w-3.5 h-0.5 bg-[#00C2B2] rounded-full" />
+            <div className="w-7 h-0.5 bg-[#FF555F] rounded-full" />
+            <div className="w-3.5 h-0.5 bg-[#4AABCA] rounded-full" />
           </div>
 
           <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.08] uppercase">

@@ -11,42 +11,42 @@ const steps = [
     title: "Consult",
     desc: "Understand corporate bottlenecks and define strategic deliverables.",
     icon: HelpCircle,
-    color: "#F5C542"
+    color: "#FF555F"
   },
   {
     num: "02",
     title: "Strategize",
     desc: "Architect custom SLAs, technical guidelines, and team pricing bounds.",
     icon: Settings,
-    color: "#00C2B2"
+    color: "#4AABCA"
   },
   {
     num: "03",
     title: "Source",
     desc: "Recruit from vetted skill pools and deploy target-matched assets.",
     icon: Search,
-    color: "#F5C542"
+    color: "#FF555F"
   },
   {
     num: "04",
     title: "Deploy",
     desc: "Integrate team hires, cloud channels, and statutory compliance.",
     icon: Cpu,
-    color: "#00C2B2"
+    color: "#4AABCA"
   },
   {
     num: "05",
     title: "Support",
     desc: "Ongoing SLA audit, 24/7 virtual helpdesk support, and expansions.",
     icon: LifeBuoy,
-    color: "#F5C542"
+    color: "#FF555F"
   }
 ];
 
 export default function WorkProcess() {
   return (
     <section className="relative py-12 md:py-16 overflow-hidden bg-transparent border-t border-white/5">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#00C2B2]/4 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-[#4AABCA]/4 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading
@@ -57,7 +57,7 @@ export default function WorkProcess() {
 
         <div className="relative mt-16">
           {/* Connecting line (desktop) */}
-          <div className="absolute top-10 left-[10%] right-[10%] h-px border-t-2 border-dashed border-[#F5C542]/15 hidden lg:block z-0" />
+          <div className="absolute top-10 left-[10%] right-[10%] h-px border-t-2 border-dashed border-[#FF555F]/15 hidden lg:block z-0" />
 
           <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-10 lg:gap-4">
             {steps.map((step, index) => {
@@ -78,7 +78,7 @@ export default function WorkProcess() {
                   >
                     {/* Step number badge */}
                     <span
-                      className="absolute -top-1.5 -right-1.5 text-[9px] font-extrabold text-[#0A0F1E] px-1.5 py-0.5 rounded-full"
+                      className="absolute -top-1.5 -right-1.5 text-[9px] font-extrabold text-[#0A1128] px-1.5 py-0.5 rounded-full"
                       style={{ background: step.color }}
                     >
                       {step.num}

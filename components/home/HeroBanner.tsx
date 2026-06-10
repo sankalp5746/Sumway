@@ -1,14 +1,53 @@
 "use client";
 
-import React from "react";
-import FallbackImage from "@/components/shared/FallbackImage";
-import { motion } from "framer-motion";
-import { ArrowRight, ArrowDown, Sparkles } from "lucide-react";
+import React, { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Play, Pause, Sparkles } from "lucide-react";
 import { useAppStore } from "@/lib/store";
-import { COMPANY_DETAILS } from "@/lib/constants";
+
+const SLIDES = [
+  {
+    videoUrl: "/videos/slide1.mp4",
+    tag: "Digital Transformation & AI",
+    title: "Empowering Enterprises with Digital Workforce",
+    ctaText: "Get Started Now",
+    enquiryType: "Enterprise Recruitment"
+  },
+  {
+    videoUrl: "/videos/slide2.mp4",
+    tag: "Premium Global Staffing",
+    title: "Connect with Elite Professional Talent",
+    ctaText: "Hire Elite Talent",
+    enquiryType: "Staffing Enquiry"
+  },
+  {
+    videoUrl: "/videos/slide3.mp4",
+    tag: "Secure BPO Curation",
+    title: "24/7/365 Virtual Operations Centers",
+    ctaText: "Explore BPO Desks",
+    enquiryType: "BPO Enquiry"
+  }
+];
 
 export default function HeroBanner() {
   const openEnquiry = useAppStore((state) => state.openEnquiry);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  // Slide autoplay interval
+  useEffect(() => {
+    if (!isPlaying) return;
+    const interval = setInterval(nextSlide, 7000); // 7 seconds per slide
+    return () => clearInterval(interval);
+  }, [isPlaying, nextSlide]);
 
   const handleScrollToServices = () => {
     const el = document.getElementById("services-section");
@@ -16,147 +55,122 @@ export default function HeroBanner() {
   };
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-[#080d1a] light:bg-slate-50">
-      {/* Background image */}
+    <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-[#0A1128] light:bg-white">
+      {/* Video Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <FallbackImage
-          src="/images/hero.png"
-          alt="Modern corporate office workspace"
-          fill
-          className="object-cover opacity-20 light:opacity-10"
-          priority
-          fallbackLabel="Corporate Office"
-        />
+        <div className="absolute inset-0 bg-black/35 light:bg-white/50 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-transparent to-black/20 light:to-white/10 z-10 pointer-events-none" />
+
+        <video
+          key={currentSlide}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-65 light:opacity-55"
+        >
+          <source src={SLIDES[currentSlide].videoUrl} type="video/mp4" />
+        </video>
       </div>
 
-      {/* Animated gradient mesh */}
-      <div className="absolute inset-0 animated-mesh opacity-40 light:opacity-20" />
+      {/* Slide Content */}
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center pt-24 pb-20">
+        {/* Visually hidden H1 heading for screen readers and SEO */}
+        <h1 className="sr-only">
+          {SLIDES[currentSlide].title}
+        </h1>
 
-      {/* Radial glow overlays */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(0,194,178,0.1),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_80%,rgba(245,197,66,0.06),transparent)]" />
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0F1E] light:from-slate-50 to-transparent" />
-
-      {/* Floating shapes — desktop only */}
-      <motion.div
-        animate={{ y: [0, -20, 0], rotate: [0, 6, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-10 w-20 h-20 rounded-full border border-slate-700/20 blur-sm pointer-events-none hidden lg:block"
-      />
-      <motion.div
-        animate={{ y: [0, 28, 0], rotate: [0, -10, 0] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-1/3 right-14 w-32 h-32 rounded-full border border-[#00C2B2]/10 blur-sm pointer-events-none hidden lg:block"
-      />
-
-      {/* Main content — pt accounts for fixed navbar */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center pt-24 pb-20">
-
-        {/* Tagline badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6"
-        >
-          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#00C2B2] bg-[#00C2B2]/10 px-4 py-2 rounded-full border border-[#00C2B2]/20">
-            <Sparkles className="w-3 h-3 shrink-0" />
-            <span>{COMPANY_DETAILS.tagline}</span>
-          </span>
-        </motion.div>
-
-        {/* Main headline — capped at text-5xl to prevent overflow */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.12 }}
-          className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-slate-100 light:text-[#0F172A] tracking-tight leading-[1.08] uppercase"
-        >
-          Empowering Businesses
-          <br />
-          <span
-            className="text-transparent bg-clip-text bg-gradient-to-r from-[#F5C542] via-[#00C2B2] to-[#F5C542] animate-mesh"
-            style={{ backgroundSize: "300% 300%" }}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="text-center flex flex-col items-center max-w-4xl"
           >
-            with Global Workforce
-          </span>
-        </motion.h1>
+            {/* Tagline Badge */}
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#4AABCA] bg-[#4AABCA]/10 px-4 py-2 rounded-full border border-[#4AABCA]/20">
+                <Sparkles className="w-3 h-3 shrink-0" />
+                <span>{SLIDES[currentSlide].tag}</span>
+              </span>
+            </div>
 
-        {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="text-sm sm:text-base md:text-lg text-slate-400 light:text-slate-600 mt-5 max-w-xl leading-relaxed"
-        >
-          Sumway Global Management is your enterprise gateway for strategic recruitment,
-          BPO operations, premium digital transformations, and high-performance talent curation.{" "}
-          <span className="text-slate-300 light:text-slate-700 font-medium">Jaipur-crafted, globally aligned.</span>
-        </motion.p>
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.38 }}
-          className="flex items-center gap-6 sm:gap-10 mt-7"
-        >
+        {/* Stats Strip */}
+        <div className="flex items-center gap-6 sm:gap-10 mt-12 border-t border-white/10 light:border-slate-200 pt-8 w-full max-w-lg justify-center">
           {[
             { value: "150+", label: "Clients" },
             { value: "2500+", label: "Placed" },
             { value: "99.8%", label: "SLA Rate" },
           ].map((stat, i) => (
             <React.Fragment key={stat.label}>
-              {i > 0 && <div className="w-px h-8 bg-white/10 light:bg-slate-300" />}
+              {i > 0 && <div className="w-px h-8 bg-white/10 light:bg-slate-200" />}
               <div className="flex flex-col items-center">
-                <span className="font-display font-extrabold text-xl sm:text-2xl text-[#F5C542]">
+                <span className="font-display font-extrabold text-xl sm:text-2xl text-[#FF555F]">
                   {stat.value}
                 </span>
-                <span className="text-xs text-slate-500 light:text-slate-500 font-semibold uppercase tracking-wider mt-0.5">
+                <span className="text-[10px] text-slate-500 light:text-slate-600 font-semibold uppercase tracking-wider mt-0.5">
                   {stat.label}
                 </span>
               </div>
             </React.Fragment>
           ))}
-        </motion.div>
+        </div>
+      </div>
 
-        {/* CTA buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.48 }}
-          className="flex flex-col sm:flex-row items-center gap-3 mt-8"
+      {/* Manual Arrow Controls (Desktop only) */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 light:border-slate-250 bg-black/30 light:bg-slate-100 hover:bg-[#FF555F] hover:border-[#FF555F] hover:text-white text-white/80 light:text-slate-700 flex items-center justify-center transition-all z-20 cursor-pointer hidden md:flex"
+        aria-label="Previous Slide"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 light:border-slate-250 bg-black/30 light:bg-slate-100 hover:bg-[#FF555F] hover:border-[#FF555F] hover:text-white text-white/80 light:text-slate-700 flex items-center justify-center transition-all z-20 cursor-pointer hidden md:flex"
+        aria-label="Next Slide"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Bottom Controls Panel (Indicators + Play/Pause) */}
+      <div className="absolute bottom-10 left-0 right-0 flex items-center justify-center gap-6 z-20">
+        {/* Indicators */}
+        <div className="flex items-center gap-2.5">
+          {SLIDES.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-1.5 rounded-full transition-all cursor-pointer ${index === currentSlide ? "w-8 bg-[#FF555F]" : "w-2.5 bg-white/30 light:bg-slate-300 hover:bg-white/50 light:hover:bg-slate-400"
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Play/Pause Toggle */}
+        <button
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="w-8 h-8 rounded-full border border-white/15 light:border-slate-250 bg-black/40 light:bg-slate-100 text-white light:text-slate-700 flex items-center justify-center hover:bg-[#FF555F] hover:border-[#FF555F] hover:text-white transition-all cursor-pointer"
+          aria-label={isPlaying ? "Pause autoplay" : "Start autoplay"}
         >
-          <button
-            onClick={() => openEnquiry("Enterprise Recruitment")}
-            className="btn-primary w-full sm:w-auto justify-center"
-          >
-            <span>Get Started Now</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={handleScrollToServices}
-            className="btn-outline w-full sm:w-auto justify-center"
-          >
-            Explore Our Services
-          </button>
-        </motion.div>
+          {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+        </button>
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0.4, 1, 0.4], y: [0, 6, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 cursor-pointer text-slate-500 hover:text-[#F5C542] transition-colors"
+      <div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer text-slate-400 light:text-slate-500 hover:text-[#FF555F] transition-colors z-20"
         onClick={handleScrollToServices}
       >
-        <span className="text-[9px] font-bold tracking-widest uppercase">Scroll</span>
-        <ArrowDown className="w-4 h-4 text-[#F5C542]" />
-      </motion.div>
+        <span className="text-[9px] font-bold tracking-widest uppercase">Scroll Down</span>
+        <ArrowDown className="w-4 h-4 text-[#FF555F] animate-bounce" />
+      </div>
     </section>
   );
 }

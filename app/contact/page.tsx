@@ -98,7 +98,7 @@ export default function ContactPage() {
               {isSuccess ? (
                 /* Success Card */
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-4">
                     <CheckCircle className="w-10 h-10 animate-bounce" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-slate-100 uppercase tracking-wide mb-2">
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Name */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Full Name <span className="text-[#F5C542]">*</span></label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Full Name <span className="text-[#FF555F]">*</span></label>
                       <input
                         {...register("name")}
                         placeholder="e.g. Amit Kumar"
@@ -134,7 +134,7 @@ export default function ContactPage() {
 
                     {/* Phone */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Number <span className="text-[#F5C542]">*</span></label>
+                      <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Phone Number <span className="text-[#FF555F]">*</span></label>
                       <input
                         {...register("phone")}
                         placeholder="e.g. +91 9414940434"
@@ -148,7 +148,7 @@ export default function ContactPage() {
 
                   {/* Email */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#F5C542]">*</span></label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Email Address <span className="text-[#FF555F]">*</span></label>
                     <input
                       {...register("email")}
                       placeholder="e.g. support@sumwayglobal.com"
@@ -161,7 +161,7 @@ export default function ContactPage() {
 
                   {/* Subject */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Subject <span className="text-[#F5C542]">*</span></label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Subject <span className="text-[#FF555F]">*</span></label>
                     <input
                       {...register("subject")}
                       placeholder="e.g. Virtual Assistant staffing requirements..."
@@ -174,7 +174,7 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Detailed Message <span className="text-[#F5C542]">*</span></label>
+                    <label className="text-sm font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Detailed Message <span className="text-[#FF555F]">*</span></label>
                     <textarea
                       {...register("message")}
                       rows={5}
@@ -216,7 +216,7 @@ export default function ContactPage() {
               </h3>
               
               {callbackSuccess ? (
-                <div className="p-4 rounded-lg bg-[#00C2B2]/5 border border-[#00C2B2]/10 mt-4 flex items-center gap-2 text-xs font-semibold text-[#00C2B2]">
+                <div className="p-4 rounded-lg bg-[#4AABCA]/5 border border-[#4AABCA]/10 mt-4 flex items-center gap-2 text-xs font-semibold text-[#4AABCA]">
                   <CheckCircle className="w-4.5 h-4.5 shrink-0" />
                   <span>Callback scheduled! Our advisors will call you at your preferred time.</span>
                 </div>
@@ -244,7 +244,7 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-xl bg-[#00C2B2] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#00C2B2]/90 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full py-3 rounded-xl bg-[#4AABCA] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#4AABCA]/90 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Schedule Call</span>
@@ -259,12 +259,12 @@ export default function ContactPage() {
             
             {/* Quick Contacts details */}
             <div className="glass-card p-6 md:p-8 flex flex-col gap-5 text-xs font-semibold">
-              <h4 className="text-[10px] font-bold text-[#00C2B2] uppercase tracking-widest">
+              <h4 className="text-[10px] font-bold text-[#4AABCA] uppercase tracking-widest">
                 Office HQ Coordinates
               </h4>
 
               <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
-                <MapPin className="w-5 h-5 text-[#F5C542] shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#FF555F] shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Headquarters</span>
                   <span className="mt-0.5 leading-relaxed">{COMPANY_DETAILS.address}</span>
@@ -272,27 +272,27 @@ export default function ContactPage() {
               </div>
 
               <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
-                <Phone className="w-5 h-5 text-[#F5C542] shrink-0" />
+                <Phone className="w-5 h-5 text-[#FF555F] shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Direct Call Lines</span>
-                  <a href={`tel:${COMPANY_DETAILS.phone}`} className="mt-0.5 hover:text-[#F5C542] transition-colors">
+                  <a href={`tel:${COMPANY_DETAILS.phone}`} className="mt-0.5 hover:text-[#FF555F] transition-colors">
                     {COMPANY_DETAILS.phoneDisplay}
                   </a>
                 </div>
               </div>
 
               <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
-                <Mail className="w-5 h-5 text-[#F5C542] shrink-0" />
+                <Mail className="w-5 h-5 text-[#FF555F] shrink-0" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Email Coordinates</span>
-                  <a href={`mailto:${COMPANY_DETAILS.email}`} className="mt-0.5 hover:text-[#F5C542] transition-colors lowercase">
+                  <a href={`mailto:${COMPANY_DETAILS.email}`} className="mt-0.5 hover:text-[#FF555F] transition-colors lowercase">
                     {COMPANY_DETAILS.email}
                   </a>
                 </div>
               </div>
 
               <div className="flex gap-3.5 items-start text-slate-300 dark:text-slate-300 light:text-slate-700">
-                <Clock className="w-5 h-5 text-[#F5C542] shrink-0 mt-0.5" />
+                <Clock className="w-5 h-5 text-[#FF555F] shrink-0 mt-0.5" />
                 <div className="flex flex-col">
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Office Hours</span>
                   <span className="mt-0.5 leading-relaxed">{COMPANY_DETAILS.hours}</span>

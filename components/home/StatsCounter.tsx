@@ -19,9 +19,9 @@ function StatItem({ target, suffix, label, trigger, desc }: StatItemProps) {
     <div className="flex flex-col items-center justify-center text-center px-4 py-6">
       <div className="stat-number text-4xl md:text-6xl text-slate-100 light:text-[#111827]">
         {count.toLocaleString()}
-        <span className="text-[#F5C542]">{suffix}</span>
+        <span className="text-[#FF555F]">{suffix}</span>
       </div>
-      <div className="text-sm font-bold uppercase tracking-widest text-[#00C2B2] mt-3">
+      <div className="text-sm font-bold uppercase tracking-widest text-[#4AABCA] mt-3">
         {label}
       </div>
       {desc && (
@@ -42,8 +42,8 @@ export default function StatsCounter() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,rgba(0,194,178,0.07),transparent)]" />
 
       {/* Decorative lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C542]/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#00C2B2]/15 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#FF555F]/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4AABCA]/15 to-transparent" />
 
       <motion.div
         onViewportEnter={() => setIsInView(true)}

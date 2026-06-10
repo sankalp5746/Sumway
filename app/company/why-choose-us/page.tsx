@@ -48,7 +48,7 @@ export default function WhyChooseUsPage() {
       {/* Comparison Table Section */}
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+          <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
             Enterprise Audit
           </span>
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
@@ -63,9 +63,9 @@ export default function WhyChooseUsPage() {
         <div className="overflow-x-auto rounded-xl border border-slate-800 light:border-slate-300 bg-[#111827] light:bg-white shadow-2xl">
           <table className="w-full border-collapse text-left text-xs font-semibold text-slate-300">
             <thead>
-              <tr className="border-b border-slate-800 light:border-slate-300 bg-[#0A0F1E] light:bg-slate-100 font-display font-extrabold text-[#00C2B2] uppercase tracking-wider text-[10px]">
+              <tr className="border-b border-slate-800 light:border-slate-300 bg-[#0A1128] light:bg-slate-100 font-display font-extrabold text-[#4AABCA] uppercase tracking-wider text-[10px]">
                 <th className="p-4 md:p-6">Parameter</th>
-                <th className="p-4 md:p-6 text-center text-[#F5C542]">Sumway Global</th>
+                <th className="p-4 md:p-6 text-center text-[#FF555F]">Sumway Global</th>
                 <th className="p-4 md:p-6 text-center">Standard Agencies</th>
                 <th className="p-4 md:p-6 hidden md:table-cell">Delivered Advantage</th>
               </tr>
@@ -78,7 +78,7 @@ export default function WhyChooseUsPage() {
                   </td>
                   <td className="p-4 md:p-6 text-center">
                     {row.sumway ? (
-                      <div className="inline-flex w-7 h-7 rounded-full bg-[#00C2B2]/10 items-center justify-center text-[#00C2B2]">
+                      <div className="inline-flex w-7 h-7 rounded-full bg-[#4AABCA]/10 items-center justify-center text-[#4AABCA]">
                         <Check className="w-4.5 h-4.5" />
                       </div>
                     ) : (

@@ -72,8 +72,8 @@ export default function AdminPage() {
   // Hydration safety check
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[#0A0F1E] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-[#00C2B2] animate-spin" />
+      <div className="min-h-screen bg-[#0A1128] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-[#4AABCA] animate-spin" />
       </div>
     );
   }
@@ -129,13 +129,13 @@ export default function AdminPage() {
         <div className="flex justify-between items-center gap-4 mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-[#F5C542] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-[#FF555F] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
 
-          <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl border border-[#00C2B2]/20 bg-[#00C2B2]/5 text-[#00C2B2]">
+          <div className="flex items-center gap-2.5 px-4 py-2 rounded-xl border border-[#4AABCA]/20 bg-[#4AABCA]/5 text-[#4AABCA]">
             <ShieldCheck className="w-4 h-4" />
             <span className="text-xs font-bold uppercase tracking-wider">BOARD ADMIN ACTIVE</span>
           </div>
@@ -148,9 +148,9 @@ export default function AdminPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-[#00C2B2]/10 border border-[#00C2B2]/30 text-slate-200 text-xs font-semibold px-5 py-4 rounded-xl mb-8 flex items-center gap-3"
+              className="bg-[#4AABCA]/10 border border-[#4AABCA]/30 text-slate-200 text-xs font-semibold px-5 py-4 rounded-xl mb-8 flex items-center gap-3"
             >
-              <Sparkles className="w-4.5 h-4.5 text-[#F5C542] shrink-0" />
+              <Sparkles className="w-4.5 h-4.5 text-[#FF555F] shrink-0" />
               <span>{notification}</span>
             </motion.div>
           )}
@@ -161,7 +161,7 @@ export default function AdminPage() {
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="glass-card-static p-6 md:p-8 flex flex-col gap-6">
               <div>
-                <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+                <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
                   Live Postings
                 </span>
                 <h3 className="font-display font-extrabold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mt-1">
@@ -181,7 +181,7 @@ export default function AdminPage() {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. Senior Voice Advisor"
-                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#F5C542] outline-none text-xs font-semibold transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#FF555F] outline-none text-xs font-semibold transition-colors"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ export default function AdminPage() {
                     <select
                       value={dept}
                       onChange={(e) => setDept(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#F5C542] outline-none text-xs font-semibold transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#FF555F] outline-none text-xs font-semibold transition-colors cursor-pointer"
                     >
                       <option value="BPO Operations" className="bg-[#0f1729] text-slate-200">BPO Operations</option>
                       <option value="IT & Software" className="bg-[#0f1729] text-slate-200">IT & Software</option>
@@ -210,7 +210,7 @@ export default function AdminPage() {
                     <select
                       value={type}
                       onChange={(e) => setType(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#F5C542] outline-none text-xs font-semibold transition-colors cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#FF555F] outline-none text-xs font-semibold transition-colors cursor-pointer"
                     >
                       <option value="Full-Time" className="bg-[#0f1729] text-slate-200">Full-Time</option>
                       <option value="Part-Time" className="bg-[#0f1729] text-slate-200">Part-Time</option>
@@ -228,7 +228,7 @@ export default function AdminPage() {
                   <select
                     value={loc}
                     onChange={(e) => setLoc(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#F5C542] outline-none text-xs font-semibold transition-colors cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#FF555F] outline-none text-xs font-semibold transition-colors cursor-pointer"
                   >
                     <option value="Jaipur, IN" className="bg-[#0f1729] text-slate-200">Jaipur, IN</option>
                     <option value="Jaipur (On-site)" className="bg-[#0f1729] text-slate-200">Jaipur (On-site)</option>
@@ -248,7 +248,7 @@ export default function AdminPage() {
                     onChange={(e) => setDesc(e.target.value)}
                     rows={4}
                     placeholder="Describe the opportunity, core responsibilities, and experience requirements..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#F5C542] outline-none text-xs font-semibold transition-colors resize-none leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl bg-white/4 light:bg-slate-50 border border-white/10 light:border-slate-300 text-slate-100 light:text-slate-900 focus:border-[#FF555F] outline-none text-xs font-semibold transition-colors resize-none leading-relaxed"
                   />
                 </div>
 
@@ -278,7 +278,7 @@ export default function AdminPage() {
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="glass-card-static p-6 md:p-8 flex flex-col gap-6">
               <div>
-                <span className="text-[10px] font-bold tracking-widest text-[#00C2B2] uppercase">
+                <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
                   Management
                 </span>
                 <h3 className="font-display font-extrabold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mt-1">
@@ -293,7 +293,7 @@ export default function AdminPage() {
                     className="p-4 rounded-xl border border-white/5 bg-white/2 hover:border-slate-700 transition-all flex items-center justify-between gap-4"
                   >
                     <div className="flex flex-col gap-1 min-w-0">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-[#00C2B2]">
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-[#4AABCA]">
                         {job.dept}
                       </span>
                       <h4 className="font-display font-bold text-sm text-slate-200 uppercase truncate">
@@ -301,11 +301,11 @@ export default function AdminPage() {
                       </h4>
                       <div className="flex items-center gap-3 text-[10px] text-slate-400 font-semibold mt-1">
                         <span className="flex items-center gap-1">
-                          <MapPin className="w-3 h-3 text-[#F5C542]" />
+                          <MapPin className="w-3 h-3 text-[#FF555F]" />
                           {job.loc}
                         </span>
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-[#F5C542]" />
+                          <Clock className="w-3 h-3 text-[#FF555F]" />
                           {job.type}
                         </span>
                       </div>
