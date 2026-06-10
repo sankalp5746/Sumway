@@ -7,21 +7,24 @@ import { useAppStore } from "@/lib/store";
 
 const SLIDES = [
   {
-    videoUrl: "/videos/slide1.mp4",
+    videoDesktopUrl: "/videos/slide1_desktop.mp4",
+    videoMobileUrl: "/videos/slide1_mobile.mp4",
     tag: "Digital Transformation & AI",
     title: "Empowering Enterprises with Digital Workforce",
     ctaText: "Get Started Now",
     enquiryType: "Enterprise Recruitment"
   },
   {
-    videoUrl: "/videos/slide2.mp4",
+    videoDesktopUrl: "/videos/slide2_desktop.mp4",
+    videoMobileUrl: "/videos/slide2_mobile.mp4",
     tag: "Premium Global Staffing",
     title: "Connect with Elite Professional Talent",
     ctaText: "Hire Elite Talent",
     enquiryType: "Staffing Enquiry"
   },
   {
-    videoUrl: "/videos/slide3.mp4",
+    videoDesktopUrl: "/videos/slide3_desktop.mp4",
+    videoMobileUrl: "/videos/slide3_mobile.mp4",
     tag: "Secure BPO Curation",
     title: "24/7/365 Virtual Operations Centers",
     ctaText: "Explore BPO Desks",
@@ -58,23 +61,36 @@ export default function HeroBanner() {
     <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center bg-[#0A1128] light:bg-white">
       {/* Video Background with overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/35 light:bg-white/50 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/45 light:bg-white/65 z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-transparent to-black/20 light:to-white/10 z-10 pointer-events-none" />
 
+        {/* Ambient Blurred Background Video (Visible only on mobile/portrait viewports for premium visual flow) */}
         <video
-          key={currentSlide}
+          key={`bg-${currentSlide}`}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-65 light:opacity-55"
+          className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 md:hidden pointer-events-none"
         >
-          <source src={SLIDES[currentSlide].videoUrl} type="video/mp4" />
+          <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
+        </video>
+
+        {/* Main Video: object-cover background on desktop/tablet, hidden on mobile */}
+        <video
+          key={`main-desktop-${currentSlide}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-85 light:opacity-75 hidden md:block"
+        >
+          <source src={SLIDES[currentSlide].videoDesktopUrl} type="video/mp4" />
         </video>
       </div>
 
       {/* Slide Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center pt-24 pb-20">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-screen pt-24 pb-28 md:justify-center md:pt-24 md:pb-20">
         {/* Visually hidden H1 heading for screen readers and SEO */}
         <h1 className="sr-only">
           {SLIDES[currentSlide].title}
@@ -90,7 +106,7 @@ export default function HeroBanner() {
             className="text-center flex flex-col items-center max-w-4xl"
           >
             {/* Tagline Badge */}
-            <div className="mb-6">
+            <div className="mb-2 md:mb-6">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#4AABCA] bg-[#4AABCA]/10 px-4 py-2 rounded-full border border-[#4AABCA]/20">
                 <Sparkles className="w-3 h-3 shrink-0" />
                 <span>{SLIDES[currentSlide].tag}</span>
@@ -100,20 +116,36 @@ export default function HeroBanner() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Mobile Video Player: visible only on mobile/portrait viewports to prevent text overlap */}
+        <div className="w-full max-w-md my-4 md:hidden z-10">
+          <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 light:border-slate-200 shadow-[0_12px_40px_rgba(0,0,0,0.5)] bg-black">
+            <video
+              key={`main-mobile-${currentSlide}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-contain"
+            >
+              <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
         {/* Stats Strip */}
-        <div className="flex items-center gap-6 sm:gap-10 mt-12 border-t border-white/10 light:border-slate-200 pt-8 w-full max-w-lg justify-center">
+        <div className="flex items-center gap-4 sm:gap-10 mt-4 md:mt-12 border-t border-white/10 light:border-slate-200 pt-6 sm:pt-8 w-full max-w-lg justify-center z-10">
           {[
             { value: "150+", label: "Clients" },
             { value: "2500+", label: "Placed" },
             { value: "99.8%", label: "SLA Rate" },
           ].map((stat, i) => (
             <React.Fragment key={stat.label}>
-              {i > 0 && <div className="w-px h-8 bg-white/10 light:bg-slate-200" />}
+              {i > 0 && <div className="w-px h-6 sm:h-8 bg-white/10 light:bg-slate-200" />}
               <div className="flex flex-col items-center">
-                <span className="font-display font-extrabold text-xl sm:text-2xl text-[#FF555F]">
+                <span className="font-display font-extrabold text-lg sm:text-2xl text-[#FF555F]">
                   {stat.value}
                 </span>
-                <span className="text-[10px] text-slate-500 light:text-slate-600 font-semibold uppercase tracking-wider mt-0.5">
+                <span className="text-[9px] sm:text-[10px] text-slate-500 light:text-slate-600 font-semibold uppercase tracking-wider mt-0.5 whitespace-nowrap">
                   {stat.label}
                 </span>
               </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
@@ -6,6 +6,12 @@ import EnquiryButton from "@/components/shared/EnquiryButton";
 import EnquiryModal from "@/components/forms/EnquiryModal";
 import CustomCursor from "@/components/shared/CustomCursor";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Sumway Global Management | Premium Staffing, BPO & IT Software Solutions",
