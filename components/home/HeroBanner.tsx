@@ -61,27 +61,27 @@ export default function HeroBanner() {
         <div className="absolute inset-0 bg-black/45 light:bg-white/65 z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-transparent to-black/20 light:to-white/10 z-10 pointer-events-none" />
 
-        {/* Main Mobile Video: object-cover background on mobile, hidden on desktop */}
+        {/* Ambient Blurred Background Video (Visible only in portrait viewports for premium visual flow) */}
         <video
-          key={`main-mobile-${currentSlide}`}
+          key={`bg-${currentSlide}`}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-85 light:opacity-75 md:hidden"
+          className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 landscape:hidden pointer-events-none"
         >
           <source src={SLIDES[currentSlide].videoMobileUrl.replace(".mp4", ".webm")} type="video/webm" />
           <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
         </video>
 
-        {/* Main Desktop Video: object-cover background on desktop/tablet, hidden on mobile */}
+        {/* Main Desktop Video: object-cover background in landscape mode, hidden in portrait */}
         <video
           key={`main-desktop-${currentSlide}`}
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-85 light:opacity-75 hidden md:block"
+          className="w-full h-full object-cover opacity-85 light:opacity-75 portrait:hidden"
         >
           <source src={SLIDES[currentSlide].videoDesktopUrl.replace(".mp4", ".webm")} type="video/webm" />
           <source src={SLIDES[currentSlide].videoDesktopUrl} type="video/mp4" />
@@ -94,6 +94,23 @@ export default function HeroBanner() {
         <h1 className="sr-only">
           {SLIDES[currentSlide].title}
         </h1>
+
+        {/* Mobile Video Player: visible only in portrait viewports to prevent text cropping */}
+        <div className="w-full max-w-md my-auto landscape:hidden z-10">
+          <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 light:border-slate-200 shadow-[0_12px_40px_rgba(0,0,0,0.5)] bg-black">
+            <video
+              key={`main-mobile-${currentSlide}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-contain"
+            >
+              <source src={SLIDES[currentSlide].videoMobileUrl.replace(".mp4", ".webm")} type="video/webm" />
+              <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
+            </video>
+          </div>
+        </div>
 
         {/* Stats Strip */}
         <div className="flex items-center gap-4 sm:gap-10 mt-auto border-t border-white/10 light:border-slate-200 pt-6 sm:pt-8 w-full max-w-lg justify-center z-10">
