@@ -94,7 +94,7 @@ export default function LoginClient() {
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(0,194,178,0.05),transparent_70%)] pointer-events-none" />
 
             <div className="flex flex-col gap-6">
-              <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase bg-[#4AABCA]/10 px-3.5 py-1.5 rounded-md border border-[#4AABCA]/10 self-start">
+              <span className="text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-md border border-[#4AABCA]/10 self-start stats-badge">
                 Corporate Gateway
               </span>
               <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide leading-snug">
@@ -111,7 +111,7 @@ export default function LoginClient() {
             <div className="flex flex-col gap-4 border-t border-slate-800/80 pt-6 mt-8">
               <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500">Corporate SLA</span>
-                <span className="text-[#4AABCA]">99.8% Retained</span>
+                <span className="text-[#4AABCA] light:text-accent-teal-dark">99.8% Retained</span>
               </div>
               <div className="flex justify-between items-center text-xs font-semibold">
                 <span className="text-slate-500">Global Operations</span>
@@ -127,7 +127,7 @@ export default function LoginClient() {
               
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 light:bg-accent-teal-dark/10 flex items-center justify-center text-[#4AABCA] light:text-accent-teal-dark mb-4">
                     <UserCheck className="w-10 h-10 animate-bounce" />
                   </div>
                   <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
@@ -176,6 +176,7 @@ export default function LoginClient() {
                           {...register("email")}
                           placeholder="e.g. administrator@sumway.com"
                           className="form-input pl-10"
+                          autoComplete="username email"
                         />
                         <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
@@ -183,7 +184,7 @@ export default function LoginClient() {
                         <span className="text-xs text-red-400 font-medium">{errors.email.message}</span>
                       )}
                     </div>
-
+ 
                     {/* Password */}
                     <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between">
@@ -202,6 +203,7 @@ export default function LoginClient() {
                           {...register("password")}
                           placeholder="Type password..."
                           className="form-input pl-10"
+                          autoComplete="current-password"
                         />
                         <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
@@ -233,7 +235,7 @@ export default function LoginClient() {
                   {/* Notice for registration */}
                   <div className="text-center mt-6 text-sm text-slate-500 font-medium">
                     <span>Need portal access? </span>
-                    <Link href="/contact" className="text-[#4AABCA] hover:text-[#FF555F] font-bold transition-colors">
+                    <Link href="/contact" className="text-[#4AABCA] light:text-accent-teal-dark hover:text-[#FF555F] font-bold transition-colors">
                       Contact Administrator
                     </Link>
                   </div>

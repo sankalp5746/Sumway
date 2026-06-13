@@ -48,8 +48,13 @@ export default function Navbar() {
     setMounted(true);
   }, [login, setJobs]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("sumway_user");
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } catch (e) {
+      console.error("Logout API failed", e);
+    }
     logout();
     setMobileMenuOpen(false);
   };
@@ -222,10 +227,8 @@ export default function Navbar() {
               </Link>
             );
           })}
-        </nav>
-
-        {/* Right actions */}
-        <div className="hidden xl:flex items-center gap-2 shrink-0">
+        </nav>        {/* Right actions */}
+        <div className="hidden lg:flex items-center gap-2 shrink-0">
           <button
             onClick={toggleTheme}
             className="p-2 rounded-xl border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600"
@@ -233,7 +236,7 @@ export default function Navbar() {
           >
             {isLight ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
           </button>
-
+ 
           {mounted && user ? (
             <div className="flex items-center gap-3">
               {user.role === "admin" && (
@@ -263,7 +266,7 @@ export default function Navbar() {
               Login
             </Link>
           )}
-
+ 
           <button
             onClick={() => openEnquiry("General Inquiry")}
             className="btn-primary !py-2 !px-4 !text-xs whitespace-nowrap"
@@ -272,17 +275,18 @@ export default function Navbar() {
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
-
+ 
         {/* Tablet nav (lg only — show fewer items) */}
         <nav className="hidden lg:flex xl:hidden items-center gap-0.5">
           {["Home", "Services", "Careers", "Contact"].map((label) => {
             const link = NAV_LINKS.find(l => l.label === label);
             if (!link) return null;
-            const isActive = pathname === link.href;
+            const href = label === "Services" ? "/#services-section" : link.href;
+            const isActive = pathname === href;
             return (
               <Link
                 key={label}
-                href={link.href || "#"}
+                href={href || "#"}
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                   isActive ? "text-[#FF555F]" : "text-slate-300 light:text-slate-700 hover:text-[#FF555F]"
                 }`}
@@ -291,12 +295,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <button
-            onClick={() => openEnquiry("General Inquiry")}
-            className="btn-primary !py-2 !px-4 !text-xs ml-2 whitespace-nowrap"
-          >
-            Enquire
-          </button>
         </nav>
 
         {/* Mobile controls */}

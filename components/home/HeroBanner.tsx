@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Play, Pause, Sparkles } from "lucide-react";
-import { useAppStore } from "@/lib/store";
+import { ArrowDown, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 const SLIDES = [
   {
@@ -33,7 +31,6 @@ const SLIDES = [
 ];
 
 export default function HeroBanner() {
-  const openEnquiry = useAppStore((state) => state.openEnquiry);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
@@ -64,19 +61,20 @@ export default function HeroBanner() {
         <div className="absolute inset-0 bg-black/45 light:bg-white/65 z-10 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-transparent to-black/20 light:to-white/10 z-10 pointer-events-none" />
 
-        {/* Ambient Blurred Background Video (Visible only on mobile/portrait viewports for premium visual flow) */}
+        {/* Main Mobile Video: object-cover background on mobile, hidden on desktop */}
         <video
-          key={`bg-${currentSlide}`}
+          key={`main-mobile-${currentSlide}`}
           autoPlay
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 md:hidden pointer-events-none"
+          className="w-full h-full object-cover opacity-85 light:opacity-75 md:hidden"
         >
+          <source src={SLIDES[currentSlide].videoMobileUrl.replace(".mp4", ".webm")} type="video/webm" />
           <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
         </video>
 
-        {/* Main Video: object-cover background on desktop/tablet, hidden on mobile */}
+        {/* Main Desktop Video: object-cover background on desktop/tablet, hidden on mobile */}
         <video
           key={`main-desktop-${currentSlide}`}
           autoPlay
@@ -85,55 +83,20 @@ export default function HeroBanner() {
           playsInline
           className="w-full h-full object-cover opacity-85 light:opacity-75 hidden md:block"
         >
+          <source src={SLIDES[currentSlide].videoDesktopUrl.replace(".mp4", ".webm")} type="video/webm" />
           <source src={SLIDES[currentSlide].videoDesktopUrl} type="video/mp4" />
         </video>
       </div>
 
       {/* Slide Content */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-between min-h-screen pt-24 pb-28 md:justify-center md:pt-24 md:pb-20">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center justify-end min-h-screen pt-24 pb-28 md:pb-24">
         {/* Visually hidden H1 heading for screen readers and SEO */}
         <h1 className="sr-only">
           {SLIDES[currentSlide].title}
         </h1>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="text-center flex flex-col items-center max-w-4xl"
-          >
-            {/* Tagline Badge */}
-            <div className="mb-2 md:mb-6">
-              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#4AABCA] bg-[#4AABCA]/10 px-4 py-2 rounded-full border border-[#4AABCA]/20">
-                <Sparkles className="w-3 h-3 shrink-0" />
-                <span>{SLIDES[currentSlide].tag}</span>
-              </span>
-            </div>
-
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Mobile Video Player: visible only on mobile/portrait viewports to prevent text overlap */}
-        <div className="w-full max-w-md my-4 md:hidden z-10">
-          <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 light:border-slate-200 shadow-[0_12px_40px_rgba(0,0,0,0.5)] bg-black">
-            <video
-              key={`main-mobile-${currentSlide}`}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-contain"
-            >
-              <source src={SLIDES[currentSlide].videoMobileUrl} type="video/mp4" />
-            </video>
-          </div>
-        </div>
-
         {/* Stats Strip */}
-        <div className="flex items-center gap-4 sm:gap-10 mt-4 md:mt-12 border-t border-white/10 light:border-slate-200 pt-6 sm:pt-8 w-full max-w-lg justify-center z-10">
+        <div className="flex items-center gap-4 sm:gap-10 mt-auto border-t border-white/10 light:border-slate-200 pt-6 sm:pt-8 w-full max-w-lg justify-center z-10">
           {[
             { value: "150+", label: "Clients" },
             { value: "2500+", label: "Placed" },
@@ -153,6 +116,7 @@ export default function HeroBanner() {
           ))}
         </div>
       </div>
+
 
       {/* Manual Arrow Controls (Desktop only) */}
       <button

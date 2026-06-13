@@ -37,31 +37,31 @@ export default function IndustriesCarousel() {
                   src={ind.image}
                   alt={ind.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700 brightness-[0.3] light:brightness-[0.95] light:opacity-90 group-hover:brightness-[0.38] light:group-hover:brightness-[0.98]"
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 brightness-[0.3] light:brightness-[0.8] light:opacity-85 group-hover:brightness-[0.38] light:group-hover:brightness-[0.85]"
                   fallbackLabel={ind.title}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-[#0A1128]/40 light:via-white/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1128] light:from-white via-[#0A1128]/70 light:via-white/85 to-transparent" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(0,194,178,0.08),transparent_70%)]" />
               </div>
 
               {/* Content */}
               <div className="relative z-10 flex flex-col gap-3">
-                <span className="self-start text-xs font-bold uppercase tracking-widest text-[#4AABCA] bg-[#4AABCA]/10 px-3 py-1 rounded-lg border border-[#4AABCA]/20">
+                <span className="self-start text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg border stats-badge">
                   {ind.stats}
                 </span>
 
-                <h3 className="font-display font-extrabold text-xl text-slate-100 light:text-slate-800 tracking-tight leading-tight uppercase group-hover:text-[#FF555F] light:group-hover:text-[#4AABCA] transition-colors">
+                <h3 className="font-display font-extrabold text-xl text-slate-100 light:text-slate-900 tracking-tight leading-tight uppercase group-hover:text-[#FF555F] light:group-hover:text-[#4AABCA] transition-colors">
                   {ind.title}
                 </h3>
 
-                <p className="text-sm text-slate-400 light:text-slate-600 leading-relaxed font-medium line-clamp-2">
+                <p className="text-sm text-slate-400 light:text-slate-700 leading-relaxed font-semibold line-clamp-2">
                   {ind.desc}
                 </p>
 
                 <div className="flex justify-end mt-3 pt-3 border-t border-white/8 light:border-slate-200">
                   <Link
                     href={ind.href}
-                    className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-slate-300 light:text-slate-600 hover:text-[#FF555F] light:hover:text-[#4AABCA] transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-slate-300 light:text-slate-700 hover:text-[#FF555F] light:hover:text-[#4AABCA] transition-colors"
                   >
                     <span>Read Strategy</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />

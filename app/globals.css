@@ -7,6 +7,7 @@
   --color-primary-light: #FFFFFF;
   --color-accent-gold: #FF555F; /* Genpact Coral/Red */
   --color-accent-teal: #4AABCA; /* Genpact Light Blue */
+  --color-accent-teal-dark: #0b6480; /* Dark Teal for high contrast light mode */
   --color-surface-dark: #1E345C; /* Genpact Cello Navy */
   --color-surface-light: #FFFFFF;
   --color-text-dark: #FFFFFF;
@@ -585,13 +586,15 @@ hr.gradient-hr {
 
 /* Badge in light mode */
 :root.light .badge-teal {
-  background: rgba(74, 171, 202, 0.08);
-  border-color: rgba(74, 171, 202, 0.25);
+  color: #0b6480 !important;
+  background: rgba(11, 100, 128, 0.08) !important;
+  border-color: rgba(11, 100, 128, 0.25) !important;
 }
 
 :root.light .badge-gold {
-  background: rgba(255, 85, 95, 0.1);
-  border-color: rgba(255, 85, 95, 0.3);
+  color: #c23d46 !important;
+  background: rgba(255, 85, 95, 0.08) !important;
+  border-color: rgba(255, 85, 95, 0.25) !important;
 }
 
 /* Stat number in light mode */
@@ -622,6 +625,44 @@ hr.gradient-hr {
 
 :root.light .icon-box-gold {
   background: rgba(255, 85, 95, 0.08);
+}
+
+/* Reusable card stats badge style */
+.stats-badge {
+  color: #4AABCA !important;
+  background-color: rgba(74, 171, 202, 0.1) !important;
+  border-color: rgba(74, 171, 202, 0.2) !important;
+}
+
+:root.light .stats-badge {
+  color: #0b6480 !important;
+  background-color: rgba(11, 100, 128, 0.08) !important;
+  border-color: rgba(11, 100, 128, 0.25) !important;
+}
+
+/* Global light mode contrast overrides for accent teal arbitrary classes */
+:root.light [class*="text-[#4AABCA]"] {
+  color: #0b6480 !important;
+}
+
+:root.light [class*="border-[#4AABCA]/10"] {
+  border-color: rgba(11, 100, 128, 0.15) !important;
+}
+
+:root.light [class*="border-[#4AABCA]/20"] {
+  border-color: rgba(11, 100, 128, 0.25) !important;
+}
+
+:root.light [class*="border-[#4AABCA]/30"] {
+  border-color: rgba(11, 100, 128, 0.35) !important;
+}
+
+:root.light [class*="bg-[#4AABCA]/5"] {
+  background-color: rgba(11, 100, 128, 0.05) !important;
+}
+
+:root.light [class*="bg-[#4AABCA]/10"] {
+  background-color: rgba(11, 100, 128, 0.08) !important;
 }
 
 /* ─── Responsive container max-widths ────────────────────────── */
