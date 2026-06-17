@@ -97,7 +97,7 @@ export default function AboutUs() {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Our Journey
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
               CRAFTED IN THE PINK CITY, <br />
               <span className="text-[#FF555F]">Globally Structured</span>
             </h2>
@@ -157,7 +157,7 @@ export default function AboutUs() {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Milestone Timeline
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               Corporate Chronology
             </h2>
           </div>
@@ -242,7 +242,7 @@ export default function AboutUs() {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               How We Execute
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               OUR CORE CORPORATE VALUES
             </h2>
           </div>
@@ -280,7 +280,7 @@ export default function AboutUs() {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Corporate Governance
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
               SUSTAINABILITY IN THE DIGITAL ERA
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">

@@ -39,7 +39,7 @@ export default function CareersPage() {
           <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
             Workplace Perks
           </span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+          <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             WHY ASSOCIATE WITH SUMWAY?
           </h2>
         </div>
@@ -76,7 +76,7 @@ export default function CareersPage() {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Current Openings
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               EXPLORE ACTIVE VACANCIES
             </h2>
           </div>

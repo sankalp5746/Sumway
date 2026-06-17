@@ -39,7 +39,7 @@ export default function CareersHighlight() {
             </div>
 
             <div>
-              <h3 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide uppercase">
+              <h3 className="font-display font-extrabold text-xl sm:text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide uppercase">
                 Architecting Indian Talent
               </h3>
               <p className="text-body mt-3">

@@ -39,7 +39,7 @@ export default function WhatWeDo() {
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Our Capabilities</span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+          <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             INTEGRATED CONSULTING VERTICALS
           </h2>
           <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-4 leading-relaxed font-medium">

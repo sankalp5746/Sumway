@@ -51,7 +51,7 @@ export default function WhyChooseUsPage() {
           <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
             Enterprise Audit
           </span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+          <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             SUMWAY VS TRADITIONAL AGENCIES
           </h2>
           <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-4 leading-relaxed font-medium">

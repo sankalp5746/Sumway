@@ -191,7 +191,7 @@ export default function ServiceDetail({ params }: PageProps) {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase bg-[#4AABCA]/10 px-3 py-1.5 rounded-full self-start">
               Department Overview
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
               INTEGRATED OPERATIONS AND <span className="text-[#FF555F]">CAPABILITY MATRIX</span>
             </h2>
             <p className="text-xs md:text-sm text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
@@ -255,7 +255,7 @@ export default function ServiceDetail({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Capabilities list</span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               PRIMARY SERVICE FEATURES
             </h2>
           </div>
@@ -287,7 +287,7 @@ export default function ServiceDetail({ params }: PageProps) {
       <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-[#FF555F]/5">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Roadmap</span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+          <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             DELIVERY PROCESS FLOW
           </h2>
         </div>
@@ -316,7 +316,7 @@ export default function ServiceDetail({ params }: PageProps) {
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Support</span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
               FREQUENTLY ASKED QUESTIONS
             </h2>
           </div>

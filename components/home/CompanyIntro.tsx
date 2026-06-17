@@ -64,7 +64,7 @@ export default function CompanyIntro() {
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="stat-number text-3xl text-slate-100 light:text-[#111827]">
+                    <div className="stat-number text-2xl sm:text-3xl text-slate-100 light:text-[#111827]">
                       {stat.value}
                       <span className="text-[#FF555F]">{stat.suffix}</span>
                     </div>
@@ -99,7 +99,7 @@ export default function CompanyIntro() {
             transition={{ delay: 0.1 }}
           >
             <div className="section-divider mb-4" />
-            <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.1] uppercase">
+            <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.1] uppercase">
               Sumway Global Management
               <br />
               <span className="text-[#4AABCA]">From Rajasthan</span>

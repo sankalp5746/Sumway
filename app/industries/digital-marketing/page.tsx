@@ -22,7 +22,7 @@ export default function DigitalMarketingIndustry() {
           <span className="text-[10px] font-bold tracking-widest text-red-400 bg-red-400/10 px-3 py-1.5 rounded-full uppercase">
             Sector Challenges
           </span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-4">
+          <h2 className="font-display font-extrabold text-xl sm:text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-4">
             High customer acquisition costs & low conversions
           </h2>
         </div>
@@ -59,7 +59,7 @@ export default function DigitalMarketingIndustry() {
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 flex flex-col gap-5">
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">Our Solutions</span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
+            <h2 className="font-display font-extrabold text-xl sm:text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase">
               DATA-DRIVEN CONVERSION ENGINE
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">

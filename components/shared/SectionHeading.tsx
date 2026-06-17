@@ -40,7 +40,7 @@ export default function SectionHeading({
       </div>
 
       {/* Heading */}
-      <h2 className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.12]">
+      <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.12]">
         {title}
       </h2>
 

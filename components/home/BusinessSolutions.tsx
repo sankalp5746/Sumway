@@ -73,7 +73,7 @@ export default function BusinessSolutions() {
                   <div className="icon-box-teal">
                     <ActiveIcon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-display font-extrabold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide uppercase">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide uppercase">
                     {activeSolution.title}
                   </h3>
                 </div>

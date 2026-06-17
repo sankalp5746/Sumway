@@ -161,7 +161,7 @@ export default function SolutionDetail({ params }: PageProps) {
             <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
               Our Deliverables
             </span>
-            <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
+            <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase leading-snug">
               Strategic Boardroom Roadmap
             </h2>
             <p className="text-xs text-slate-400 leading-relaxed">
@@ -204,7 +204,7 @@ export default function SolutionDetail({ params }: PageProps) {
                   <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400">
                     {kpi.label}
                   </span>
-                  <span className="font-display font-extrabold text-2xl md:text-3xl text-[#FF555F]">
+                  <span className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-[#FF555F]">
                     {kpi.metric}
                   </span>
                 </div>
@@ -220,7 +220,7 @@ export default function SolutionDetail({ params }: PageProps) {
           <span className="text-[10px] font-bold tracking-widest text-[#4AABCA] uppercase">
             Operational Audit
           </span>
-          <h2 className="font-display font-extrabold text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
+          <h2 className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-tight uppercase mt-3">
             BEFORE AND AFTER RESULTS
           </h2>
         </div>

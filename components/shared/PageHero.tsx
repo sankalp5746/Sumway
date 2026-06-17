@@ -96,7 +96,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
             <div className="w-3.5 h-0.5 bg-[#4AABCA] rounded-full" />
           </div>
 
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.08] uppercase">
+          <h1 className="font-display font-extrabold text-2xl sm:text-4xl md:text-5xl text-slate-100 light:text-[#111827] tracking-tight leading-[1.08] uppercase">
             {title}
           </h1>
 

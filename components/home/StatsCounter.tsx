@@ -17,7 +17,7 @@ function StatItem({ target, suffix, label, trigger, desc }: StatItemProps) {
 
   return (
     <div className="flex flex-col items-center justify-center text-center px-4 py-6">
-      <div className="stat-number text-4xl md:text-6xl text-slate-100 light:text-[#111827]">
+      <div className="stat-number text-3xl sm:text-4xl md:text-6xl text-slate-100 light:text-[#111827]">
         {count.toLocaleString()}
         <span className="text-[#FF555F]">{suffix}</span>
       </div>

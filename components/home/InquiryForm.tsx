@@ -131,7 +131,7 @@ export default function InquiryForm() {
                   <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] mb-5">
                     <CheckCircle2 className="w-9 h-9" />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] tracking-wide mb-2">
                     Enquiry Delivered!
                   </h3>
                   <p className="text-body-sm max-w-sm">
