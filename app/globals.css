@@ -15,8 +15,8 @@
   --color-text-light: #1E345C; /* Navy for headers */
   --color-text-light-muted: #58595B; /* Neutral Gray */
 
-  --font-display: 'Funnel Sans', sans-serif;
-  --font-body: 'Funnel Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 10s ease-in-out infinite;
@@ -202,7 +202,7 @@
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--foreground);
@@ -300,7 +300,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   background: #FF555F;
   color: #FFFFFF;
   font-size: 0.8125rem;
@@ -336,7 +336,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   background: transparent;
   color: #cbd5e1;
   font-size: 0.8125rem;

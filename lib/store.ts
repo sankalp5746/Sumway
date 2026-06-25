@@ -44,7 +44,11 @@ export const useAppStore = create<AppState>((set) => ({
 
   // Jobs
   jobs: JOBS,
-  setJobs: (jobs) => set({ jobs }),
+  setJobs: (jobs) =>
+    set(() => {
+      localStorage.setItem("sumway_jobs", JSON.stringify(jobs));
+      return { jobs };
+    }),
   addJob: (job) =>
     set((state) => {
       const updatedJobs = [job, ...state.jobs];

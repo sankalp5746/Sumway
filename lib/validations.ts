@@ -27,37 +27,129 @@ export const LoginSchema = z.object({
 });
 
 export const RegisterSchema = z.object({
-  role: z.enum(["client", "candidate", "vendor"]),
+  role: z.enum(["vendor", "admin"]),
   name: z.string().min(2, "Name must be at least 2 characters"),
-  mobile: z.string().regex(phoneRegex, "Invalid mobile number"),
+  mobile: z.string().regex(phoneRegex, "Invalid mobile number format"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   
-  // Conditional fields (validated dynamically or set as optional with Zod refinements)
+  // Admin fields
+  adminPasskey: z.string().optional(),
+  
+  // Vendor specific fields
   companyName: z.string().optional(),
-  serviceRequirement: z.string().optional(),
+  vendorCategory: z.enum(["b2b", "b2c"]).optional(),
   
-  skills: z.string().optional(),
-  experience: z.string().optional(),
+  // B2B specific documents
+  gstCertificate: z.string().optional(),
+  msmeCertificate: z.string().optional(),
+  otherDocs: z.string().optional(),
   
-  businessType: z.string().optional(),
-  gstNumber: z.string().optional()
-}).refine((data) => {
-  if (data.role === "client") {
-    return !!data.companyName && !!data.serviceRequirement;
+  // B2C specific documents
+  addressProofType: z.enum(["aadhaar", "voter_id", "pan", "other"]).optional(),
+  addressProofFile: z.string().optional(),
+  
+  // Bank details for vendors
+  bankName: z.string().optional(),
+  bankAccountNumber: z.string().optional(),
+  bankIfsc: z.string().optional(),
+  bankAccountName: z.string().optional()
+}).superRefine((data, ctx) => {
+  if (data.role === "admin") {
+    if (!data.adminPasskey || data.adminPasskey.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Security Admin Passkey is required",
+        path: ["adminPasskey"]
+      });
+    } else if (data.adminPasskey !== "SUMWAY_ADMIN_2026") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Invalid Security Admin Passkey",
+        path: ["adminPasskey"]
+      });
+    }
   }
-  return true;
-}, {
-  message: "Company Details are required for Client Registration",
-  path: ["companyName"]
-}).refine((data) => {
+
   if (data.role === "vendor") {
-    return !!data.businessType && !!data.gstNumber;
+    if (!data.vendorCategory) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Please select Vendor Category (B2B or B2C)",
+        path: ["vendorCategory"]
+      });
+      return;
+    }
+
+    // Bank Account Details are required for both B2B and B2C
+    if (!data.bankName || data.bankName.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Bank Name is required",
+        path: ["bankName"]
+      });
+    }
+    if (!data.bankAccountNumber || data.bankAccountNumber.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Bank Account Number is required",
+        path: ["bankAccountNumber"]
+      });
+    }
+    if (!data.bankIfsc || data.bankIfsc.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Bank IFSC Code is required",
+        path: ["bankIfsc"]
+      });
+    }
+    if (!data.bankAccountName || data.bankAccountName.trim() === "") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Bank Account Holder Name is required",
+        path: ["bankAccountName"]
+      });
+    }
+
+    if (data.vendorCategory === "b2b") {
+      if (!data.companyName || data.companyName.trim() === "") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Firm/Company Registration Name is required",
+          path: ["companyName"]
+        });
+      }
+      if (!data.gstCertificate || data.gstCertificate.trim() === "") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "GST Registration Certificate is required",
+          path: ["gstCertificate"]
+        });
+      }
+      if (!data.msmeCertificate || data.msmeCertificate.trim() === "") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "MSME Registration Certificate is required",
+          path: ["msmeCertificate"]
+        });
+      }
+    } else if (data.vendorCategory === "b2c") {
+      if (!data.addressProofType) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Please select an Address Proof type",
+          path: ["addressProofType"]
+        });
+      }
+      if (!data.addressProofFile || data.addressProofFile.trim() === "") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Address Proof Document is required",
+          path: ["addressProofFile"]
+        });
+      }
+    }
   }
-  return true;
-}, {
-  message: "Business Type and GST Number are required for Vendor Registration",
-  path: ["gstNumber"]
 });
 
 export const JobApplicationSchema = z.object({
