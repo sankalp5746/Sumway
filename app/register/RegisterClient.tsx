@@ -16,23 +16,23 @@ type RegisterFormInput = {
   mobile: string;
   email: string;
   password: string;
-  
+
   // Admin specific
   adminPasskey?: string;
 
   // Vendor Category
   vendorCategory?: "b2b" | "b2c";
   companyName?: string;
-  
+
   // B2B specific documents
   gstCertificate?: string;
   msmeCertificate?: string;
   otherDocs?: string;
-  
+
   // B2C specific documents
   addressProofType?: "aadhaar" | "voter_id" | "pan" | "other";
   addressProofFile?: string;
-  
+
   // Bank Account details
   bankName?: string;
   bankAccountNumber?: string;
@@ -46,6 +46,9 @@ export default function RegisterClient() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [activeRole, setActiveRole] = useState<"vendor" | "admin">("vendor");
+  const [submittedRole, setSubmittedRole] = useState<"vendor" | "admin">("vendor");
+  const [registeredEmail, setRegisteredEmail] = useState("");
+  const [activeVendorCategory, setActiveVendorCategory] = useState<"b2b" | "b2c" | undefined>(undefined);
 
   const {
     register,
@@ -79,16 +82,21 @@ export default function RegisterClient() {
   const handleRoleChange = (role: "vendor" | "admin") => {
     setActiveRole(role);
     setValue("role", role);
+    if (role === "admin") {
+      setActiveVendorCategory(undefined);
+      setValue("vendorCategory", undefined);
+    }
   };
 
   const handleVendorCategoryChange = (category: "b2b" | "b2c") => {
+    setActiveVendorCategory(category);
     setValue("vendorCategory", category, { shouldValidate: true });
   };
 
-  const activeVendorCategory = watch("vendorCategory");
-
   const onSubmit = async (data: RegisterFormInput) => {
     setIsSubmitting(true);
+    setSubmittedRole(data.role);
+    setRegisteredEmail(data.email);
     try {
       const response = await fetch("/api/auth/register", {
         method: "POST",
@@ -98,19 +106,21 @@ export default function RegisterClient() {
 
       if (response.ok) {
         setIsSuccess(true);
-        const userObj = {
-          name: data.name,
-          email: data.email,
-          role: data.role,
-          companyName: data.companyName || data.bankAccountName || "",
-          skills: "",
-          businessType: data.vendorCategory === "b2b" ? "B2B Vendor" : "B2C Vendor"
-        };
-        localStorage.setItem("sumway_user", JSON.stringify(userObj));
-        login(userObj);
-        setTimeout(() => {
-          router.push("/");
-        }, 2000);
+        if (data.role === "admin") {
+          const userObj = {
+            name: data.name,
+            email: data.email,
+            role: data.role,
+            companyName: "",
+            skills: "",
+            businessType: "Administrator"
+          };
+          localStorage.setItem("sumway_user", JSON.stringify(userObj));
+          login(userObj);
+          setTimeout(() => {
+            router.push("/");
+          }, 2000);
+        }
       } else {
         const errorData = await response.json().catch(() => ({}));
         alert(errorData.error?.message || "Registration failed. Please check inputs.");
@@ -125,8 +135,8 @@ export default function RegisterClient() {
 
   return (
     <div className="bg-transparent min-h-screen pb-16 transition-colors duration-400">
-      <PageHero 
-        title="Gateway Registration" 
+      <PageHero
+        title="Gateway Registration"
         subtitle="Create your secure gateway account and configure your project workspace."
       />
 
@@ -168,19 +178,39 @@ export default function RegisterClient() {
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="glass-card p-6 md:p-8 relative overflow-hidden shadow-2xl">
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00C2B2]/5 to-transparent rounded-bl-full pointer-events-none" />
-              
+
               {isSuccess ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
-                    <UserPlus className="w-10 h-10 animate-bounce" />
+                submittedRole === "admin" ? (
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="w-16 h-16 rounded-full bg-[#00C2B2]/10 flex items-center justify-center text-[#00C2B2] mb-4">
+                      <UserPlus className="w-10 h-10 animate-bounce" />
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
+                      Registration Complete!
+                    </h3>
+                    <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
+                      Welcome to Sumway Global. We have created your secure credentials, registered your workspace, and are redirecting you...
+                    </p>
                   </div>
-                  <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2">
-                    Registration Complete!
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed max-w-xs">
-                    Welcome to Sumway Global. We have created your secure credentials, registered your workspace, and are redirecting you...
-                  </p>
-                </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-12 text-center">
+                    <div className="w-16 h-16 rounded-full bg-[#F5C542]/10 flex items-center justify-center text-[#F5C542] mb-4">
+                      <CheckCircle2 className="w-10 h-10 animate-pulse" />
+                    </div>
+                    <h3 className="font-display font-bold text-xl text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase tracking-wide mb-2 text-[#F5C542]">
+                      Application Submitted!
+                    </h3>
+                    <p className="text-xs text-slate-400 leading-relaxed max-w-xs mb-6">
+                      Your vendor gateway registration request has been received. Our administration board will review your B2B/B2C credentials and documents.
+                    </p>
+                    <div className="p-4 rounded-xl border border-white/5 bg-[#080d1a] text-[11px] text-slate-400 leading-relaxed max-w-sm mb-6 font-semibold">
+                      Once approved by the administrator, you can log in directly using your registered email and password.
+                    </div>
+                    <Link href="/" className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-lg bg-[#F5C542] text-[#0A0F1E] font-bold text-xs uppercase tracking-wider hover:bg-[#F5C542]/90 hover:shadow-lg active:scale-95 transition-all">
+                      Return to Homepage
+                    </Link>
+                  </div>
+                )
               ) : (
                 <div>
                   <div className="text-center mb-6">
@@ -197,11 +227,10 @@ export default function RegisterClient() {
                           key={r}
                           type="button"
                           onClick={() => handleRoleChange(r)}
-                          className={`flex-1 text-center py-2.5 rounded transition-all cursor-pointer ${
-                            isSelected 
-                              ? "bg-[#00C2B2] text-[#0A0F1E]" 
+                          className={`flex-1 text-center py-2.5 rounded transition-all cursor-pointer ${isSelected
+                              ? "bg-[#00C2B2] text-[#0A0F1E]"
                               : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#F5C542]"
-                          }`}
+                            }`}
                         >
                           {r}
                         </button>
@@ -209,7 +238,7 @@ export default function RegisterClient() {
                     })}
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-semibold" method="POST" action="javascript:void(0)">
                     <input type="hidden" {...register("role")} />
 
                     {/* Common Name */}
@@ -284,14 +313,14 @@ export default function RegisterClient() {
                           <Lock className="w-3.5 h-3.5" />
                           Administrative Access Verification
                         </span>
-                        
+
                         <div className="flex flex-col gap-1.5">
                           <label className="text-slate-300 dark:text-slate-300 light:text-slate-700 font-bold">Security Admin Passkey *</label>
                           <div className="relative">
                             <input
                               type="password"
                               {...register("adminPasskey")}
-                              placeholder="Enter security passkey (e.g. SUMWAY_ADMIN_2026)..."
+                              placeholder="Enter security passkey of admin panel..."
                               className="w-full pl-10 pr-3.5 py-2.5 rounded-lg border border-slate-700 bg-white/5 text-slate-100 dark:text-slate-100 light:text-slate-800 dark:border-slate-700 light:border-slate-300 dark:bg-white/5 light:bg-slate-50 focus:border-[#00C2B2] focus:outline-none transition-colors"
                             />
                             <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-3.5" />
@@ -309,7 +338,7 @@ export default function RegisterClient() {
                         <div>
                           <span className="text-[9px] font-bold text-[#FF555F] uppercase tracking-wider">Vendor Classification</span>
                           <h4 className="text-xs font-bold text-slate-355 dark:text-slate-300 light:text-slate-700 mt-1 mb-2">Select Vendor Category *</h4>
-                          
+
                           <div className="grid grid-cols-2 gap-2 p-1 bg-[#0A0F1E] light:bg-slate-100 rounded-lg border border-slate-800 light:border-slate-300 text-[10px] font-bold uppercase tracking-wider">
                             {(["b2b", "b2c"] as const).map((cat) => {
                               const isSelected = activeVendorCategory === cat;
@@ -318,11 +347,10 @@ export default function RegisterClient() {
                                   key={cat}
                                   type="button"
                                   onClick={() => handleVendorCategoryChange(cat)}
-                                  className={`text-center py-2 rounded transition-all cursor-pointer ${
-                                    isSelected 
-                                      ? "bg-[#4AABCA] text-[#0A0F1E] shadow-sm font-extrabold" 
+                                  className={`text-center py-2 rounded transition-all cursor-pointer ${isSelected
+                                      ? "bg-[#4AABCA] text-[#0A0F1E] shadow-sm font-extrabold"
                                       : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#4AABCA]"
-                                  }`}
+                                    }`}
                                 >
                                   {cat === "b2b" ? "B2B (Business-to-Business)" : "B2C (Business-to-Consumer)"}
                                 </button>
@@ -427,7 +455,7 @@ export default function RegisterClient() {
                               <CreditCard className="w-3.5 h-3.5" />
                               Bank Account Details
                             </span>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               {/* Account Holder Name */}
                               <div className="flex flex-col gap-1.5">
@@ -572,7 +600,7 @@ const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       const file = e.dataTransfer.files[0];
       simulateUpload(file.name);
@@ -602,22 +630,21 @@ const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
       <label className="text-slate-300 dark:text-slate-300 light:text-slate-700 font-bold flex items-center gap-1 text-[10px] uppercase tracking-wide">
         {label} {required && <span className="text-[#FF555F]">*</span>}
       </label>
-      
+
       <div
         onDragEnter={handleDrag}
         onDragOver={handleDrag}
         onDragLeave={handleDrag}
         onDrop={handleDrop}
         onClick={value ? undefined : onButtonClick}
-        className={`relative w-full border border-dashed rounded-xl p-4 flex flex-col items-center justify-center transition-all ${
-          value 
-            ? "border-emerald-500/30 bg-emerald-500/5 light:bg-emerald-500/2" 
+        className={`relative w-full border border-dashed rounded-xl p-4 flex flex-col items-center justify-center transition-all ${value
+            ? "border-emerald-500/30 bg-emerald-500/5 light:bg-emerald-500/2"
             : dragActive
               ? "border-[#4AABCA] bg-[#4AABCA]/10"
               : error
                 ? "border-red-500/50 bg-red-500/5"
                 : "border-slate-700 dark:border-slate-750 light:border-slate-300 bg-white/3 dark:bg-white/3 light:bg-slate-50 hover:border-[#4AABCA] hover:bg-[#4AABCA]/5"
-        } ${value ? "" : "cursor-pointer"}`}
+          } ${value ? "" : "cursor-pointer"}`}
       >
         <input
           ref={fileInputRef}
@@ -634,8 +661,8 @@ const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
               Uploading Document ({progress}%)
             </span>
             <div className="w-full max-w-[200px] bg-slate-800/80 rounded-full h-1 mt-1.5 overflow-hidden border border-slate-700">
-              <div 
-                className="bg-gradient-to-r from-[#4AABCA] to-[#FF555F] h-full transition-all duration-100 ease-out" 
+              <div
+                className="bg-gradient-to-r from-[#4AABCA] to-[#FF555F] h-full transition-all duration-100 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -655,7 +682,7 @@ const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
                 </span>
               </div>
             </div>
-            
+
             <button
               type="button"
               onClick={handleRemove}
@@ -676,7 +703,7 @@ const FileUploadDropzone: React.FC<FileUploadDropzoneProps> = ({
           </div>
         )}
       </div>
-      
+
       {error && (
         <span className="text-[9px] text-red-500 font-semibold mt-0.5">{error}</span>
       )}

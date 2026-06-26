@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# user database (contains password hashes — never commit)
+lib/users.json
+
+# dev email previews
+public/sent_email_preview.html

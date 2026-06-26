@@ -1,27 +1,12 @@
 import { NextResponse } from "next/server";
 import { LoginSchema } from "@/lib/validations";
-import crypto from "crypto";
 import { signJwt } from "@/lib/jwt";
+import { findUserByEmail, hashPassword } from "@/lib/db";
 
 // Simple IP Rate Limiter
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const MAX_ATTEMPTS = 5;
 const WINDOW_MS = 15 * 60 * 1000; // 15 minutes
-
-const ADMIN_EMAIL = "admin@sumway.com";
-const ADMIN_PASSWORD_SALT = "sumway_secure_salt_2026_ab12";
-const ADMIN_PASSWORD_HASH = "c9537b4649414be4d4e6fcfefb0e12561ff6a384d83bee9f6b2c830f162ee2fe7a270257f1472574b3dfdca8ea23827abb06d1a56755ab251340667153072944";
-
-function verifyAdminPassword(password: string): boolean {
-  const hash = crypto.pbkdf2Sync(password, ADMIN_PASSWORD_SALT, 100000, 64, "sha512").toString("hex");
-  const hashBuf = Buffer.from(hash);
-  const expectedHashBuf = Buffer.from(ADMIN_PASSWORD_HASH);
-  
-  if (hashBuf.length !== expectedHashBuf.length) {
-    return false;
-  }
-  return crypto.timingSafeEqual(hashBuf, expectedHashBuf);
-}
 
 export async function POST(req: Request) {
   try {
@@ -59,24 +44,66 @@ export async function POST(req: Request) {
 
     const { role, email, password } = result.data;
 
-    // Enforce fixed admin credentials
+    const dbUser = findUserByEmail(email);
+
     if (role === "admin") {
-      const isEmailValid = email === ADMIN_EMAIL;
-      const isPasswordValid = verifyAdminPassword(password);
-      
-      if (!isEmailValid || !isPasswordValid) {
+      // Verify admin credentials from database
+      if (!dbUser || dbUser.role !== "admin") {
         return NextResponse.json(
           { success: false, error: "Invalid administrator email or password" },
+          { status: 401 }
+        );
+      }
+
+      const hash = hashPassword(password, dbUser.passwordSalt);
+      if (hash !== dbUser.passwordHash) {
+        return NextResponse.json(
+          { success: false, error: "Invalid administrator email or password" },
+          { status: 401 }
+        );
+      }
+    } else if (role === "vendor") {
+      // Check database registered vendors
+      if (!dbUser || dbUser.role !== "vendor") {
+        return NextResponse.json(
+          { success: false, error: "Invalid email or password" },
+          { status: 401 }
+        );
+      }
+
+      // Check registration approval status
+      if (dbUser.status === "pending") {
+        return NextResponse.json(
+          { success: false, error: "Your registration request is pending approval by the administrator." },
+          { status: 403 }
+        );
+      }
+
+      if (dbUser.status === "rejected") {
+        return NextResponse.json(
+          { success: false, error: "Your registration request has been rejected." },
+          { status: 403 }
+        );
+      }
+
+      // Verify vendor password
+      const hash = hashPassword(password, dbUser.passwordSalt);
+      if (hash !== dbUser.passwordHash) {
+        return NextResponse.json(
+          { success: false, error: "Invalid email or password" },
           { status: 401 }
         );
       }
     }
 
     // Generate session JWT
+    const name = dbUser ? dbUser.name : email.split("@")[0].toUpperCase();
     const payload = {
       email,
       role,
-      name: email.split("@")[0].toUpperCase()
+      name,
+      companyName: dbUser?.companyName || dbUser?.bankAccountName || "",
+      businessType: dbUser?.vendorCategory === "b2b" ? "B2B Vendor" : dbUser?.vendorCategory === "b2c" ? "B2C Vendor" : undefined
     };
     
     const token = await signJwt(payload);
@@ -84,7 +111,17 @@ export async function POST(req: Request) {
     // Clear rate limit on successful login
     rateLimitMap.delete(ip);
 
-    const response = NextResponse.json({ success: true });
+    const response = NextResponse.json({ 
+      success: true, 
+      user: {
+        name,
+        email,
+        role,
+        companyName: payload.companyName,
+        businessType: payload.businessType
+      } 
+    });
+    
     response.cookies.set({
       name: "sumway_session",
       value: token,

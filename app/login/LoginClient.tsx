@@ -53,10 +53,13 @@ export default function LoginClient() {
 
       if (response.ok) {
         setIsSuccess(true);
+        const resData = await response.json().catch(() => ({}));
         const userObj = {
-          name: data.email.split("@")[0].toUpperCase(),
+          name: resData.user?.name || data.email.split("@")[0].toUpperCase(),
           email: data.email,
-          role: data.role
+          role: data.role,
+          companyName: resData.user?.companyName || "",
+          businessType: resData.user?.businessType || ""
         };
         localStorage.setItem("sumway_user", JSON.stringify(userObj));
         login(userObj);
@@ -81,8 +84,8 @@ export default function LoginClient() {
 
   return (
     <div className="bg-transparent min-h-screen pb-16 transition-colors duration-400">
-      <PageHero 
-        title="Gateway Access" 
+      <PageHero
+        title="Gateway Access"
         subtitle="Access your secure BPO Admin dashboard or Vendor portal."
       />
 
@@ -124,7 +127,7 @@ export default function LoginClient() {
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="glass-card p-6 md:p-8 relative overflow-hidden shadow-2xl">
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#FF555F]/5 to-transparent rounded-bl-full pointer-events-none" />
-              
+
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center py-12 text-center">
                   <div className="w-16 h-16 rounded-full bg-[#4AABCA]/10 light:bg-accent-teal-dark/10 flex items-center justify-center text-[#4AABCA] light:text-accent-teal-dark mb-4">
@@ -153,11 +156,10 @@ export default function LoginClient() {
                           key={r}
                           type="button"
                           onClick={() => handleRoleChange(r)}
-                          className={`flex-1 text-center py-2.5 rounded-lg transition-all cursor-pointer ${
-                            isSelected
+                          className={`flex-1 text-center py-2.5 rounded-lg transition-all cursor-pointer ${isSelected
                               ? "bg-[#FF555F] text-[#0A1128] shadow-md"
                               : "text-slate-500 light:text-slate-650 hover:text-slate-300 light:hover:text-[#4AABCA]"
-                          }`}
+                            }`}
                         >
                           {r}
                         </button>
@@ -165,7 +167,7 @@ export default function LoginClient() {
                     })}
                   </div>
 
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" autoComplete="off">
                     <input type="hidden" {...register("role")} />
 
                     {/* Email */}
@@ -174,9 +176,10 @@ export default function LoginClient() {
                       <div className="relative">
                         <input
                           {...register("email")}
-                          placeholder="e.g. administrator@sumway.com"
+                          placeholder="e.g. name@domain.com"
                           className="form-input pl-10"
-                          autoComplete="username email"
+                          autoComplete="off"
+                          data-lpignore="true"
                         />
                         <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
@@ -184,7 +187,7 @@ export default function LoginClient() {
                         <span className="text-xs text-red-400 font-medium">{errors.email.message}</span>
                       )}
                     </div>
- 
+
                     {/* Password */}
                     <div className="flex flex-col gap-1.5">
                       <div className="flex items-center justify-between">
@@ -203,7 +206,8 @@ export default function LoginClient() {
                           {...register("password")}
                           placeholder="Type password..."
                           className="form-input pl-10"
-                          autoComplete="current-password"
+                          autoComplete="new-password"
+                          data-lpignore="true"
                         />
                         <Lock className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
@@ -234,9 +238,9 @@ export default function LoginClient() {
 
                   {/* Notice for registration */}
                   <div className="text-center mt-6 text-sm text-slate-500 font-medium">
-                    <span>Need portal access? </span>
-                    <Link href="/contact" className="text-[#4AABCA] light:text-accent-teal-dark hover:text-[#FF555F] font-bold transition-colors">
-                      Contact Administrator
+                    <span>Need Vendor portal access? </span>
+                    <Link href="/register" className="text-[#4AABCA] light:text-accent-teal-dark hover:text-[#FF555F] font-bold transition-colors">
+                      Vendor Onboarding
                     </Link>
                   </div>
                 </div>

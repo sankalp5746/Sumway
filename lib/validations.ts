@@ -56,16 +56,11 @@ export const RegisterSchema = z.object({
   bankAccountName: z.string().optional()
 }).superRefine((data, ctx) => {
   if (data.role === "admin") {
+    // Only check that passkey is provided; actual value is verified server-side
     if (!data.adminPasskey || data.adminPasskey.trim() === "") {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: "Security Admin Passkey is required",
-        path: ["adminPasskey"]
-      });
-    } else if (data.adminPasskey !== "SUMWAY_ADMIN_2026") {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: "Invalid Security Admin Passkey",
         path: ["adminPasskey"]
       });
     }
