@@ -120,7 +120,7 @@ export default function Navbar() {
               SUMWAY GLOBAL
             </span>
             <span className="text-[9px] font-semibold text-[#4AABCA] tracking-[0.15em] uppercase mt-0.5 whitespace-nowrap">
-              MANAGEMENT
+              MANAGEMENT Pvt. Ltd.
             </span>
           </div>
         </Link>
