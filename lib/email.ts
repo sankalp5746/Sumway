@@ -20,7 +20,7 @@ function parseEnvValue(line: string): string {
 }
 
 function getSmtpCredentials() {
-  let email = process.env.SMTP_EMAIL || "sumwayglobal@gmail.com";
+  let email = process.env.SMTP_EMAIL || "business@sumwayglobal.com";
   let pass = process.env.SMTP_APP_PASSWORD || "";
   let host = "";
   let port = "465";
@@ -53,7 +53,7 @@ function getSmtpCredentials() {
   return { email, pass, host, port, secure };
 }
 
-export async function sendEmail({ to = "sumwayglobal@gmail.com", subject, html }: EmailPayload) {
+export async function sendEmail({ to = "business@sumwayglobal.com", subject, html }: EmailPayload) {
   const { email, pass, host, port, secure } = getSmtpCredentials();
 
   // Always write to a local preview file in development for easy browser testing

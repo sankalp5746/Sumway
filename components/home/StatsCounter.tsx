@@ -50,8 +50,8 @@ export default function StatsCounter() {
         className="relative max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-0 items-center"
       >
         {[
-          { target: 150, suffix: "+", label: "Clients Served", desc: "Across multiple industries" },
-          { target: 2500, suffix: "+", label: "Professionals Placed", desc: "Vetted & deployed" },
+          { target: 25, suffix: "+", label: "Clients Served", desc: "Across multiple industries" },
+          { target: 100, suffix: "+", label: "Professionals Placed", desc: "Vetted & deployed" },
           { target: 8, suffix: "", label: "Sectors Covered", desc: "BPO, IT, Marketing & more" },
           { target: 98, suffix: "%", label: "SLA Satisfaction", desc: "Consistent performance" },
         ].map((stat, i) => (

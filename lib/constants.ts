@@ -8,7 +8,7 @@ export const COMPANY_DETAILS = {
   address: "210 Stock Exchange Building, JLN Marg, Malviya Nagar, Jaipur, Rajasthan 302017",
   phone: "+91 9414940434",
   phoneDisplay: "+91 94149 40434",
-  email: "sumwayglobal@gmail.com",
+  email: "business@sumwayglobal.com",
   whatsapp: "919414940434",
   hours: "Monday - Saturday: 9:30 AM - 6:30 PM (Sunday Closed)",
   mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.8970715366366!2d75.80373837617658!3d26.843187976689626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db6001ab43037%3A0xe21fcf4dfaf758c0!2sJaipur%20Stock%20Exchange%20Building!5e0!3m2!1sen!2sin!4v1717060000000!5m2!1sen!2sin"
@@ -29,7 +29,8 @@ export const NAV_LINKS = [
     children: [
       { label: "About Us", href: "/company/about-us", desc: "Our journey, milestones and corporate profile" },
       { label: "What We Do", href: "/company/what-we-do", desc: "Strategic staffing, tech and business operations" },
-      { label: "Why Choose Us", href: "/company/why-choose-us", desc: "Our unique enterprise advantages and comparison" }
+      { label: "Why Choose Us", href: "/company/why-choose-us", desc: "Our unique enterprise advantages and comparison" },
+      { label: "Our Team", href: "/company/team", desc: "Meet the professionals behind Sumway Global" }
     ]
   },
   {
@@ -69,9 +70,9 @@ export const NAV_LINKS = [
 
 export const STATS = [
   { id: "years", label: "Years Active", value: 2, suffix: "+" },
-  { id: "clients", label: "Clients Served", value: 150, suffix: "+" },
+  { id: "clients", label: "Clients Served", value: 25, suffix: "+" },
   { id: "industries", label: "Industries Covered", value: 8, suffix: "" },
-  { id: "placed", label: "Professionals Placed", value: 2500, suffix: "+" }
+  { id: "placed", label: "Professionals Placed", value: 100, suffix: "+" }
 ];
 
 export const SERVICES = [

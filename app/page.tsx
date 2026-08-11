@@ -7,7 +7,6 @@ import IndustriesCarousel from "@/components/home/IndustriesCarousel";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import StatsCounter from "@/components/home/StatsCounter";
 import WorkProcess from "@/components/home/WorkProcess";
-import Testimonials from "@/components/home/Testimonials";
 import CareersHighlight from "@/components/home/CareersHighlight";
 import InquiryForm from "@/components/home/InquiryForm";
 
@@ -22,7 +21,6 @@ export default function Home() {
       <WhyChooseUs />
       <StatsCounter />
       <WorkProcess />
-      <Testimonials />
       <CareersHighlight />
       <InquiryForm />
     </div>
