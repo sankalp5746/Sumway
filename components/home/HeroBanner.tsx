@@ -115,8 +115,8 @@ export default function HeroBanner() {
         {/* Stats Strip */}
         <div className="flex items-center gap-4 sm:gap-10 mt-auto border-t border-white/10 light:border-slate-200 pt-6 sm:pt-8 w-full max-w-lg justify-center z-10">
           {[
-            { value: "150+", label: "Clients" },
-            { value: "2500+", label: "Placed" },
+            { value: "25+", label: "Clients" },
+            { value: "100+", label: "Placed" },
             { value: "99.8%", label: "SLA Rate" },
           ].map((stat, i) => (
             <React.Fragment key={stat.label}>
