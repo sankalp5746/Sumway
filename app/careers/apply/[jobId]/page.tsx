@@ -56,9 +56,9 @@ export default function ApplyJobPage({ params }: PageProps) {
     setIsSubmitting(true);
     try {
       // Simulate file upload or direct email payload deliverability
-      const response = await fetch("/api/careers", {
+      const response = await fetch("https://formspree.io/f/mrpzqwnb", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({ ...data, jobId: job.id, jobTitle: job.title })
       });
 
