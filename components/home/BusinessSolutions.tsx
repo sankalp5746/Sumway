@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Clock, PhoneCall, ShieldCheck, TrendingUp,
@@ -65,10 +66,10 @@ export default function BusinessSolutions() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.35 }}
-              className="glass-card p-7 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+              className="glass-card p-5 sm:p-7 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch"
             >
               {/* Left */}
-              <div className="md:col-span-7 flex flex-col gap-5">
+              <div className="md:col-span-7 flex flex-col gap-5 justify-between">
                 <div className="flex items-center gap-3">
                   <div className="icon-box-teal">
                     <ActiveIcon className="w-5 h-5" />
@@ -104,7 +105,7 @@ export default function BusinessSolutions() {
               </div>
 
               {/* Right: Teaser card */}
-              <div className="md:col-span-5 bg-[#080d1a] light:bg-slate-100 border border-white/6 light:border-slate-300 rounded-2xl p-6 flex flex-col justify-between h-64 md:h-72">
+              <div className="md:col-span-5 bg-[#080d1a] light:bg-slate-100 border border-white/6 light:border-slate-300 rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[250px] md:min-h-[280px] h-auto gap-4">
                 <div>
                   <span className="text-xs font-bold uppercase tracking-wider text-[#4AABCA]">Operational Matrix</span>
                   <h4 className="font-display font-bold text-lg text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase mt-2">
@@ -117,13 +118,13 @@ export default function BusinessSolutions() {
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/6">
                   <span className="text-xs text-[#FF555F] font-bold tracking-widest uppercase">99.8% System SLA</span>
-                  <a
+                  <Link
                     href={activeSolution.href}
                     className="flex items-center gap-1.5 text-sm font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors"
                   >
                     <span>Read Metrics</span>
                     <ArrowUpRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

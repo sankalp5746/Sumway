@@ -25,7 +25,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   {
     label: "Company",
-    href: "#",
+    href: "/company",
     children: [
       { label: "About Us", href: "/company/about-us", desc: "Our journey, milestones and corporate profile" },
       { label: "What We Do", href: "/company/what-we-do", desc: "Strategic staffing, tech and business operations" },
@@ -35,7 +35,7 @@ export const NAV_LINKS = [
   },
   {
     label: "Industries",
-    href: "#",
+    href: "/industries",
     children: [
       { label: "BPO Operations", href: "/industries/bpo", desc: "Global customer service and back-office solutions" },
       { label: "IT & Software Development", href: "/industries/it-software", desc: "Custom digital solutions and systems architecture" },
@@ -45,7 +45,7 @@ export const NAV_LINKS = [
   },
   {
     label: "Services",
-    href: "#",
+    href: "/services",
     children: [
       { label: "Staffing Solutions", href: "/services/staffing-solutions", desc: "Contract and full-time professional staffing" },
       { label: "Recruitment Process Outsourcing (RPO)", href: "/services/rpo", desc: "End-to-end management of corporate hiring" },
@@ -56,7 +56,7 @@ export const NAV_LINKS = [
   },
   {
     label: "Solutions",
-    href: "#",
+    href: "/solutions",
     children: [
       { label: "Workforce Management", href: "/solutions/workforce-management", desc: "Optimizing employee scheduling and performance" },
       { label: "BPO Hiring Solutions", href: "/solutions/bpo-hiring", desc: "High-volume call center and support recruiting" },

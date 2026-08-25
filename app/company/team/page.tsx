@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Code2, Users, Crown } from "lucide-react";
 import PageHero from "@/components/shared/PageHero";
@@ -139,12 +140,12 @@ export default function TeamPage() {
             <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 leading-relaxed font-medium">
               Interested in joining our growing team? We are always looking for talented individuals who share our passion for excellence.
             </p>
-            <a
+            <Link
               href="/careers"
               className="btn-primary inline-flex mt-4 !text-xs"
             >
               View Open Positions
-            </a>
+            </Link>
           </div>
         </div>
       </section>
