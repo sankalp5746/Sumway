@@ -5,11 +5,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { 
   Send, CheckCircle, Loader2, Phone, 
-  Mail, MapPin, Clock, MessageSquareText, Calendar 
+  Mail, MapPin, Clock, MessageSquareText, Calendar, ExternalLink
 } from "lucide-react";
+import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 import PageHero from "@/components/shared/PageHero";
 import { ContactSchema } from "@/lib/validations";
-import { COMPANY_DETAILS } from "@/lib/constants";
+import { COMPANY_DETAILS, SOCIAL_LINKS } from "@/lib/constants";
 
 type ContactFormInput = {
   name: string;
@@ -297,6 +299,98 @@ export default function ContactPage() {
                   <span className="text-[9px] font-bold text-slate-500 uppercase">Office Hours</span>
                   <span className="mt-0.5 leading-relaxed">{COMPANY_DETAILS.hours}</span>
                 </div>
+              </div>
+            </div>
+
+            {/* Official Social Media Handles Card */}
+            <div className="glass-card p-6 md:p-8 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="badge-teal">Official Handles</span>
+                <span className="text-[10px] text-slate-400 font-semibold">Follow Us</span>
+              </div>
+              <h4 className="font-display font-extrabold text-base text-slate-100 dark:text-slate-100 light:text-[#0F172A] uppercase">
+                Connect On Social Media
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                <a
+                  href={SOCIAL_LINKS.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/4 light:bg-slate-100 hover:bg-[#FF555F]/10 border border-white/5 light:border-slate-200 hover:border-[#FF555F]/30 transition-all group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#FF555F]/10 flex items-center justify-center text-[#FF555F] shrink-0">
+                      <FaInstagram className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-bold text-slate-200 light:text-slate-800 group-hover:text-[#FF555F] transition-colors">
+                        Instagram
+                      </span>
+                      <span className="text-[10px] text-slate-400 truncate">@sumwayglobal</span>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#FF555F] transition-colors shrink-0" />
+                </a>
+
+                <a
+                  href={SOCIAL_LINKS.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/4 light:bg-slate-100 hover:bg-[#4AABCA]/10 border border-white/5 light:border-slate-200 hover:border-[#4AABCA]/30 transition-all group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0">
+                      <FaXTwitter className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-bold text-slate-200 light:text-slate-800 group-hover:text-[#4AABCA] transition-colors">
+                        X / Twitter
+                      </span>
+                      <span className="text-[10px] text-slate-400 truncate">@Sumwayglobal</span>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#4AABCA] transition-colors shrink-0" />
+                </a>
+
+                <a
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/4 light:bg-slate-100 hover:bg-[#4AABCA]/10 border border-white/5 light:border-slate-200 hover:border-[#4AABCA]/30 transition-all group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#4AABCA]/10 flex items-center justify-center text-[#4AABCA] shrink-0">
+                      <FaLinkedinIn className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-bold text-slate-200 light:text-slate-800 group-hover:text-[#4AABCA] transition-colors">
+                        LinkedIn
+                      </span>
+                      <span className="text-[10px] text-slate-400 truncate">Sumway Global</span>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#4AABCA] transition-colors shrink-0" />
+                </a>
+
+                <a
+                  href={SOCIAL_LINKS.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3 rounded-xl bg-white/4 light:bg-slate-100 hover:bg-[#FF555F]/10 border border-white/5 light:border-slate-200 hover:border-[#FF555F]/30 transition-all group"
+                >
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="w-8 h-8 rounded-lg bg-[#FF555F]/10 flex items-center justify-center text-[#FF555F] shrink-0">
+                      <FaFacebookF className="w-4 h-4" />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-xs font-bold text-slate-200 light:text-slate-800 group-hover:text-[#FF555F] transition-colors">
+                        Facebook
+                      </span>
+                      <span className="text-[10px] text-slate-400 truncate">sumwayglobal</span>
+                    </div>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-500 group-hover:text-[#FF555F] transition-colors shrink-0" />
+                </a>
               </div>
             </div>
 

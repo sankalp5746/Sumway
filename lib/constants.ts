@@ -15,10 +15,17 @@ export const COMPANY_DETAILS = {
 };
 
 export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/sumwayglobal",
+  twitter: "https://x.com/Sumwayglobal",
   linkedin: "https://linkedin.com/company/sumway-global",
-  twitter: "https://twitter.com/sumwayglobal",
-  instagram: "https://instagram.com/sumwayglobal",
   facebook: "https://facebook.com/sumwayglobal"
+};
+
+export const SOCIAL_HANDLES = {
+  instagram: "@sumwayglobal",
+  twitter: "@Sumwayglobal",
+  linkedin: "sumway-global",
+  facebook: "sumwayglobal"
 };
 
 export const NAV_LINKS = [

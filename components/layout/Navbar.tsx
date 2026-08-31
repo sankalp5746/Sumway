@@ -10,7 +10,9 @@ import {
   Building, Briefcase, Laptop, Headphones, Users,
   GraduationCap, Clock, PhoneCall, ShieldCheck, TrendingUp
 } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { FaInstagram, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 import { useAppStore } from "@/lib/store";
 
 const iconMap: { [key: string]: any } = {
@@ -229,6 +231,40 @@ export default function Navbar() {
           })}
         </nav>        {/* Right actions */}
         <div className="hidden lg:flex items-center gap-2 shrink-0">
+          {/* Social Links on Header */}
+          <div className="flex items-center gap-1.5 mr-1 pr-2 border-r border-white/10 light:border-slate-200">
+            <a
+              href={SOCIAL_LINKS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600 flex items-center justify-center"
+              aria-label="Instagram @sumwayglobal"
+              title="Instagram @sumwayglobal"
+            >
+              <FaInstagram className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href={SOCIAL_LINKS.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600 flex items-center justify-center"
+              aria-label="X (Twitter) @Sumwayglobal"
+              title="X (Twitter) @Sumwayglobal"
+            >
+              <FaXTwitter className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href={SOCIAL_LINKS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600 flex items-center justify-center"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+            >
+              <FaLinkedinIn className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
           <button
             onClick={toggleTheme}
             className="p-2 rounded-xl border border-white/8 light:border-slate-200 hover:border-[#FF555F]/30 bg-white/4 light:bg-slate-100 hover:bg-white/8 hover:text-[#FF555F] transition-all text-slate-400 light:text-slate-600"
@@ -364,7 +400,52 @@ export default function Navbar() {
               })}
             </div>
 
-            <div className="flex flex-col gap-3 mt-8 border-t border-white/5 light:border-slate-200 pt-6">
+            <div className="flex flex-col gap-4 mt-8 border-t border-white/5 light:border-slate-200 pt-6">
+              {/* Mobile Social Links & Handles */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#4AABCA]">
+                  Connect With Us
+                </span>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={SOCIAL_LINKS.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 rounded-xl bg-white/4 light:bg-slate-100 border border-white/5 light:border-slate-200 text-xs font-semibold text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors"
+                  >
+                    <FaInstagram className="w-4 h-4 text-[#FF555F] shrink-0" />
+                    <span className="truncate">@sumwayglobal</span>
+                  </a>
+                  <a
+                    href={SOCIAL_LINKS.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 rounded-xl bg-white/4 light:bg-slate-100 border border-white/5 light:border-slate-200 text-xs font-semibold text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors"
+                  >
+                    <FaXTwitter className="w-4 h-4 text-[#4AABCA] shrink-0" />
+                    <span className="truncate">@Sumwayglobal</span>
+                  </a>
+                  <a
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 rounded-xl bg-white/4 light:bg-slate-100 border border-white/5 light:border-slate-200 text-xs font-semibold text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors"
+                  >
+                    <FaLinkedinIn className="w-4 h-4 text-[#4AABCA] shrink-0" />
+                    <span className="truncate">LinkedIn</span>
+                  </a>
+                  <a
+                    href={SOCIAL_LINKS.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-2 rounded-xl bg-white/4 light:bg-slate-100 border border-white/5 light:border-slate-200 text-xs font-semibold text-slate-300 light:text-slate-700 hover:text-[#FF555F] transition-colors"
+                  >
+                    <FaFacebookF className="w-4 h-4 text-[#FF555F] shrink-0" />
+                    <span className="truncate">Facebook</span>
+                  </a>
+                </div>
+              </div>
+
               {mounted && user ? (
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between px-4 py-3 rounded-xl border border-[#4AABCA]/20 bg-[#4AABCA]/5 text-[#4AABCA] text-sm font-bold uppercase tracking-wider">

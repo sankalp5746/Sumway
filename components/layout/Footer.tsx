@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight } from "lucide-react";
-import { FaLinkedin, FaTwitter, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaFacebookF } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
 import { COMPANY_DETAILS, SOCIAL_LINKS, SERVICES } from "@/lib/constants";
 
 export default function Footer() {
@@ -52,10 +53,10 @@ export default function Footer() {
           {/* Social icons */}
           <div className="flex items-center gap-2.5 mt-1">
             {[
-              { href: SOCIAL_LINKS.linkedin, Icon: FaLinkedin, label: "LinkedIn" },
-              { href: SOCIAL_LINKS.twitter, Icon: FaTwitter, label: "Twitter" },
-              { href: SOCIAL_LINKS.instagram, Icon: FaInstagram, label: "Instagram" },
-              { href: SOCIAL_LINKS.facebook, Icon: FaFacebook, label: "Facebook" },
+              { href: SOCIAL_LINKS.instagram, Icon: FaInstagram, label: "Instagram (@sumwayglobal)" },
+              { href: SOCIAL_LINKS.twitter, Icon: FaXTwitter, label: "X / Twitter (@Sumwayglobal)" },
+              { href: SOCIAL_LINKS.linkedin, Icon: FaLinkedinIn, label: "LinkedIn" },
+              { href: SOCIAL_LINKS.facebook, Icon: FaFacebookF, label: "Facebook" },
             ].map(({ href, Icon, label }) => (
               <a
                 key={label}
@@ -64,6 +65,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-xl border border-white/8 light:border-slate-300 bg-white/4 light:bg-slate-200 flex items-center justify-center text-slate-400 dark:text-slate-400 light:text-slate-600 hover:text-[#FF555F] hover:border-[#FF555F]/30 hover:bg-[#FF555F]/5 transition-all hover:-translate-y-0.5"
                 aria-label={`${label} Profile`}
+                title={label}
               >
                 <Icon className="w-4 h-4" />
               </a>
